@@ -19,15 +19,31 @@ Tenere il catalogo online aggiornato anche in base alle vendite effettuate all�
 Il cliente sarà notificato se non si ha disponibilità sufficiente dei prodotti richiesti.]
 
 3.Requisiti Funzionali
-RF1: Un utente deve avere la possibilità di registrarsi
-RF2: L’utente Admin deve poter aggiungere, eliminare o modificare prodotti
-RF3: cliente può visualizzare la cronologia degli ordini
-RF4: cliente può inserire carte di credito e indirizzo di spedizione
+RF1: L'utente non registrato deve avere la possibilità di registrarsi.
+RF2: L’utente Admin deve poter aggiungere, eliminare o modificare prodotti.
+RF3: Il cliente può visualizzare la cronologia degli ordini.
+RF4: Il cliente può inserire carte di credito e indirizzo di spedizione.
+RF5: Il utente può cambiare l'indirizzo di spedizione e il metodo di pagamento ogni volta che vuole completare un'ordine.
+RF6: Il cliente può visualizzare i dati inseriti all'atto della registrazione (eccezione fatta per dati sensibili come password e numero della carta).
+RF7: Il cliente non registrato può aggiungere prodotti al carrello e visualizzarlo.
+RF8: Gli utenti possono cambiare la quantità di un prodotto in carrello.
+RF9: Gli utenti possono eliminare un prodotto in carrello.
+RF10:Conoscendo il nome del prodotto l'utente può cercarlo e trovarlo immediatamente.
 
 4.Requisiti non Funzionali
-RNF1:Il sito deve essere indipendente dalla piattaforma
-RNF2:Il sito deve essere online 24h al giorno, 7 giorni su 7
-RNF3:Il sito deve garantire l’accesso multiplo degli utenti
+
+Reliability
+Il sito deve essere online 24h al giorno, 7 giorni su 7.
+
+Performance
+Il sito deve garantire l’accesso multiplo degli utenti.
+
+Implementation
+Il sito deve essere indipendente dalla piattaforma.
+
+Interface
+Il sistema deve prendere i dati dei prodotti dal database. 
+
 
 
 
