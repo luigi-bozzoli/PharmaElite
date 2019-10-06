@@ -4,19 +4,25 @@ Problem Statement
 Negli ultimi anni il numero di negozi fisici sta diminuendo, ciò è dovuto all’impellente crescita dell’E-Commerce. I clienti sono abituati ad acquistare ogni tipo di bene direttamente dalle proprie abitazioni in maniera semplice e veloce. Per andare incontro alle necessità del nuovo millennio e per cercare di essere concorrenziale con i colossi dell’E-Commerce (Amazon, Ebay), anche i più semplici negozi fisici come possono essere le farmacie devono aggiornare il loro sistema di vendita.
 
 2.Scenario
+
 Nonna Caterina dopo una giornata passata a giocare con i numerosi nipoti, inizia ad accusare dolori articolari.
 Data la sua veneranda età necessita di Reumadol ma purtroppo non ha disponibilità del farmaco.
-Ma nonna Caterina si ricorda ciò che le hanno insegnato i suoi nipoti, ovvero può ricevere i suoi farmaci comodamente a casa in maniera veloce ed economica utilizzando il sito PharmeElite.
+Ma nonna Caterina si ricorda ciò che le hanno insegnato i suoi nipoti, ovvero che può ricevere i suoi farmaci comodamente a casa in maniera veloce ed economica utilizzando il sito PharmeÉlite.
 Grazie all’interfaccia del sito user friendly aggiungerà facilmente il prodotto al carrello nella quantità desiderata cliccando sul bottone designato.
 Successivamente cliccherà sull’icona del carrello, effettuerà l’accesso inserendo username e password, procederà al checkout inserendo in fase finale indirizzo di spedizione e il metodo di pagamento e confermerà l’ordine.
 
+In seguito alla scoperta che la molecola ranitidina è dannosa per la salute l'Aifa, l'agenzia italiana del farmaco, ha diffuso l'ordine di ritiro dal mercato di tutti i farmaci contenenti la molecola nociva.
+Saputa la notizia l'admin Nicola deve rimuovere dalla farmacia il farmaco Buscopan Antiacido, prensente tra i farmaci ritirati.
+Dopo aver effettuato l'accesso, si recherà nella sua pagina utente dove potrà eliminare il farmaco attraverso il codice. 
+Dopo aver confermato l'operazione il Buscopan Antiacido non sarà più acquistabile sul sito.
 
+L'azienda Hairoxol ha creato un innovativo farmaco per la ricrescita dei capelli, l'Hair Growth Serum, prodotto esclusivamente con piante medicinali.
+Nicola, l'admin del sito, dopo aver saputo le notizie relative del farmaco vorrebbe aggiungerlo al catalogo di PharmeÉlite.
+Effettua l'accesso al sito e si reca nella pagina utente dove troverà l'opzione per aggiungere un nuovo prodotto, qui inserirà il nome del farmaco, il prezzo, l' ID, l'immagine, la quantità disponibile e dopo aver selezionato la categoria di appartenenza del farmaco confermerà l'inserimento rendendo il prodotto acquistabile sul sito.
 
-
- [Gli utenti devono poter acquistare i prodotti presenti nel catalogo online e controllare lo storico ordini. Inoltre, devono poter aggiungere metodi di pagamento e indirizzo di spedizione.
-Salvataggio all’interno del database relazionale dei dati anagrafici relativi all’utente (Nome, Cognome, Indirizzo, Città) e dello storico ordine.
-Tenere il catalogo online aggiornato anche in base alle vendite effettuate all’interno del negozio fisico.
-Il cliente sarà notificato se non si ha disponibilità sufficiente dei prodotti richiesti.]
+L'azienda produttrice del farmaco da banco Tachipirina, in seguito ad una causa legale persa, è stata costretta a modificare il nome in paracetamolo rendendo necessario la modifica del nome da parte di tutti i punti vendita del prodotto.
+Quindi anche Nicola, l'admin del sito, deve modificare il nome del prodotto perchè all'interno del catalogo di PharmeÉlite è presente la Tachipirina.
+Dopo aver effettuato l'accesso si recherà nella pagina utente dove potrà modificare il prodotto. Nicola cambierà il nome del farmaco, ed eventualmente il prezzo, la quantità, l'immagine e la categoria confermerà le modifiche.
 
 3.Requisiti Funzionali
 RF1: Un utente deve avere la possibilità di registrarsi
