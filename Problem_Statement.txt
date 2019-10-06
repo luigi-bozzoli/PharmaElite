@@ -1,0 +1,49 @@
+Problem Statement
+
+1.Il Problema
+Negli ultimi anni il numero di negozi fisici sta diminuendo, ciò è dovuto all’impellente crescita dell’E-Commerce. I clienti sono abituati ad acquistare ogni tipo di bene direttamente dalle proprie abitazioni in maniera semplice e veloce. Per andare incontro alle necessità del nuovo millennio e per cercare di essere concorrenziale con i colossi dell’E-Commerce (Amazon, Ebay), anche i più semplici negozi fisici come possono essere le farmacie devono aggiornare il loro sistema di vendita.
+
+2.Scenario
+Nonna Caterina dopo una giornata passata a giocare con i numerosi nipoti, inizia ad accusare dolori articolari.
+Data la sua veneranda età necessita di Reumadol ma purtroppo non ha disponibilità del farmaco.
+Ma nonna Caterina si ricorda ciò che le hanno insegnato i suoi nipoti, ovvero può ricevere i suoi farmaci comodamente a casa in maniera veloce ed economica utilizzando il sito PharmeElite.
+Grazie all’interfaccia del sito user friendly aggiungerà facilmente il prodotto al carrello nella quantità desiderata cliccando sul bottone designato.
+Successivamente cliccherà sull’icona del carrello, effettuerà l’accesso inserendo username e password, procederà al checkout inserendo in fase finale indirizzo di spedizione e il metodo di pagamento e confermerà l’ordine.
+
+
+
+
+ [Gli utenti devono poter acquistare i prodotti presenti nel catalogo online e controllare lo storico ordini. Inoltre, devono poter aggiungere metodi di pagamento e indirizzo di spedizione.
+Salvataggio all’interno del database relazionale dei dati anagrafici relativi all’utente (Nome, Cognome, Indirizzo, Città) e dello storico ordine.
+Tenere il catalogo online aggiornato anche in base alle vendite effettuate all’interno del negozio fisico.
+Il cliente sarà notificato se non si ha disponibilità sufficiente dei prodotti richiesti.]
+
+3.Requisiti Funzionali
+RF1: Un utente deve avere la possibilità di registrarsi
+RF2: L’utente Admin deve poter aggiungere, eliminare o modificare prodotti
+RF3: cliente può visualizzare la cronologia degli ordini
+RF4: cliente può inserire carte di credito e indirizzo di spedizione
+
+4.Requisiti non Funzionali
+RNF1:Il sito deve essere indipendente dalla piattaforma
+RNF2:Il sito deve essere online 24h al giorno, 7 giorni su 7
+RNF3:Il sito deve garantire l’accesso multiplo degli utenti
+
+
+
+5.Target Environment
+Il sito dovrebbe essere sviluppato per essere responsive su dispositivi fissi e portatili, per renderlo fruibile a tutti  deve poter essere eseguito su tutti gli host provider.
+
+6.Deliverables & Schedule
+1. Consegna schede informative e proposta di progetto: 25 settembre 2019 
+2. Creazione repository gitHub, invio file excel con informazioni su progetto e partecipanti e file proposta di progetto, invito docente e tutor su repository gitHub: 2 ottobre 2019 
+3. Kick-off meeting: 3 ottobre 2019 
+4. Problem Statement: 11 ottobre 2019 
+5. Requisiti e casi d’uso: 25 ottobre 2019 
+6. Requirements Analysis Document: 8 novembre 2019 
+7. System Design Document: 29 novembre 2019
+8. Specifica delle interfacce dei moduli del sottosistema da implementare: 13 dicembre 2019 
+9. Piano di test di sistema e specifica dei casi di test per il sottosistema da implementare: 13 dicembre 2019
+
+
+
