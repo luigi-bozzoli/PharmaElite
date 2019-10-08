@@ -22,19 +22,19 @@ Effettua l'accesso al sito e si reca nella pagina utente dove troverà l'opzione
 
 L'azienda produttrice del farmaco da banco Tachipirina, in seguito ad una causa legale persa, è stata costretta a modificare il nome in paracetamolo rendendo necessario la modifica del nome da parte di tutti i punti vendita del prodotto.
 Quindi anche Nicola, l'admin del sito, deve modificare il nome del prodotto perchè all'interno del catalogo di PharmeÉlite è presente la Tachipirina.
-Dopo aver effettuato l'accesso si recherà nella pagina utente dove potrà modificare il prodotto. Nicola cambierà il nome del farmaco, ed eventualmente il prezzo, la quantità, l'immagine e la categoria confermerà le modifiche.
+Dopo aver effettuato l'accesso si recherà nella pagina utente dove potrà modificare il prodotto. Nicola cambierà il nome del farmaco, ed eventualmente il prezzo, la quantità, l'immagine e la categoria ed infine confermerà le modifiche.
 
 3.Requisiti Funzionali
-RF1: L'utente non registrato deve avere la possibilità di registrarsi.
-RF2: L’utente Admin deve poter aggiungere, eliminare o modificare prodotti.
+RF1: L’admin deve poter aggiungere, eliminare o modificare prodotti. 
+RF2: L'utente non registrato deve avere la possibilità di registrarsi.
 RF3: Il cliente può visualizzare la cronologia degli ordini.
-RF4: Il cliente può inserire carte di credito e indirizzo di spedizione.
-RF5: Il utente può cambiare l'indirizzo di spedizione e il metodo di pagamento ogni volta che vuole completare un'ordine.
+RF4: Il cliente può inserire carte di credito e indirizzi di spedizione.
+RF5: Il utente può scegliere l'indirizzo di spedizione e il metodo di pagamento in fase di checkout.
 RF6: Il cliente può visualizzare i dati inseriti all'atto della registrazione (eccezione fatta per dati sensibili come password e numero della carta).
 RF7: Il cliente non registrato può aggiungere prodotti al carrello e visualizzarlo.
 RF8: Gli utenti possono cambiare la quantità di un prodotto in carrello.
-RF9: Gli utenti possono eliminare un prodotto in carrello.
-RF10:Conoscendo il nome del prodotto l'utente può cercarlo e trovarlo immediatamente.
+RF9: Gli utenti possono eliminare un prodotto dal carrello.
+RF10: L'utente può ricercare il farmaco attraverso il nome.
 
 4.Requisiti non Funzionali
 
@@ -48,24 +48,24 @@ Implementation
 Il sito deve essere indipendente dalla piattaforma.
 
 Interface
-Il sistema deve prendere i dati dei prodotti dal database. 
+Il sistema deve utilizzare un database per la gestione dei dati persistenti.
 
 
 
 
 5.Target Environment
-Il sito dovrebbe essere sviluppato per essere responsive su dispositivi fissi e portatili, per renderlo fruibile a tutti  deve poter essere eseguito su tutti gli host provider.
+Il sito dovrebbe essere sviluppato per essere responsive su dispositivi fissi e portatili e per renderlo fruibile a tutti  deve poter essere eseguito su tutti gli host provider.
 
 6.Deliverables & Schedule
-1. Consegna schede informative e proposta di progetto: 25 settembre 2019 
-2. Creazione repository gitHub, invio file excel con informazioni su progetto e partecipanti e file proposta di progetto, invito docente e tutor su repository gitHub: 2 ottobre 2019 
-3. Kick-off meeting: 3 ottobre 2019 
-4. Problem Statement: 11 ottobre 2019 
-5. Requisiti e casi d’uso: 25 ottobre 2019 
-6. Requirements Analysis Document: 8 novembre 2019 
-7. System Design Document: 29 novembre 2019
-8. Specifica delle interfacce dei moduli del sottosistema da implementare: 13 dicembre 2019 
-9. Piano di test di sistema e specifica dei casi di test per il sottosistema da implementare: 13 dicembre 2019
+1. La consegna delle schede informative e della proposta di progetto avverrà entro 25 settembre 2019 .
+2. La creazione della repository gitHub, l'invio file excel con le informazioni sul progetto e sui partecipanti e i file di proposta del progetto sarà effettuata 2 ottobre 2019.
+3. Il Kick-off meeting sarà adempiuto entro il 3 ottobre 2019. 
+4. La consegna del Problem Statement avverrà entro il 11 ottobre 2019.
+5. La consegna dei Requisiti e casi d’uso sarà realizzata 25 ottobre 2019.
+6. Il Requirements Analysis Document sarà consegnato entro il 8 novembre 2019.
+7. Il System Design Document sarà completato entro il 29 novembre 2019.
+8. La specifica delle interfacce dei moduli del sottosistema da implementare sarà consegnata entro il 13 dicembre 2019 .
+9. Il piano di test di sistema e la specifica dei casi di test per il sottosistema da implementare avverrà entro il 13 dicembre 2019.
 
 
 
