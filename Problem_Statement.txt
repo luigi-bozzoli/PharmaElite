@@ -1,7 +1,13 @@
 Problem Statement
 
 1.Il Problema
-Negli ultimi anni il numero di negozi fisici sta diminuendo, ciò è dovuto all’impellente crescita dell’E-Commerce. I clienti sono abituati ad acquistare ogni tipo di bene direttamente dalle proprie abitazioni in maniera semplice e veloce. Per andare incontro alle necessità del nuovo millennio e per cercare di essere concorrenziale con i colossi dell’E-Commerce (Amazon, Ebay), anche i più semplici negozi fisici come possono essere le farmacie devono aggiornare il loro sistema di vendita.
+
+Con la crescita e la diffusione dell'E-commerce degli ultimi anni, i clienti possono acquistare più velocemente e semplicemente ogni tipo di prodotto senza dover recarsi in un negozio fisico, azione spesso difficile o impossibile a causa delle giornate sempre più frenetiche.
+Questo ha notevolmente aumentato la concorrenza che gli esercizi commerciali, fondati prima dell'avvento dell'E-commerce, devono affrontare per non veder diminiore la clientela.
+Tra le attività commerciali colpire vi è anche la farmacia, che vede le vendite dei propri farmaci da banco, prodotti di erboristeria e integratori diminuire con la conseguente diminuizione dei profitti.
+Il problema, se risolto, porterebbe ad un ampliamento dell'attività, grazie ai maggiori incassi, all'estensione del proprio raggio di vendita a livello globale e alla diminuzione dell erisorse umane necessarie per la gestione dei negozi fisici.
+Inoltre si renderebbe più facile l'acquisto delle persone impossibilitate a muoversi che devono contare solo su familiari o amici.
+Di contro la farmacia fisica sarebbe sopraffatta dalla concorrenza con conseguente diminuzione delle vendite e dei profitti e la possibile chiusura dell'attività.
 
 2.Scenario
 
