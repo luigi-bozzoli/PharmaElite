@@ -1,0 +1,41 @@
+body{
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.col-sm-3{
+    text-align: center;
+}
+
+.col-sm-6{
+  text-align: center;
+}
+
+.indirizzoSpedizione, .metodoPagamento{
+  padding-top: 20px;
+  display: none;
+}
+
+.indirizzoSpedizione{
+	paddind-bottom:20px;
+}
+
+#prezzoProdotti{
+	font-weight: bold;
+}
+
+#numeroCarta,#ind{
+	display:none;
+	color:red;
+}
+
+#totOrdine{
+	color: green;
+}
+
+@media screen and (max-width: 768px) {
+  .col-sm-6{
+    padding-bottom: 15px;
+  }
+
+}

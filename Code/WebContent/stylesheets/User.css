@@ -1,0 +1,66 @@
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#barraRicerca{
+	display: none; 
+	padding-top:20px;
+	padding-left:40px;
+}
+
+.row{
+  border-left-style: solid;
+  border-right-style: solid;
+}
+
+.main{
+  padding: 100px 30% 300px 30%;
+}
+
+#topDiv{
+  background-color: green;
+  border-top-style: solid;
+}
+
+#firstRow{
+  padding-top:50px;
+}
+
+#secondRow{
+  padding-top:30px;
+}
+
+#profileImage{
+  padding-top:10px;
+}
+
+#buttonDiv{
+  padding-bottom: 30px;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-bottom-style: solid;
+}
+.btn-success{
+    margin-left: 15%;
+    margin-right: 15%;
+    max-width: 70%;
+}
+
+@media screen and (max-width: 768px){
+  .main{
+    padding: 100px 5% 300px;
+  }
+  
+  #confermaEliminazione{
+  	margin-top:30px;
+  }
+  
+  #barraRicerca{
+  	padding-left:0px;
+  	margin-left:15%;
+  	margin-right: 15%;
+  }
+}
+

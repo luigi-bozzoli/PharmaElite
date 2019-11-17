@@ -1,0 +1,51 @@
+#logo{
+  padding-top: 0px;
+}
+
+#immagineLogo{
+  width:110px;
+  height:50px;
+}
+
+.footer{
+  padding:20px;
+  margin-top: 100px;
+  background-color: #408000;
+  border-top: 0.5px solid black;
+}
+
+.payments, .shipping{
+  background-color: white;
+  padding:25px;
+}
+
+.social{
+    background-color: white;
+    padding-top: 25px;
+  padding-bottom: 37px;
+}
+
+hr {
+  height:1px;
+  border:none;
+  color:#000;
+  background-color:#000;
+}
+
+#form
+{
+    padding-top: 10px;
+    position: absolute;
+    width: 81%;
+    left: 0;
+    text-align: center;
+    margin:0 auto;
+}
+
+@media screen and (max-width: 768px){
+  #form{
+    position: static;
+  }
+}
+
+}
