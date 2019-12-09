@@ -10,7 +10,7 @@ create table Cliente(
 );
 
 create table Prodotto( 
-	ID varchar(10) not null PRIMARY KEY,
+	ID varchar(10) PRIMARY KEY,
 	urlImmagine varchar(256) not null,
     categoria varchar(30) not null,
     nome varchar (30) not null,
@@ -29,6 +29,8 @@ create table DatiAnagrafici(
     numero varchar(10) not null,
     EmailCliente varchar(320) primary key,
     FOREIGN KEY (EmailCliente) REFERENCES Cliente(Email)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 create table IndirizzoSpedizione(
@@ -36,35 +38,41 @@ create table IndirizzoSpedizione(
 	indirizzo varchar(50) not null,
     EmailCliente varchar(320) not null,
     FOREIGN KEY (EmailCliente) REFERENCES Cliente(Email)
-
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
 	
 );
 
 
 create table MetodoDiPagamento(
-	numeroCarta varchar(16) not null primary key,
+	numeroCarta varchar(16) Primary key,
     tipo varchar(20) not null,
     EmailCliente varchar(320) not null,
   
     FOREIGN KEY (EmailCliente) REFERENCES Cliente(Email)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 create table Ordine( 
-	ID varchar(10),
+	ID varchar(10) Primary key,
     EmailCliente varchar(320),
     dataOrdine date not null,
     costo double(7,5) not null,
-    primary key(ID, EmailCliente),
     FOREIGN KEY (EmailCliente) REFERENCES Cliente(Email)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 create table ProdottoNellOrdine( 
-	ID varchar(10) not null Primary key, 
+	ID varchar(10) Primary key, 
     IDProdotto varchar(10), 
     nome varchar(30) not null,
     prezzo double(7,5) not null,
     
 	FOREIGN KEY (IDProdotto) REFERENCES Prodotto(ID) 
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 
@@ -77,6 +85,8 @@ create table Composizione(
     
     FOREIGN KEY (IDOrdine) REFERENCES Ordine(ID),
 	FOREIGN KEY (IDProdotto) REFERENCES Prodotto(ID) 
+	ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 
