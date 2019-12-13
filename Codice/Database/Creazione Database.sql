@@ -15,7 +15,7 @@ create table Prodotto(
     categoria varchar(30) not null,
     nome varchar (30) not null,
     prezzo double(5,2) not null,
-    quantità int not null,
+    quantita int not null,
     descrizione varchar(256) not null,
     flagEliminato boolean 
     
@@ -25,7 +25,7 @@ create table DatiAnagrafici(
 	nome varchar(30) not null,
     cognome varchar(30) not null,
     sesso varchar(10) not null,
-    città varchar(30) not null,
+    citta varchar(30) not null,
     numero varchar(10) not null,
     EmailCliente varchar(320) primary key,
     FOREIGN KEY (EmailCliente) REFERENCES Cliente(Email)
