@@ -79,7 +79,8 @@ create table ProdottoNellOrdine(
 
 create table Composizione( 
 	IDOrdine varchar(10) not null , 
-    IDProdotto varchar(10) not null , 
+    IDProdotto varchar(10) not null ,
+    quantita int not null,
     Primary Key(IDOrdine,IDProdotto),
     
     
