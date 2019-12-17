@@ -1,0 +1,10 @@
+package interfacceDAO;
+
+import model.beans.ClienteBean;
+
+public interface ClienteBeanDAO {
+public void doSave(ClienteBean x);
+public ClienteBean doRetrieveByKey(String x);
+public void doUpdate(ClienteBean x);
+public void doDeleteByKey(String x);
+}
