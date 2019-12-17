@@ -1,4 +1,4 @@
-package model.beans;
+package managerOrdine;
 
 public class ProdottoNellordineBean {
 private String Id,Nome,IdProdotto;

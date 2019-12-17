@@ -1,4 +1,4 @@
-package model.beans;
+package managerUtente;
 
 public class MetodoDiPagamentoBean {
 private String NumeroCarta, TipoCarta, EmailCliente;

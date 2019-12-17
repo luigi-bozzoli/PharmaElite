@@ -1,4 +1,4 @@
-package interfacceDAO;
+package managerOrdine;
 
 import model.beans.ComposizioneBean;
 

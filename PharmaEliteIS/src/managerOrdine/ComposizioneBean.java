@@ -1,4 +1,4 @@
-package model.beans;
+package managerOrdine;
 
 public class ComposizioneBean {
 private String IdProdotto, IdOrdine;

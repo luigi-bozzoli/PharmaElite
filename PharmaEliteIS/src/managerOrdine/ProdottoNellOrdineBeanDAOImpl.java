@@ -1,20 +1,23 @@
-package DAOImpl;
+package managerOrdine;
 
 import java.sql.PreparedStatement;
 
-public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
-	
-	public synchronized void doSave(IndirizzoSpedizioneBean i){
+public class ProdottoNellOrdineBeanDAOImpl {
+	public void doSave(ProdottoNellOrdineBean o){
 		Connection con = null;
 		PreparedStatement ps = null;
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
-			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.IndirizzoSpedizione value(?,?,?)");
-			ps.setString(1, i.getID());
-			ps.setString(2, i.getIndirizzo());
-			ps.setString(3, i.getEmailCliente());
+			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.ProdottoNellOrdine value(?,?,?,?)");
+
+			ps.setString(1, o.getID());
+			ps.setString(2, o.getIDProdotto());
+			ps.setString(3, o.getNome());
+			ps.setDouble(4, o.getPrezzo());
+
 			ps.execute();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -31,31 +34,32 @@ public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
 
 		}
 	}
-
-
-	public synchronized IndirizzoSpedizioneBean doRetrieveByKey(String id){
+	
+	public synchronized ProdottoNellOrdineBean doRetrieveByKey(String id){
 
 		Connection conn = null;
 		PreparedStatement ps = null;
 
 		try {
 
-			IndirizzoSpedizioneBean IndirizzoSpedizione = new IndirizzoSpedizioneBean();
+			OrdineBean o = new OrdineBean(); 
 			conn = DriverManagerConnectionPool.getConnection();
-			ps = conn.prepareStatement("select * from PROGETTOTSW.IndirizzoSpedizione where ID=?");
-			ps.setString(1,id);
+
+			ps = conn.prepareStatement("select * from PROGETTOTSW.Ordine where ID = ?");
+			ps.setString(1, id);
 
 			ResultSet res = ps.executeQuery();
 
 			// Prendi il risultato
 			if(res.next())
 			{
-				IndirizzoSpedizione.setEmailCliente(res.getString("ID"));
-				IndirizzoSpedizione.setIndirizzo(res.getString("indirizzo"));
-				IndirizzoSpedizione.setEmailCliente(res.getString("EmailCliente"));
-				
-				
-				return IndirizzoSpedizione;
+
+				o.setID(id);
+				o.setIDProdotto(res.getString("IDProdotto"));
+				o.setNome(res.getString("nome"));
+				o.setPrezzo(res.getDouble("prezzo"));
+
+				return o;
 			}
 
 		} catch (SQLException e) {
@@ -77,19 +81,20 @@ public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
 
 		return null;
 	}
-	
-	public synchronized void doUpdate(IndirizzoSpedizioneBean p){
+	public synchronized void doUpdate(ProdottoNellOrdineBean p){
 
 		Connection con = null;
 		PreparedStatement ps = null;
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
-			ps = con.prepareStatement("update PROGETTOTSW.IndirizzoSpedizione set indirizzo=?,EmailCliente=?,where ID=?");
-			ps.setString(1, p.getIndirizzo());
-			ps.setString(2, p.getEmailCliente());
-			ps.setString(3, p.getId() );
-
+			ps = con.prepareStatement("update PROGETTOTSW.ProdottoNellOrdine set IDProdotto=?, nome=?,prezzo=? where ID=?");
+			
+			
+			ps.setString(1, p.getIDProdotto());
+			ps.setString(2, p.getNome());
+			ps.setDouble(3, p.getPrezzo() );
+			ps.setString(4,p.getID());
 			ps.execute();
 
 		} catch (Exception e) {
@@ -115,7 +120,7 @@ public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
 		try {
 
 			conn = DriverManagerConnectionPool.getConnection();
-			ps = conn.prepareStatement("delete from PROGETTOTSW.IndirizzoSpedizione where ID = ?");
+			ps = conn.prepareStatement("delete from PROGETTOTSW.ProdottoNellOrdine where ID = ?");
 			ps.setString(1, id);
 
 			ps.executeUpdate();
@@ -138,5 +143,6 @@ public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
 		}
 
 	}
+
 
 }

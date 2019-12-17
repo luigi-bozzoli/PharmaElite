@@ -1,18 +1,24 @@
-package DAOImpl;
+package managerOrdine;
 
-public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
-	public void doSave(MetodoDiPagamentoBean m){
+import java.sql.PreparedStatement;
+
+public class OrdineBeanDAOImpl implements OrdineBean{
+	
+	public void doSave(OrdineBean o){
 		Connection con = null;
 		PreparedStatement ps = null;
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
-			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.MetodoDiPagamento value(?,?,?)");
-			ps.setString(1, m.getNumCarta());
-			ps.setString(2, m.getTipo());
-			ps.setString(3,m.getEmailCliente());
+			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.Ordine value(?,?,?,?)");
+
+			ps.setString(1, o.getId());
+			ps.setString(2, o.getEmailCliente());
+			ps.setString(3, o.getDataOrdine());
+			ps.setDouble(4, o.getCosto());
+
 			ps.execute();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -29,29 +35,32 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
 
 		}
 	}
-	public synchronized MetodoDiPagamentoBean doRetrieveByKey(String numCarta){
+
+	public synchronized OrdineBean doRetrieveByKey(String id){
 
 		Connection conn = null;
 		PreparedStatement ps = null;
 
 		try {
 
-			MetodoDiPagamentoBean m = new MetodoDiPagamentoBean();
+			OrdineBean o = new OrdineBean(); 
 			conn = DriverManagerConnectionPool.getConnection();
-			ps = conn.prepareStatement("select * from PROGETTOTSW.MetodoDiPagamento where numeroCarta=?");
-			ps.setString(1,numCarta);
-		
+
+			ps = conn.prepareStatement("select * from PROGETTOTSW.Ordine where ID = ?");
+			ps.setString(1, id);
 
 			ResultSet res = ps.executeQuery();
 
 			// Prendi il risultato
 			if(res.next())
 			{
-				m.setNumCarta(res.getString("numeroCarta"));
-				m.setTipo(res.getString("tipo"));
-				m.setEmailCliente(res.getString("EmailCliente"));
-				
-				return m;
+
+				o.setID(id);
+				o.setEmailCliente(res.getString("EmailCliente"));
+				o.setDataOrdine(res.getDate("dataOrdine"));
+				o.setCosto(res.getDouble("costo"));
+
+				return o;
 			}
 
 		} catch (SQLException e) {
@@ -74,19 +83,19 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
 		return null;
 	}
 	
-	public synchronized void doUpdate(MetodoDiPagamentoBean p){
+	public synchronized void doUpdate(Ordine p){
 
 		Connection con = null;
 		PreparedStatement ps = null;
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
-			ps = con.prepareStatement("update PROGETTOTSW.MetodoDiPagamento set tipo=?,emailCliente=? where numCarta=?");
-			ps.setString(1, p.getTipo());
-			ps.setString(2, p.getEmailCliente());
-			ps.setString(3, p.getNumCarta());
-		
-
+			ps = con.prepareStatement("update PROGETTOTSW.Ordine set EmailCliente=?,dataOrdine=?,costo=? where ID=?");
+			
+			ps.setString(1, p.getEmailCliente());
+			ps.setDate(2, p.getDataOrdine());
+			ps.setDouble(3, p.getCosto() );
+			ps.setString(4,p.getID());
 			ps.execute();
 
 		} catch (Exception e) {
@@ -105,16 +114,15 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
 
 		}
 	}
-	
-	public synchronized void doDeleteByKey(String numCarta){
+	public synchronized void deleteByKey(String id){
 		Connection conn = null;
 		PreparedStatement ps = null;
 
 		try {
 
 			conn = DriverManagerConnectionPool.getConnection();
-			ps = conn.prepareStatement("delete from PROGETTOTSW.MetodoDiPagamento where numCarta = ?");
-			ps.setString(1, numCarta);
+			ps = conn.prepareStatement("delete from PROGETTOTSW.Ordine where ID = ?");
+			ps.setString(1, id);
 
 			ps.executeUpdate();
 
@@ -136,4 +144,6 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
 		}
 
 	}
+
+
 }

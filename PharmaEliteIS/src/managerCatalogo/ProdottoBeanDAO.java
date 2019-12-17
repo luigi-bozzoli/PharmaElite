@@ -1,4 +1,4 @@
-package ManagerCatalogo;
+package managerCatalogo;
 
 
 public interface ProdottoBeanDAO {

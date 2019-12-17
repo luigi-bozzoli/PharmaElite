@@ -1,4 +1,4 @@
-package ManagerCatalogo;
+package managerCatalogo;
 
 public class ProdottoBean {
 	private String Id,UrlImmagine,Categoria,Nome,Descrizione;

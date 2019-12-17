@@ -1,4 +1,4 @@
-package interfacceDAO;
+package managerUtente;
 
 import model.beans.IndirizzoDiSpedizioneBean;
 

@@ -1,4 +1,4 @@
-package model.beans;
+package managerUtente;
 
 public class ClienteBean {
 private String email,password;

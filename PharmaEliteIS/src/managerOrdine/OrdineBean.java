@@ -1,4 +1,4 @@
-package model.beans;
+package managerOrdine;
 
 import sun.util.calendar.LocalGregorianCalendar.Date;
 

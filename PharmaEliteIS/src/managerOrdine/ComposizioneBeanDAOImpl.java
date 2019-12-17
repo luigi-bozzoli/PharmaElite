@@ -1,24 +1,20 @@
-package DAOImpl;
+package managerOrdine;
 
 import java.sql.PreparedStatement;
 
-public class OrdineBeanDAOImpl implements OrdineBean{
-	
-	public void doSave(OrdineBean o){
+public class ComposizioneBeanDAOImpl implements ComposizioneBean{
+	public void doSave(ComposizioneBean m){
 		Connection con = null;
 		PreparedStatement ps = null;
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
-			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.Ordine value(?,?,?,?)");
-
-			ps.setString(1, o.getId());
-			ps.setString(2, o.getEmailCliente());
-			ps.setString(3, o.getDataOrdine());
-			ps.setDouble(4, o.getCosto());
-
+			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.Composizione value(?,?)");
+			ps.setString(1, m.getIDOrdine());
+			ps.setString(2, m.getIDProdotto());
+			
 			ps.execute();
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -35,8 +31,7 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 
 		}
 	}
-
-	public synchronized OrdineBean doRetrieveByKey(String id){
+	public synchronized ComposizioneBean doRetrieveByKey(String idOrdine,String idProdotto){
 
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -46,8 +41,9 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 			OrdineBean o = new OrdineBean(); 
 			conn = DriverManagerConnectionPool.getConnection();
 
-			ps = conn.prepareStatement("select * from PROGETTOTSW.Ordine where ID = ?");
-			ps.setString(1, id);
+			ps = conn.prepareStatement("select * from PROGETTOTSW.Composizione where IDOrdine = ? and IDProdotto=?");
+			ps.setString(1, idOrdine);
+			ps-setString(2, idProdotto);
 
 			ResultSet res = ps.executeQuery();
 
@@ -55,10 +51,9 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 			if(res.next())
 			{
 
-				o.setID(id);
-				o.setEmailCliente(res.getString("EmailCliente"));
-				o.setDataOrdine(res.getDate("dataOrdine"));
-				o.setCosto(res.getDouble("costo"));
+				o.setID(idOrdine);
+				o.setIDProdotto(IDProdotto);
+				
 
 				return o;
 			}
@@ -82,20 +77,20 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 
 		return null;
 	}
-	
-	public synchronized void doUpdate(Ordine p){
+	public synchronized void doUpdate(ComposizioneBean p,ComposizioneBean v){
 
 		Connection con = null;
 		PreparedStatement ps = null;
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
-			ps = con.prepareStatement("update PROGETTOTSW.Ordine set EmailCliente=?,dataOrdine=?,costo=? where ID=?");
+			ps = con.prepareStatement("update PROGETTOTSW.Composizione set IDProdotto=?, IDOrdine=? where IDOrdine=? and IDProdotto=?");
 			
-			ps.setString(1, p.getEmailCliente());
-			ps.setDate(2, p.getDataOrdine());
-			ps.setDouble(3, p.getCosto() );
-			ps.setString(4,p.getID());
+			
+			ps.setString(1, p.getIDProdotto());
+			ps.setString(2, p.getIDOrdine());
+			ps.setDouble(3, v.getIDOrdine() );
+			ps.setString(4,v.getIDProdotto());
 			ps.execute();
 
 		} catch (Exception e) {
@@ -114,15 +109,16 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 
 		}
 	}
-	public synchronized void deleteByKey(String id){
+	public synchronized void doDeleteByKey(String idOrdine,String idProdotto){
 		Connection conn = null;
 		PreparedStatement ps = null;
 
 		try {
 
 			conn = DriverManagerConnectionPool.getConnection();
-			ps = conn.prepareStatement("delete from PROGETTOTSW.Ordine where ID = ?");
-			ps.setString(1, id);
+			ps = conn.prepareStatement("delete from PROGETTOTSW.Composizione where IDOrdine = ? and IDProdotto=?");
+			ps.setString(1, idOrdine);
+			ps.setString(2,idProdotto);
 
 			ps.executeUpdate();
 
@@ -144,6 +140,4 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 		}
 
 	}
-
-
 }

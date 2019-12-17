@@ -1,4 +1,4 @@
-package model.beans;
+package managerUtente;
 
 public class IndirizzoDiSpedizioneBean {
 private String Id,Indirizzo,EmailCliente;

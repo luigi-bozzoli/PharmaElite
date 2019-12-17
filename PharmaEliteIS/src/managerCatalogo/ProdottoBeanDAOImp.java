@@ -1,9 +1,9 @@
-package ManagerCatalogo;
+package managerCatalogo;
 
 import java.sql.*;
 import java.sql.PreparedStatement;
 
-import ManagerUtente.DriverManagerConnectionPool;
+import managerUtente.DriverManagerConnectionPool;
 
 
 public class ProdottoBeanDAOImp {

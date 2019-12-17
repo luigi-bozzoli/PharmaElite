@@ -1,4 +1,4 @@
-package model.beans;
+package managerUtente;
 
 public class DatiAnagraficiBean {
 private String EmailCliente, Telefono, Nome,Cognome,Citta,Sesso;
