@@ -188,9 +188,9 @@ public class ProcediAllOrdine extends HttpServlet {
 
 			c.setEmailCliente(email);
 			c.setIdOrdine(id);
-			c.setQuantità(prod.getQuantità());
+			c.setQuantitï¿½(prod.getQuantitï¿½());
 			c.setIdProdotto(prod.getIdProdotto());
-aggiornaUnita(prod.getIdProdotto(),prod.getQuantità());
+aggiornaUnita(prod.getIdProdotto(),prod.getQuantitï¿½());
 			compDao.doSave(c);
 		}
 
@@ -199,12 +199,12 @@ aggiornaUnita(prod.getIdProdotto(),prod.getQuantità());
 	private void aggiornaUnita(String id,int q) {
 		ProdottoDAO pDao=new ProdottoDAO();
 		ProdottoBean p=pDao.doRetrieveByKey(id);
-		
-		int x=p.getQuantità();
+
+		int x=p.getQuantitï¿½();
 		x=x-q;
-		p.setQuantità(x);
+		p.setQuantitï¿½(x);
 		pDao.doUpdate(p);
-		
+
 		return;
 	}
 
