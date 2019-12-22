@@ -141,6 +141,54 @@ public class ClienteBeanDAOImpl implements ClienteBeanDAO{
 		
 	}
 	
+	//select * from PROGETTOTSW.Cliente where Email = ?
+	public synchronized ClienteBean login(String email, String password) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+			
+			ClienteBean cliente = new ClienteBean(); 
+			conn = DriverManagerConnectionPool.getConnection();
+			ps = conn.prepareStatement("select * from PROGETTOTSW.Cliente where Email = ? and password = ?");
+			ps.setString(1, email);
+			ps.setString(2, password);
+
+			ResultSet res = ps.executeQuery();
+			
+			if(res.next())
+			{
+				cliente.setEmail(res.getString("IndirizzoEmail"));
+				cliente.setPassword(res.getString("password"));
+				cliente.setTipo(res.getBoolean("tipo"));
+
+				return cliente;
+			}
+			
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}finally{
+
+			try {
+
+				ps.close();
+				DriverManagerConnectionPool.releaseConnection(conn);
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return null;
+		
+	}
+	
+	
+	
 }
 	
 	
