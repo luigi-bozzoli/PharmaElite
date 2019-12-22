@@ -1,8 +1,10 @@
 package managerOrdine;
 
-import java.sql.PreparedStatement;
+import java.sql.*;
 
-public class OrdineBeanDAOImpl implements OrdineBean{
+import managerUtente.DriverManagerConnectionPool;
+
+public class OrdineBeanDAOImpl implements OrdineBeanDAO{
 	
 	public void doSave(OrdineBean o){
 		Connection con = null;
@@ -14,7 +16,7 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 
 			ps.setString(1, o.getId());
 			ps.setString(2, o.getEmailCliente());
-			ps.setString(3, o.getDataOrdine());
+			ps.setDate(3, (Date) o.getDataOrdine());
 			ps.setDouble(4, o.getCosto());
 
 			ps.execute();
@@ -54,12 +56,10 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 			// Prendi il risultato
 			if(res.next())
 			{
-
-				o.setID(id);
+				o.setId(id);
 				o.setEmailCliente(res.getString("EmailCliente"));
 				o.setDataOrdine(res.getDate("dataOrdine"));
 				o.setCosto(res.getDouble("costo"));
-
 				return o;
 			}
 
@@ -83,7 +83,7 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 		return null;
 	}
 	
-	public synchronized void doUpdate(Ordine p){
+	public synchronized void doUpdate(OrdineBean p){
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -93,9 +93,9 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 			ps = con.prepareStatement("update PROGETTOTSW.Ordine set EmailCliente=?,dataOrdine=?,costo=? where ID=?");
 			
 			ps.setString(1, p.getEmailCliente());
-			ps.setDate(2, p.getDataOrdine());
+			ps.setDate(2, (Date) p.getDataOrdine());
 			ps.setDouble(3, p.getCosto() );
-			ps.setString(4,p.getID());
+			ps.setString(4,p.getId());
 			ps.execute();
 
 		} catch (Exception e) {
@@ -114,7 +114,8 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 
 		}
 	}
-	public synchronized void deleteByKey(String id){
+
+	public synchronized void doDeleteByKey(String id){
 		Connection conn = null;
 		PreparedStatement ps = null;
 
@@ -144,6 +145,7 @@ public class OrdineBeanDAOImpl implements OrdineBean{
 		}
 
 	}
+
 
 
 }

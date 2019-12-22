@@ -1,8 +1,11 @@
 package managerOrdine;
 
-import java.sql.PreparedStatement;
+import java.sql.*;
 
-public class ComposizioneBeanDAOImpl implements ComposizioneBean{
+import managerUtente.DriverManagerConnectionPool;
+
+public class ComposizioneBeanDAOImpl implements ComposizioneBeanDAO{
+
 	public void doSave(ComposizioneBean m){
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -10,11 +13,11 @@ public class ComposizioneBeanDAOImpl implements ComposizioneBean{
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.Composizione value(?,?)");
-			ps.setString(1, m.getIDOrdine());
-			ps.setString(2, m.getIDProdotto());
-			
+			ps.setString(1, m.getIdOrdine());
+			ps.setString(2, m.getIdProdotto());
+
 			ps.execute();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -31,19 +34,20 @@ public class ComposizioneBeanDAOImpl implements ComposizioneBean{
 
 		}
 	}
-	public synchronized ComposizioneBean doRetrieveByKey(String idOrdine,String idProdotto){
+
+	public ComposizioneBean doRetrieveByKey(String idOrdine,String idProdotto){
 
 		Connection conn = null;
 		PreparedStatement ps = null;
 
 		try {
 
-			OrdineBean o = new OrdineBean(); 
+			ComposizioneBean c = new ComposizioneBean();
 			conn = DriverManagerConnectionPool.getConnection();
 
 			ps = conn.prepareStatement("select * from PROGETTOTSW.Composizione where IDOrdine = ? and IDProdotto=?");
 			ps.setString(1, idOrdine);
-			ps-setString(2, idProdotto);
+			ps.setString(2, idProdotto);
 
 			ResultSet res = ps.executeQuery();
 
@@ -51,11 +55,11 @@ public class ComposizioneBeanDAOImpl implements ComposizioneBean{
 			if(res.next())
 			{
 
-				o.setID(idOrdine);
-				o.setIDProdotto(IDProdotto);
-				
+				c.setIdOrdine(res.getString(1));
+				c.setIdProdotto(res.getString(2));
+				c.setQuantita(res.getInt(3));
 
-				return o;
+				return c;
 			}
 
 		} catch (SQLException e) {
@@ -77,20 +81,20 @@ public class ComposizioneBeanDAOImpl implements ComposizioneBean{
 
 		return null;
 	}
-	public synchronized void doUpdate(ComposizioneBean p,ComposizioneBean v){
+
+	public void doUpdate(ComposizioneBean p){
 
 		Connection con = null;
 		PreparedStatement ps = null;
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
-			ps = con.prepareStatement("update PROGETTOTSW.Composizione set IDProdotto=?, IDOrdine=? where IDOrdine=? and IDProdotto=?");
-			
-			
-			ps.setString(1, p.getIDProdotto());
-			ps.setString(2, p.getIDOrdine());
-			ps.setDouble(3, v.getIDOrdine() );
-			ps.setString(4,v.getIDProdotto());
+			ps = con.prepareStatement("update PROGETTOTSW.Composizione set quantita = ? where IDOrdine=? and IDProdotto=?");
+
+
+			ps.setDouble(1, p.getQuantita() );
+			ps.setString(2, p.getIdOrdine());
+			ps.setString(3,p.getIdProdotto());
 			ps.execute();
 
 		} catch (Exception e) {
@@ -109,7 +113,8 @@ public class ComposizioneBeanDAOImpl implements ComposizioneBean{
 
 		}
 	}
-	public synchronized void doDeleteByKey(String idOrdine,String idProdotto){
+
+	public void doDeleteByKey(String idOrdine,String idProdotto){
 		Connection conn = null;
 		PreparedStatement ps = null;
 
@@ -140,4 +145,7 @@ public class ComposizioneBeanDAOImpl implements ComposizioneBean{
 		}
 
 	}
+
+	
+
 }

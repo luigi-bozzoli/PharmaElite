@@ -1,6 +1,6 @@
 package managerUtente;
 
-import java.sql.PreparedStatement;
+import java.sql.*;
 
 public class ClienteBeanDAOImpl implements ClienteBeanDAO{
 	
@@ -14,7 +14,7 @@ public class ClienteBeanDAOImpl implements ClienteBeanDAO{
 
 			ps.setString(1, c.getEmail());
 			ps.setString(2, c.getPassword());
-			ps.setBoolean(3, c.getTipo());
+			ps.setBoolean(3, c.isTipo());
 
 			ps.execute();
 		} catch (Exception e) {
@@ -88,7 +88,7 @@ public class ClienteBeanDAOImpl implements ClienteBeanDAO{
 			ps = con.prepareStatement("update PROGETTOTSW.Cliente set password=?, tipo=? where  Email=?");			
 			
 			ps.setString(1, p.getPassword());
-			ps.setBoolean(2, p.getTipo());
+			ps.setBoolean(2, p.isTipo());
 			ps.setString(3, p.getEmail());
 			
 			ps.execute();

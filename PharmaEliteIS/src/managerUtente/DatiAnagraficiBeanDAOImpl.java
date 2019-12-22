@@ -1,6 +1,6 @@
 package managerUtente;
 
-import java.sql.PreparedStatement;
+import java.sql.*;
 
 public class DatiAnagraficiBeanDAOImpl implements DatiAnagraficiBeanDAO{
 	public synchronized void doSave(DatiAnagraficiBean d){
@@ -16,7 +16,7 @@ public class DatiAnagraficiBeanDAOImpl implements DatiAnagraficiBeanDAO{
 			ps.setString(2, d.getCognome());
 			ps.setString(3, d.getSesso());
 			ps.setString(4, d.getCitta());
-			ps.setString(5, d.getNumero());
+			ps.setString(5, d.getTelefono());
 			ps.setString(6, d.getEmailCliente());
 			ps.execute();
 			
@@ -36,6 +36,7 @@ public class DatiAnagraficiBeanDAOImpl implements DatiAnagraficiBeanDAO{
 
 		}
 	}
+	
 	public synchronized DatiAnagraficiBean doRetrieveByKey(String emailCliente){
 
 		Connection conn = null;
@@ -58,7 +59,7 @@ public class DatiAnagraficiBeanDAOImpl implements DatiAnagraficiBeanDAO{
 				DatiAnagrafici.setCognome(res.getString("cognome"));
 				DatiAnagrafici.setSesso(res.getString("sesso"));
 				DatiAnagrafici.setCitta(res.getString("citta"));
-				DatiAnagrafici.setNumero(res.getString("numero"));
+				DatiAnagrafici.setTelefono(res.getString("numero"));
 				return DatiAnagrafici;
 			}
 
@@ -93,8 +94,8 @@ public class DatiAnagraficiBeanDAOImpl implements DatiAnagraficiBeanDAO{
 			ps.setString(1, p.getNome());
 			ps.setString(2, p.getCognome());
 			ps.setString(3, p.getSesso());
-			ps.setDouble(4, p.getCitta());
-			ps.setInt(5, p.getNumero());
+			ps.setString(4, p.getCitta());
+			ps.setString(5, p.getTelefono());
 			ps.setString(6, p.getEmailCliente() );
 
 			ps.execute();

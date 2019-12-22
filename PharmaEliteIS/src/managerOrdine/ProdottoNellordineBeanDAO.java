@@ -1,6 +1,5 @@
 package managerOrdine;
 
-import model.beans.ProdottoNellordineBean;
 
 public interface ProdottoNellordineBeanDAO {
 	public void doSave(ProdottoNellordineBean x);

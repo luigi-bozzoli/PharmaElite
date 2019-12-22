@@ -1,6 +1,5 @@
 package managerOrdine;
 
-import model.beans.OrdineBean;
 
 public interface OrdineBeanDAO {
 	public void doSave(OrdineBean x);

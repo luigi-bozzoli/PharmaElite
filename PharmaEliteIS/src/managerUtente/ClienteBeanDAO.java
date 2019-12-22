@@ -1,6 +1,5 @@
 package managerUtente;
 
-import model.beans.ClienteBean;
 
 public interface ClienteBeanDAO {
 public void doSave(ClienteBean x);

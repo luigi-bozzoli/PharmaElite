@@ -1,6 +1,8 @@
 package managerUtente;
 
-public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
+import java.sql.*;
+
+public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBeanDAO{
 	public void doSave(MetodoDiPagamentoBean m){
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -8,8 +10,8 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.MetodoDiPagamento value(?,?,?)");
-			ps.setString(1, m.getNumCarta());
-			ps.setString(2, m.getTipo());
+			ps.setString(1, m.getNumeroCarta());
+			ps.setString(2, m.getTipoCarta());
 			ps.setString(3,m.getEmailCliente());
 			ps.execute();
 			
@@ -29,6 +31,7 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
 
 		}
 	}
+
 	public synchronized MetodoDiPagamentoBean doRetrieveByKey(String numCarta){
 
 		Connection conn = null;
@@ -47,8 +50,8 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
 			// Prendi il risultato
 			if(res.next())
 			{
-				m.setNumCarta(res.getString("numeroCarta"));
-				m.setTipo(res.getString("tipo"));
+				m.setNumeroCarta(res.getString("numeroCarta"));
+				m.setTipoCarta(res.getString("tipo"));
 				m.setEmailCliente(res.getString("EmailCliente"));
 				
 				return m;
@@ -82,9 +85,9 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBean{
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			ps = con.prepareStatement("update PROGETTOTSW.MetodoDiPagamento set tipo=?,emailCliente=? where numCarta=?");
-			ps.setString(1, p.getTipo());
+			ps.setString(1, p.getTipoCarta());
 			ps.setString(2, p.getEmailCliente());
-			ps.setString(3, p.getNumCarta());
+			ps.setString(3, p.getNumeroCarta());
 		
 
 			ps.execute();

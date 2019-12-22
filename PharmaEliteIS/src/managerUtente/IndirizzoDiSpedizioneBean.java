@@ -2,6 +2,7 @@ package managerUtente;
 
 public class IndirizzoDiSpedizioneBean {
 private String Id,Indirizzo,EmailCliente;
+
 public IndirizzoDiSpedizioneBean() {
 	
 }

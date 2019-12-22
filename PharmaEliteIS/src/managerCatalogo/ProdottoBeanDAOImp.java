@@ -23,7 +23,7 @@ public class ProdottoBeanDAOImp {
 			ps.setDouble(5, p.getPrezzo());
 			ps.setInt(6, p.getQuantita());
 			ps.setString(7, p.getDescrizione());
-			ps.setBoolean(8, p.getFlagEliminato());
+			ps.setBoolean(8, p.isFlagEliminato());
 
 			ps.execute();
 
@@ -75,6 +75,7 @@ public class ProdottoBeanDAOImp {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public synchronized void doUpdate(ProdottoBean p){
@@ -91,7 +92,7 @@ public class ProdottoBeanDAOImp {
 			ps.setDouble(4, p.getPrezzo());
 			ps.setInt(5, p.getQuantita());
 			ps.setString(6, p.getDescrizione() );
-			ps.setBoolean(7,p.getFlagEliminato());
+			ps.setBoolean(7,p.isFlagEliminato());
 			ps.setString(7, p.getId() );
 
 			ps.execute();

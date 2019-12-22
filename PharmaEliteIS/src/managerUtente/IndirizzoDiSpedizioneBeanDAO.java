@@ -1,6 +1,5 @@
 package managerUtente;
 
-import model.beans.IndirizzoDiSpedizioneBean;
 
 public interface IndirizzoDiSpedizioneBeanDAO {
 	public void doSave(IndirizzoDiSpedizioneBean x);

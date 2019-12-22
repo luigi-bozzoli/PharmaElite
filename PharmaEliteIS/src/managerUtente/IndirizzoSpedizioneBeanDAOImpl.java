@@ -1,17 +1,17 @@
 package managerUtente;
 
-import java.sql.PreparedStatement;
+import java.sql.*;
 
-public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
+public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoDiSpedizioneBeanDAO{
 	
-	public synchronized void doSave(IndirizzoSpedizioneBean i){
+	public synchronized void doSave(IndirizzoDiSpedizioneBean i){
 		Connection con = null;
 		PreparedStatement ps = null;
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.IndirizzoSpedizione value(?,?,?)");
-			ps.setString(1, i.getID());
+			ps.setString(1, i.getId());
 			ps.setString(2, i.getIndirizzo());
 			ps.setString(3, i.getEmailCliente());
 			ps.execute();
@@ -33,14 +33,14 @@ public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
 	}
 
 
-	public synchronized IndirizzoSpedizioneBean doRetrieveByKey(String id){
+	public synchronized IndirizzoDiSpedizioneBean doRetrieveByKey(String id){
 
 		Connection conn = null;
 		PreparedStatement ps = null;
 
 		try {
 
-			IndirizzoSpedizioneBean IndirizzoSpedizione = new IndirizzoSpedizioneBean();
+			IndirizzoDiSpedizioneBean IndirizzoSpedizione = new IndirizzoDiSpedizioneBean();
 			conn = DriverManagerConnectionPool.getConnection();
 			ps = conn.prepareStatement("select * from PROGETTOTSW.IndirizzoSpedizione where ID=?");
 			ps.setString(1,id);
@@ -78,7 +78,7 @@ public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
 		return null;
 	}
 	
-	public synchronized void doUpdate(IndirizzoSpedizioneBean p){
+	public synchronized void doUpdate(IndirizzoDiSpedizioneBean p){
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -108,6 +108,7 @@ public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
 
 		}
 	}
+	
 	public synchronized void doDeleteByKey(String id){
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -138,5 +139,8 @@ public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoSpedizioneBean{
 		}
 
 	}
+
+
+
 
 }

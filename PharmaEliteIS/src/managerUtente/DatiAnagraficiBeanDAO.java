@@ -1,6 +1,5 @@
 package managerUtente;
 
-import model.beans.DatiAnagraficiBean;
 
 public interface DatiAnagraficiBeanDAO {
 public void doSave(DatiAnagraficiBean x);
