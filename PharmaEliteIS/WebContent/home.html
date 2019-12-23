@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+<link href="stylesheets/headerFooter.css" rel="stylesheet"/>
+<link href="stylesheets/homeStyle.css" rel="stylesheet"/>
+
+<title>PharmaÉlite</title>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbar-collapse-main">
+					<span class="sr-only"> Toggle navigation </span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a id="logo" class="navbar-brand"><img id="immagineLogo" class="img-rounded"
+					src="Immagini/logo.PNG" alt="logo"></a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="navbar-collapse-main">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="vociMenu" href="home.html"> <i
+							class="fas fa-home"></i>
+					</a></li>
+					<li><a class="vociMenu" href="UserPage"> <i class="fas fa-user"></i>
+					</a></li>
+					<li><a class="vociMenu" href="Carrello"> <i
+							class="fas fa-shopping-cart"></i>
+					</a></li>
+				</ul>
+
+				<form id="form" class="navbar-form navbar-left"
+					action="Cerca">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search"
+							name="search">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+
+	</nav>
+
+	<!-- carousel -->
+	<div class="container">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators  -->
+
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="item active"
+					style="background-image: url(Immagini/Immagine1.jpeg);">
+					<div class="carousel-caption">
+					</div>
+				</div>
+
+				<div class="item"
+					style="background-image: url(Immagini/Immagine2.jpeg);">
+				</div>
+
+				<div class="item"
+					style="background-image: url(Immagini/Immagine3.jpeg)">
+				</div>
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span> <span
+				class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#myCarousel"
+				data-slide="next"> <span
+				class="glyphicon glyphicon-chevron-right"></span> <span
+				class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
+	<!-- categorie -->
+	<div id="categorie" class="container">
+		<div class="row" >
+			<div class="col-sm-3">
+
+				<div class="card" >
+
+					<img class="card-img-bottom" src="Immagini/Erboristeria.jpg"
+						alt="Card image" >
+					<div class="card-body">
+
+						<div class="bottoneCategoria text-center">
+							<form action="categorie" method="post">
+								 <input type="hidden" name="categoria" value="Erboristeria">
+							  	<button type="submit" class="btn btn-success">Erboristeria</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-sm-3">
+				<div class="card" >
+
+					<img class="card-img-bottom" src="Immagini/farmacibanco.jpg"
+						alt="Card image" >
+					<div class="card-body">
+						<div class="bottoneCategoria text-center">
+							<form action="categorie" method="post">
+								 <input type="hidden" name="categoria" value="farmaci da banco">
+							  	<button type="submit" class="btn btn-success">Farmaci da banco</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+				<div class="card" >
+
+					<img class="card-img-bottom" src="Immagini/integratori.jpg"
+						alt="Card image" >
+					<div class="card-body">
+						<div class="bottoneCategoria text-center">
+							<form action="categorie" method="post">
+								 <input type="hidden" name="categoria" value="Integratori">
+							  	<button type="submit" class="btn btn-success">Integratori</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+				<div class="card">
+
+					<img class="card-img-bottom" src="Immagini/igieneOrale.jpeg"
+						alt="Card image" >
+					<div class="card-body">
+						<div class="bottoneCategoria text-center">
+							<form action="categorie" method="post">
+								 <input type="hidden" name="categoria" value="Igiene orale">
+							  	<button type="submit" class="btn btn-success">Igiene Orale</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--informazioni -->
+
+	<div id="info" class="row">
+		<div class="col-sm-4 text-center">
+			<h2>
+				<span class="badge badge-secondary"> Ritiro gratuito in
+					farmacia </span> <i class="fas fa-store-alt"></i>
+			</h2>
+		</div>
+
+		<div class="col-sm-4 text-center">
+			<h2>
+				<span class="badge badge-secondary"> Spedizione gratuita per ordini superiori a 49€</span> <i class="fas fa-truck"></i>
+			</h2>
+		</div>
+
+		<div class="col-sm-4 text-center">
+			<h2>
+				<span class="badge badge-secondary"> Spedizioni rapida</span> <i
+					class="fas fa-shipping-fast"></i>
+			</h2>
+		</div>
+	</div>
+
+
+
+
+		<div id="descrizione" class="container" style="font-size: 18px;">
+		<b>	PharmaÉlite </b>, la migliore farmacia online, anche vicino a te
+
+	Su <b>PharmaÉlite </b> puoi acquistare online i tuoi prodotti preferiti. Inoltre scopri i nostri servizi nelle farmacie fisiche: esame del sangue e delle urine, test della glicemia e per le intolleranze alimentari, elettrocardiogamma...
+
+	Ogni settimana troverai nuovi prodotti per la bellezza e il benessere di tutta la famiglia: scegli tra migliaia di parafarmaci, farmaci da banco,  integratori, prodotti erboristici.
+
+	Ti offriamo un servizio conveniente e professionale: acquista online in tutta sicurezza e ricevi il tuo ordine a casa o in farmacia in 24/72 ore. La spedizione a domicilio è gratis per ordini superiori a 49€, mentre il ritiro in farmacia è sempre gratuito!
+	</div>
+
+
+
+	<!-- Footer-->
+	<footer class="footer container-fluid text-center">
+
+		<p>PHARMAELITE v. 21.0.0 - LAL SRL con sede legale a New York</p>
+		<hr />
+		<div class="container">
+			<div class="row">
+				<div class="payments col-md-4">
+					<span>Pagamenti sicuri </span> <br> <img
+						src="Immagini/footer-payment.svg">
+				</div>
+
+				<div class="shipping  col-md-4">
+					<span>Spedizioni rapide</span> <br> <img
+						src="Immagini/footer-shipping.svg">
+				</div>
+
+				<div class="social col-md-4">
+					<span>Seguici:</span> <a class="btn btn-social-icon btn-instagram">
+						<span class="fa fa-instagram"></span>
+					</a> <a class="btn btn-social-icon btn-facebook"> <span
+						class="fa fa-facebook"></span>
+					</a>
+
+				</div>
+			</div>
+		</div>
+
+
+	</footer>
+
+
+
+
+</body>
+</html>

@@ -1,12 +1,16 @@
 package managerUtente;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import managerCarrello.CarrelloBean;
 
 /**
  * Servlet implementation class Login
@@ -30,13 +34,14 @@ public class Login extends HttpServlet {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		HttpSession session = request.getSession();
+		List<CarrelloBean> carrello = (List<CarrelloBean>) session.getAttribute("carrello");
 
 		GestoreUtente gestore = new GestoreUtente();
-		ClienteBean cliente = gestore.login(email, password);
+		ClienteBean cliente = gestore.login(email, password, carrello);
 		
 		if(cliente != null) {
 			
-			HttpSession session = request.getSession();
 			session.setAttribute("cliente", cliente);		
 			response.sendRedirect("home.html");
 			

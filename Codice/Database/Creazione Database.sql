@@ -90,5 +90,15 @@ create table Composizione(
     ON UPDATE CASCADE
 );
 
+create table Carrello(
+	 EmailCliente varchar(320),
+     IDProdotto varchar(10),
+     quantita int not null,
+     
+      FOREIGN KEY (IDProdotto) REFERENCES Prodotto(ID),
+      FOREIGN KEY (EmailCliente) REFERENCES Cliente(Email),
+      Primary Key(EmailCliente,IDProdotto)
+);
+
 
 
