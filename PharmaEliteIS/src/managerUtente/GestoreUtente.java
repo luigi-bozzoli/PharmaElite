@@ -39,6 +39,7 @@ public class GestoreUtente {
 
 
 	public void registrazione(String email, String password)	throws ValidationException {
+		
 		boolean datiAnagrafici = this.datiAnagrafici.validate();
 		boolean metodoPagamento = this.metodoPagamento.validate();
 		boolean indirizzoSpedizione = this.indirizzoSpedizione.validate();
@@ -52,7 +53,7 @@ public class GestoreUtente {
 			ClienteBean c = new ClienteBean();
 			c.setEmail(email);
 			c.setPassword(password);
-			c.setTipo(false);
+			c.setAdmin(false);
 			cDao.doSave(c);
 			
 			
@@ -64,9 +65,20 @@ public class GestoreUtente {
 			this.indirizzoSpedizione.setId(this.generaID());
 			this.indirizzoSpedizione.setEmailCliente(email);
 			indirizzoDao.doSave(this.indirizzoSpedizione);
-		}else {
 			
+		}else {
+			throw new ValidationException("Formato non corretto");
 		}
+		
+	}
+	
+	public void userpage(String emailCliente) {
+		DatiAnagraficiBeanDAO datiAnagraficiDao = new DatiAnagraficiBeanDAOImpl();
+		this.datiAnagrafici = datiAnagraficiDao.doRetrieveByKey(emailCliente);
+		
+		IndirizzoDiSpedizioneBeanDAO indDao = new IndirizzoSpedizioneBeanDAOImpl();
+		this.indirizzoSpedizione = indDao.doRetrieveByKey(emailCliente);
+		
 		
 	}
 	

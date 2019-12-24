@@ -30,20 +30,24 @@ public class Registrazione extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		System.out.println("entro");
 		GestoreUtente gestore = new GestoreUtente();
-		
+
 		String emailCliente = request.getParameter("email");
 
 		String x=request.getHeader("x-requested-with");
 
-		if(x.equalsIgnoreCase("XMLHttpRequest")) {
-			
-			if(gestore.controllaEsistenzaEmail(emailCliente))
-				response.getWriter().append("true");
-			else
-				response.getWriter().append("false");
+	
+		if(x != null) {
+			if(x.equalsIgnoreCase("XMLHttpRequest")) {
+
+				if(gestore.controllaEsistenzaEmail(emailCliente))
+					response.getWriter().append("true");
+				else
+					response.getWriter().append("false");
+			}
 		}
-		
+
 		String password = request.getParameter("password");
 		String indirizzo = request.getParameter("indSped");
 		String numCarta = request.getParameter("numCarta");
@@ -53,7 +57,7 @@ public class Registrazione extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String sesso = request.getParameter("sesso");
 		String tel = request.getParameter("tel");
-		
+
 		//DATI ANAGRAFICI
 		DatiAnagraficiBean datiAnagrafici = new DatiAnagraficiBean();
 		datiAnagrafici.setCitta(citta);
@@ -63,20 +67,20 @@ public class Registrazione extends HttpServlet {
 		datiAnagrafici.setSesso(sesso);
 		datiAnagrafici.setTelefono(tel);
 		gestore.setDatiAnagrafici(datiAnagrafici);
-		
+
 		//METODO DI PAGAMENTO
 		MetodoDiPagamentoBean carta = new MetodoDiPagamentoBean();
 		carta.setEmailCliente(emailCliente);
 		carta.setNumeroCarta(numCarta);
 		carta.setTipoCarta(tipo);
 		gestore.setMetodoPagamento(carta);
-		
+
 		//INDIRIZZO
 		IndirizzoDiSpedizioneBean indirizzoSpedizione = new IndirizzoDiSpedizioneBean();
 		indirizzoSpedizione.setEmailCliente(emailCliente);
 		indirizzoSpedizione.setIndirizzo(indirizzo);
 		gestore.setIndirizzoSpedizione(indirizzoSpedizione);
-		
+
 		try {
 			gestore.registrazione(emailCliente, password);			
 			request.setAttribute("datiAnagrafici", datiAnagrafici);
@@ -86,7 +90,7 @@ public class Registrazione extends HttpServlet {
 			response.setStatus(400);
 			response.sendRedirect("errorPage.html");
 		}
-		
+
 
 	}
 

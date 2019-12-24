@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class ClienteBean {
 	private String email,password;
-	private boolean tipo;
+	private boolean admin;
 	public ClienteBean() {
 
 	}
@@ -20,11 +20,11 @@ public class ClienteBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public boolean isTipo() {
-		return tipo;
+	public boolean isAdmin() {
+		return admin;
 	}
-	public void setTipo(boolean tipo) {
-		this.tipo = tipo;
+	public void setAdmin(boolean tipo) {
+		this.admin = tipo;
 	}
 
 	public boolean validate() {

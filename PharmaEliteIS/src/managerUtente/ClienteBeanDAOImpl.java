@@ -14,7 +14,7 @@ public class ClienteBeanDAOImpl implements ClienteBeanDAO{
 
 			ps.setString(1, c.getEmail());
 			ps.setString(2, c.getPassword());
-			ps.setBoolean(3, c.isTipo());
+			ps.setBoolean(3, c.isAdmin());
 
 			ps.execute();
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ public class ClienteBeanDAOImpl implements ClienteBeanDAO{
 			{
 				cliente.setEmail(res.getString("Email"));
 				cliente.setPassword(res.getString("password"));
-				cliente.setTipo(res.getBoolean("Tipo"));
+				cliente.setAdmin(res.getBoolean("Tipo"));
 
 				return cliente;
 			}
@@ -88,7 +88,7 @@ public class ClienteBeanDAOImpl implements ClienteBeanDAO{
 			ps = con.prepareStatement("update PROGETTOTSW.Cliente set password=?, tipo=? where  Email=?");			
 			
 			ps.setString(1, p.getPassword());
-			ps.setBoolean(2, p.isTipo());
+			ps.setBoolean(2, p.isAdmin());
 			ps.setString(3, p.getEmail());
 			
 			ps.execute();
@@ -160,7 +160,7 @@ public class ClienteBeanDAOImpl implements ClienteBeanDAO{
 			{
 				cliente.setEmail(res.getString("IndirizzoEmail"));
 				cliente.setPassword(res.getString("password"));
-				cliente.setTipo(res.getBoolean("tipo"));
+				cliente.setAdmin(res.getBoolean("tipo"));
 
 				return cliente;
 			}

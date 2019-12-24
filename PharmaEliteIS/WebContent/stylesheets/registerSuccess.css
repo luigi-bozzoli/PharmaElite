@@ -1,0 +1,14 @@
+body{
+  background-color: green;
+}
+
+.container{
+  padding-top: 30px;
+}
+
+#mainDiv{
+  border-style:solid;
+  background-color:white;
+  padding-bottom: 30px;
+}
+

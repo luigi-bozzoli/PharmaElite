@@ -39,12 +39,27 @@ public class Login extends HttpServlet {
 
 		GestoreUtente gestore = new GestoreUtente();
 		ClienteBean cliente = gestore.login(email, password, carrello);
-		
+
+
+		String x=request.getHeader("x-requested-with");
+
+
+		if(x != null) {
+			if(x.equalsIgnoreCase("XMLHttpRequest")) {
+
+				if(cliente != null)
+					response.getWriter().append("true");
+				else
+					response.getWriter().append("false");
+			}
+		}
+
+
 		if(cliente != null) {
-			
+
 			session.setAttribute("cliente", cliente);		
 			response.sendRedirect("home.html");
-			
+
 		}else {
 			response.setStatus(404);
 			response.sendRedirect("errorPage.html");

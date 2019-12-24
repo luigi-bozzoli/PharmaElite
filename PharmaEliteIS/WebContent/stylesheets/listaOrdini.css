@@ -1,0 +1,34 @@
+body{
+  padding-top:80px;
+}
+
+.table>tbody>tr>td, .table>tfoot>tr>td{
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 768px) {
+
+#successDiv{
+	text-align: center;
+	padding-bottom: 20px;
+	border-bottom: solid;
+}
+
+table#main thead {
+	display: none;
+}
+
+table#main tbody td {
+	display: block;
+	padding: .6rem;
+}
+
+
+table#main tbody td:before {
+  content: attr(data-th);
+	font-weight: bold;
+  display: inline-block;
+	width: 8rem;
+}
+
+}

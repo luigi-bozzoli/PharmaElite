@@ -2,11 +2,13 @@ package managerCatalogo;
 
 import java.sql.*;
 import java.sql.PreparedStatement;
+import java.util.List;
+import java.util.TreeSet;
 
 import managerUtente.DriverManagerConnectionPool;
 
 
-public class ProdottoBeanDAOImp {
+public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 	public synchronized void doSave(ProdottoBean p){
 
 		Connection con = null;
@@ -145,4 +147,116 @@ public class ProdottoBeanDAOImp {
 		}
 
 	}
+
+	@Override
+	public List<ProdottoBean> searchByName(String nome) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+
+			List<ProdottoBean> listaProdotti = (List<ProdottoBean>) new TreeSet();
+			String tmp ="%"+ nome + "%";
+
+			conn = DriverManagerConnectionPool.getConnection();
+			ps = conn.prepareStatement("select * from PROGETTOTSW.Prodotto where nome LIKE ?");
+			ps.setString(1, tmp);
+
+			ResultSet res = ps.executeQuery();
+
+			// Prendi il risultato
+			while(res.next())
+			{
+				ProdottoBean p = new ProdottoBean();
+
+				p.setId(res.getString("ID"));
+				p.setNome(res.getString("nome"));
+				p.setUrlImmagine(res.getString("urlImmagine"));
+				p.setCategoria(res.getString("categoria"));
+				p.setPrezzo(res.getDouble("prezzo"));
+				p.setQuantita(res.getInt("quantita"));
+				p.setDescrizione(res.getString("descrizione"));
+				p.setFlagEliminato(res.getBoolean("flagEliminato"));
+
+				listaProdotti.add(p);
+			}
+
+			return listaProdotti;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}finally{
+
+			try {
+
+				ps.close();
+				DriverManagerConnectionPool.releaseConnection(conn);
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return null;
+
+	}
+
+	@Override
+	public List<ProdottoBean> searchByCategory(String categoria) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+
+			List<ProdottoBean> listaProdotti = (List<ProdottoBean>) new TreeSet();
+
+			conn = DriverManagerConnectionPool.getConnection();
+			ps = conn.prepareStatement("select * from PROGETTOTSW.Prodotto where categoria=?");
+
+			ps.setString(1, categoria);
+
+			ResultSet res = ps.executeQuery();
+
+			// Prendi il risultato
+			while(res.next())
+			{
+				ProdottoBean p = new ProdottoBean();
+
+				p.setId(res.getString("ID"));
+				p.setNome(res.getString("nome"));
+				p.setUrlImmagine(res.getString("urlImmagine"));
+				p.setCategoria(res.getString("categoria"));
+				p.setPrezzo(res.getDouble("prezzo"));
+				p.setQuantita(res.getInt("quantita"));
+				p.setDescrizione(res.getString("descrizione"));
+				p.setFlagEliminato(res.getBoolean("flagEliminato"));
+
+				listaProdotti.add(p);
+			}
+
+			return listaProdotti;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}finally{
+
+			try {
+				ps.close();
+				DriverManagerConnectionPool.releaseConnection(conn);
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return null;
+	}
+
+	
 }
