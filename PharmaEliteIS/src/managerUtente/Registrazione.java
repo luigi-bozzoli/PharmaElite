@@ -30,21 +30,23 @@ public class Registrazione extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("entro");
 		GestoreUtente gestore = new GestoreUtente();
 
 		String emailCliente = request.getParameter("email");
 
 		String x=request.getHeader("x-requested-with");
 
-	
+
 		if(x != null) {
 			if(x.equalsIgnoreCase("XMLHttpRequest")) {
 
-				if(gestore.controllaEsistenzaEmail(emailCliente))
+				if(gestore.controllaEsistenzaEmail(emailCliente)) {
 					response.getWriter().append("true");
-				else
+					return;
+				}else {
 					response.getWriter().append("false");
+					return;
+				}
 			}
 		}
 

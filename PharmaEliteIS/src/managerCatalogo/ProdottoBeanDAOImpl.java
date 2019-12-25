@@ -3,6 +3,7 @@ package managerCatalogo;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 
 import managerUtente.DriverManagerConnectionPool;
@@ -149,13 +150,13 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 	}
 
 	@Override
-	public List<ProdottoBean> searchByName(String nome) {
+	public Set<ProdottoBean> searchByName(String nome) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
 		try {
 
-			List<ProdottoBean> listaProdotti = (List<ProdottoBean>) new TreeSet();
+			Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) new TreeSet();
 			String tmp ="%"+ nome + "%";
 
 			conn = DriverManagerConnectionPool.getConnection();
@@ -205,13 +206,13 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 	}
 
 	@Override
-	public List<ProdottoBean> searchByCategory(String categoria) {
+	public Set<ProdottoBean> searchByCategory(String categoria) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
 		try {
 
-			List<ProdottoBean> listaProdotti = (List<ProdottoBean>) new TreeSet();
+			Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) new TreeSet();
 
 			conn = DriverManagerConnectionPool.getConnection();
 			ps = conn.prepareStatement("select * from PROGETTOTSW.Prodotto where categoria=?");
@@ -258,5 +259,5 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 		return null;
 	}
 
-	
+
 }

@@ -1,7 +1,7 @@
 package managerUtente;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
-		List<CarrelloBean> carrello = (List<CarrelloBean>) session.getAttribute("carrello");
+		Set<CarrelloBean> carrello = (Set<CarrelloBean>) session.getAttribute("carrello");
 
 		GestoreUtente gestore = new GestoreUtente();
 		ClienteBean cliente = gestore.login(email, password, carrello);
@@ -47,10 +47,14 @@ public class Login extends HttpServlet {
 		if(x != null) {
 			if(x.equalsIgnoreCase("XMLHttpRequest")) {
 
-				if(cliente != null)
+				if(cliente != null) {
 					response.getWriter().append("true");
-				else
+					return;
+				}
+				else {
 					response.getWriter().append("false");
+					return;
+				}
 			}
 		}
 

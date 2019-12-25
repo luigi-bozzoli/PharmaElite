@@ -32,7 +32,7 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBeanDAO{
 		}
 	}
 
-	public synchronized MetodoDiPagamentoBean doRetrieveByKey(String numCarta){
+	public synchronized MetodoDiPagamentoBean doRetrieveByKey(String numCarta, String email){
 
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -41,8 +41,9 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBeanDAO{
 
 			MetodoDiPagamentoBean m = new MetodoDiPagamentoBean();
 			conn = DriverManagerConnectionPool.getConnection();
-			ps = conn.prepareStatement("select * from PROGETTOTSW.MetodoDiPagamento where numeroCarta=?");
+			ps = conn.prepareStatement("select * from PROGETTOTSW.MetodoDiPagamento where numeroCarta=? AND EmailCliente=?");
 			ps.setString(1,numCarta);
+			ps.setString(2, email);
 		
 
 			ResultSet res = ps.executeQuery();

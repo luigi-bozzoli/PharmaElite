@@ -55,7 +55,9 @@ public class DatiAnagraficiBean {
 	}
 	
 	private boolean checkSesso(String sesso) {
-		if(sesso.equalsIgnoreCase("uomo") || sesso.equalsIgnoreCase("donne"))
+		if(sesso == null)
+			return false;
+		if(sesso.equalsIgnoreCase("uomo") || sesso.equalsIgnoreCase("donna"))
 			return true;
 		else 
 			return false;

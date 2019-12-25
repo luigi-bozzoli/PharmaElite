@@ -1,16 +1,14 @@
 package managerUtente;
 
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.ValidationException;
 
 import managerCarrello.CarrelloBean;
 import managerCarrello.CarrelloDAO;
 import managerCarrello.CarrelloDAOImpl;
-import managerOrdine.ComposizioneBean;
 
 public class GestoreUtente {
 
@@ -21,7 +19,7 @@ public class GestoreUtente {
 
 
 
-	public ClienteBean login(String email, String password, List<CarrelloBean> carrello) {
+	public ClienteBean login(String email, String password, Set<CarrelloBean> carrello) {
 		ClienteBeanDAO cDao = new ClienteBeanDAOImpl ();
 		ClienteBean cliente;
 
@@ -45,7 +43,7 @@ public class GestoreUtente {
 		boolean indirizzoSpedizione = this.indirizzoSpedizione.validate();
 		boolean emailBool = this.controllaEsistenzaEmail(email);
 		
-		metodoPagamento = metodoPagamento && this.checkNumeroCarta();
+		metodoPagamento = metodoPagamento && this.checkNumeroCarta(email);
 		
 		
 		if(datiAnagrafici && metodoPagamento && indirizzoSpedizione && emailBool) {
@@ -66,6 +64,11 @@ public class GestoreUtente {
 			this.indirizzoSpedizione.setEmailCliente(email);
 			indirizzoDao.doSave(this.indirizzoSpedizione);
 			
+			
+			DatiAnagraficiBeanDAO datiDao = new DatiAnagraficiBeanDAOImpl();
+			this.datiAnagrafici.setEmailCliente(email);
+			datiDao.doSave(this.datiAnagrafici);
+			
 		}else {
 			throw new ValidationException("Formato non corretto");
 		}
@@ -75,30 +78,27 @@ public class GestoreUtente {
 	public void userpage(String emailCliente) {
 		DatiAnagraficiBeanDAO datiAnagraficiDao = new DatiAnagraficiBeanDAOImpl();
 		this.datiAnagrafici = datiAnagraficiDao.doRetrieveByKey(emailCliente);
-		
 		IndirizzoDiSpedizioneBeanDAO indDao = new IndirizzoSpedizioneBeanDAOImpl();
-		this.indirizzoSpedizione = indDao.doRetrieveByKey(emailCliente);
-		
+		this.indirizzoSpedizione = indDao.doRetrieveByEmail(emailCliente);
 		
 	}
 	
 	public boolean controllaEsistenzaEmail(String email) {
-		
+		System.out.println("email "+ email);
 		if(email == null)
 			return false;
 		
 		ClienteBeanDAO cDao = new ClienteBeanDAOImpl();
 		ClienteBean cliente = cDao.doRetrieveByKey(email);
-		
 		if(cliente == null)
 			return true;
 		else
 			return false;		
 	}
 	
-	private boolean checkNumeroCarta() {
+	private boolean checkNumeroCarta(String email) {
 		MetodoDiPagamentoBeanDAO cartaDao = new MetodoDiPagamentoBeanDAOImpl();
-		MetodoDiPagamentoBean carta = cartaDao.doRetrieveByKey(this.metodoPagamento.getNumeroCarta());
+		MetodoDiPagamentoBean carta = cartaDao.doRetrieveByKey(this.metodoPagamento.getNumeroCarta(), email);
 
 		if(carta == null)
 			return true;
@@ -106,7 +106,7 @@ public class GestoreUtente {
 			return false;
 	}
 
-	private void salvaCarrello(List<CarrelloBean> carrello, String email) {
+	private void salvaCarrello(Set<CarrelloBean> carrello, String email) {
 
 		if(carrello == null) {
 			return;

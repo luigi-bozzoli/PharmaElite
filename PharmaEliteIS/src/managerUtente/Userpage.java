@@ -45,27 +45,11 @@ public class Userpage extends HttpServlet {
 			GestoreUtente gestore = new GestoreUtente();
 			gestore.userpage(email);
 
-		/*	DatiAnagraficiDAO dADao = new DatiAnagraficiDAO();
-			DatiAnagraficiBean datiAnagrafici = dADao.doRetrieveByKey(email);*/
-
-			/*TelefonoDAO telDao = new TelefonoDAO();
-			TelefonoBean telefono = telDao.doRetrieveByKey(email);*/
-
-			
-			/*IndirizzoSpedizioneDAO indDao = new IndirizzoSpedizioneDAO();
-			ArrayList<IndirizzoSpedizioneBean> listaInd = indDao.doRetrieveAllByEmail(email);
-			IndirizzoSpedizioneBean indirizzo = indDao.doRetrieveByKey(email, listaInd.get(0).getIndirizzo());
-	*/
-
-		/*	request.setAttribute("cliente", cliente);
-			request.setAttribute("datiAnagrafici", datiAnagrafici);
-			request.setAttribute("telefono", telefono);
-			request.setAttribute("indirizzo", indirizzo);
-			*/
-			
 			request.setAttribute("cliente", cliente);
 			request.setAttribute("datiAnagrafici", gestore.getDatiAnagrafici());
 			request.setAttribute("indirizzo", gestore.getIndirizzoSpedizione());
+			
+			System.out.println(gestore.getIndirizzoSpedizione().getIndirizzo());
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/user.jsp");
 			dispatcher.forward(request, response);

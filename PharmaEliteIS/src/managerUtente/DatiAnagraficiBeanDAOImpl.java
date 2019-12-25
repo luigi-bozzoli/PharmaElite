@@ -9,7 +9,7 @@ public class DatiAnagraficiBeanDAOImpl implements DatiAnagraficiBeanDAO{
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
-			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.DatiAnagrafici value(?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO PROGETTOTSW.DatiAnagrafici value(?,?,?,?,?,?)");
 
 
 			ps.setString(1, d.getNome());

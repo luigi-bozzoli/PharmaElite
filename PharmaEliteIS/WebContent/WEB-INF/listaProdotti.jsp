@@ -1,3 +1,4 @@
+<%@page import="java.util.Set"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -29,7 +30,7 @@
 
 <body>
 <%
-List<ProdottoBean> listaProdotti = (List<ProdottoBean>) request.getAttribute("listaProdotti");
+Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("listaProdotti");
 %>
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">

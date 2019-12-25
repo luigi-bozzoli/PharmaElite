@@ -45,10 +45,12 @@ create table IndirizzoSpedizione(
 
 
 create table MetodoDiPagamento(
-	numeroCarta varchar(16) Primary key,
+	numeroCarta varchar(16) not null,
     tipo varchar(20) not null,
     EmailCliente varchar(320) not null,
   
+  
+    Primary Key(numeroCarta,EmailCliente),
     FOREIGN KEY (EmailCliente) REFERENCES Cliente(Email)
 	ON DELETE CASCADE
     ON UPDATE CASCADE
@@ -162,5 +164,15 @@ insert into PROGETTOTSW.Prodotto value('40','Immagini/prodotti/igieneOrale/filoI
 select * 
 from PROGETTOTSW.prodotto;
 
+/*
+select * from Progettotsw.datianagrafici;
 
+select * from progettotsw.cliente;
+
+select * from progettotsw.indirizzospedizione;
+
+select * from PROGETTOTSW.IndirizzoSpedizione where ID= "peppo@gmail.com";
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+*/
 

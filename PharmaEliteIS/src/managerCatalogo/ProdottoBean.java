@@ -1,6 +1,6 @@
 package managerCatalogo;
 
-public class ProdottoBean {
+public class ProdottoBean implements Comparable<ProdottoBean> {
 	private String Id,UrlImmagine,Categoria,Nome,Descrizione;
 	private int Quantita;
 	private double Prezzo;
@@ -125,4 +125,10 @@ public class ProdottoBean {
 				return false;
 			else return true;
 		}
+
+	@Override
+	public int compareTo(ProdottoBean o) {
+
+		return this.Nome.compareTo(o.getNome());
+	}
 }

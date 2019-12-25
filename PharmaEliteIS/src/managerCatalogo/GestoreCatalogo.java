@@ -1,23 +1,24 @@
 package managerCatalogo;
 
-import java.util.List;
+
+import java.util.Set;
 import java.util.UUID;
 
 import javax.xml.bind.ValidationException;
 
 public class GestoreCatalogo {
 	
-	public List<ProdottoBean> cercaProdotti(String nome){
+	public Set<ProdottoBean> cercaProdotti(String nome){
 		
 		ProdottoBeanDAO pDao = new  ProdottoBeanDAOImpl();
-		List<ProdottoBean> listaProdotti = pDao.searchByName(nome);
+		Set<ProdottoBean> listaProdotti = pDao.searchByName(nome);
 		
 		return listaProdotti;
 	}
 	
-	public List<ProdottoBean> prodottiCategoria(String categoria){
+	public Set<ProdottoBean> prodottiCategoria(String categoria){
 		ProdottoBeanDAO pDao = new  ProdottoBeanDAOImpl();
-		List<ProdottoBean> listaProdotti = pDao.searchByCategory(categoria);
+		Set<ProdottoBean> listaProdotti = pDao.searchByCategory(categoria);
 		
 		return listaProdotti;
 	}

@@ -158,7 +158,7 @@ public class ClienteBeanDAOImpl implements ClienteBeanDAO{
 			
 			if(res.next())
 			{
-				cliente.setEmail(res.getString("IndirizzoEmail"));
+				cliente.setEmail(res.getString("Email"));
 				cliente.setPassword(res.getString("password"));
 				cliente.setAdmin(res.getBoolean("tipo"));
 

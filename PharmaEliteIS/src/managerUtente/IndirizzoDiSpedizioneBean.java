@@ -30,6 +30,8 @@ public class IndirizzoDiSpedizioneBean {
 	}
 
 	private boolean checkIndirizzo(String indirizzo) {
+		if(indirizzo == null)
+			return false;
 		if(indirizzo.length() > 50 || indirizzo.length() < 1)
 			return false;
 		else
