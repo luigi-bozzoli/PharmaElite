@@ -3,8 +3,7 @@ package managerUtente;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
-
-import javax.xml.bind.ValidationException;
+import java.util.zip.DataFormatException;
 
 import managerCarrello.CarrelloBean;
 import managerCarrello.CarrelloDAO;
@@ -36,7 +35,7 @@ public class GestoreUtente {
 	}
 
 
-	public void registrazione(String email, String password)	throws ValidationException {
+	public void registrazione(String email, String password)	throws DataFormatException {
 		
 		boolean datiAnagrafici = this.datiAnagrafici.validate();
 		boolean metodoPagamento = this.metodoPagamento.validate();
@@ -70,7 +69,7 @@ public class GestoreUtente {
 			datiDao.doSave(this.datiAnagrafici);
 			
 		}else {
-			throw new ValidationException("Formato non corretto");
+			throw new DataFormatException("Formato non corretto");
 		}
 		
 	}
