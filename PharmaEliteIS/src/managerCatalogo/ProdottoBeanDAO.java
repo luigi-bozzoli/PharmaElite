@@ -9,4 +9,5 @@ public interface ProdottoBeanDAO {
 	public void doDeleteByKey(String x);
 	public Set<ProdottoBean> searchByName(String nome);
 	public Set<ProdottoBean> searchByCategory(String categoria);
+	public Set<ProdottoBean> retriveAll();
 }

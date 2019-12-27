@@ -1,7 +1,6 @@
 package managerUtente;
 
 import java.io.IOException;
-import java.util.zip.DataFormatException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.xml.bind.ValidationException;
 
 /**
  * Servlet implementation class Registrazione
@@ -89,7 +88,7 @@ public class Registrazione extends HttpServlet {
 			request.setAttribute("datiAnagrafici", datiAnagrafici);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/registerSuccess.jsp");
 			dispatcher.forward(request, response);	
-		}catch(DataFormatException e) {
+		}catch(ValidationException e) {
 			response.setStatus(400);
 			response.sendRedirect("errorPage.html");
 		}

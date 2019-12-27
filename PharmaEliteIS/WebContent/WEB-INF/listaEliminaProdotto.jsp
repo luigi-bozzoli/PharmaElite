@@ -1,10 +1,10 @@
-<%@page import="java.util.Set"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="managerCatalogo.ProdottoBean" %>
+<%@page import="managerCatalogo.ProdottoBean"%>
+<%@page import="java.util.Set"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,12 @@
 <link href="stylesheets/headerFooter.css" rel="stylesheet" />
 <link href="stylesheets/carrello.css" rel="stylesheet" />
 
-<title>Pharma√©lite</title>
+<title>PharmaÈlite</title>
+<style media="screen">
+	body{
+	padding-top: 100px;
+}
+</style>
 </head>
 
 <body>
@@ -82,17 +87,15 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 		<table id="cart" class="table table-hover table-condensed">
 			<thead>
 				<tr>
-					<th style="width: 50%">Prodotto</th>
-					<th style="width: 10%">Prezzo</th>
-					<th style="width: 8%">Quantit√†</th>
-					<th style="width: 22%" class="text-center">Prezzo Totale</th>
-					<th style="width: 10%"></th>
+					<th style="width: 60%">Prodotto</th>
+					<th style="width: 13%">Prezzo</th>
+					<th class="text-center" style="width: 13%">Quantit‡</th>
+					<th style="width: 13%"></th>
 				</tr>
 			</thead>
 
 			<tbody>
-			
-			<%if(listaProdotti.size() == 0){ %>	
+				<%if(listaProdotti.size() == 0){ %>	
 				<tr><td><h2>Nessun prodotto trovato</h2></td></tr>
 			<%} %>
 			
@@ -102,6 +105,7 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 				ProdottoBean p = i.next();
 				if(!p.isFlagEliminato()){
 			%>
+
 				<tr>
 					<td data-th="Prodotto">
 						<div class="row">
@@ -111,27 +115,23 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 									alt="immagine prodotto" class="img-responsive" />
 							</div>
 							<div class="col-sm-10">
-								<h4 class="nomargin"><%= p.getNome() %></h4>
+								<h4 class="nomargin"><%=p.getNome()%></h4>
 								<p><%=p.getDescrizione() %></p>
-								<h3 class="text-center" style="color:green; display: none;"> Prodotto aggiunto al carrello</h3>
 							</div>
 						</div>
 					</td>
-					<td data-th="Prezzo">‚Ç¨<%=p.getPrezzo() %></td>
-					<td data-th="Quantit√†">
-						<input type="number" class="form-control text-center" min ="0" max="15" value="1" onclick="aggiornaPrezzo(this)">
-					</td>
-					<td data-th="Prezzo totale" class="text-center">‚Ç¨<%=p.getPrezzo() %></td>
-					<td class="actions">
-					<input type = "hidden" value="<%=p.getId()%>">
-					<button class="carrello btn btn-success btn-sm">
-							<i class="fas fa-shopping-cart"></i>
+					<td data-th="Prezzo"><%=p.getPrezzo() %></td>
+					<td data-th="Quantit‡">
+						<p class="form-control text-center"><%=p.getQuantita() %></p>
+						</td>
+					<td class="text-center actions">
+					<button class="carrello btn btn-danger btn-sm">
+							<i class="fas fa-trash-alt"></i>
 					</button>
 					</td>
 				</tr>
-				<%}
-			}%>
 
+<%}} %>
 
 
 
@@ -143,11 +143,8 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 
 
 			<tfoot>
-				<tr>
-					<td colspan="4"><a href="home.html" class="btn btn-warning"><i
-							class="fa fa-angle-left"></i> Categorie</a></td>
-					<td><a href="Carrello" class="btn btn-success">Carrello <i
-							class="fa fa-angle-right"></i></a></td>
+				<tr class = "text-center">
+					<td colspan="5"><a href="home.html" class="btn btn-success"> Userpage</a></td>
 				</tr>
 			</tfoot>
 		</table>
@@ -159,3 +156,4 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 <script src ="Script/aggiungiAlCarrello.js"></script>
 </body>
 </html>
+    

@@ -259,5 +259,41 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 		return null;
 	}
 
+	@Override
+	public Set<ProdottoBean> retriveAll() {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+
+			Set<ProdottoBean> listaProdotti = new TreeSet<ProdottoBean>();
+			ProdottoBean p = new ProdottoBean();
+			conn = DriverManagerConnectionPool.getConnection();
+			ps = conn.prepareStatement("select * from PROGETTOTSW.Prodotto");
+	
+			ResultSet res = ps.executeQuery();
+
+			// Prendi il risultato
+			if(res.next()){
+
+				p.setId(res.getString("ID"));
+				p.setUrlImmagine(res.getString("urlImmagine"));
+				p.setCategoria(res.getString("categoria"));
+				p.setNome(res.getString("nome"));
+				p.setPrezzo(res.getDouble("prezzo"));
+				p.setQuantita(res.getInt("quantita"));
+				p.setDescrizione(res.getString("descrizione"));
+				p.setFlagEliminato(res.getBoolean("flagEliminato"));
+
+				listaProdotti.add(p);
+			}
+			
+			return listaProdotti;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 
 }

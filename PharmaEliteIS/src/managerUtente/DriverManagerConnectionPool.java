@@ -18,19 +18,19 @@ public class DriverManagerConnectionPool  {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			System.out.println("DB driver not found:"+ e.getMessage());
-		} 
+		}
 	}
-	
+
 	private static synchronized Connection createDBConnection() throws SQLException {
 		Connection newConnection = null;
-		String ip = "localhost";
+		String ip = "127.0.0.1";
 		String port = "3306";
 		String username = "root";
-		String password = "Dragoni1(";
+		String password = "root";
 
 		newConnection = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=CET",username, password);
 
-		
+
 		return newConnection;
 	}
 
@@ -50,7 +50,7 @@ public class DriverManagerConnectionPool  {
 				connection = getConnection();
 			}
 		} else {
-			connection = createDBConnection();		
+			connection = createDBConnection();
 		}
 
 		return connection;
@@ -60,4 +60,3 @@ public class DriverManagerConnectionPool  {
 		if(connection != null) freeDbConnections.add(connection);
 	}
 }
-
