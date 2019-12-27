@@ -2,7 +2,7 @@
   "id": "975a19f4-0a69-4de7-b626-4d4b5e23442b",
   "version": "2.0",
   "name": "Test Registrazione",
-  "url": "http://localhost:8080/PharmaEliteIS/Register.html",
+  "url": "http://localhost:8080/PharmaEliteIS/Login.html",
   "tests": [{
     "id": "09abfea9-4c37-40ad-b8fc-16e881053eab",
     "name": "9.2.1",
@@ -1959,7 +1959,7 @@
         ["xpath=//input[@name='numCarta']", "xpath:attributes"],
         ["xpath=//input[3]", "xpath:position"]
       ],
-      "value": "123456789123467"
+      "value": "1234567891234567"
     }, {
       "id": "6c95f933-6cd9-4e12-bf29-6d2a00c3fcd7",
       "comment": "",
@@ -2129,6 +2129,244 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "b4b815ba-f0cf-4bec-b4d2-a9c7c7ea4983",
+    "name": "9.1.1",
+    "commands": [{
+      "id": "1cf77727-e337-4147-88ad-96c2370a5957",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/Login.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "88e1094c-0d45-40ea-846e-6953410a6886",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "882x845",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "39d80f63-d46c-43a5-867a-04fafc824bee",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b5dff7ad-e642-49ca-8ee2-e3834d2a8368",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": "pippo@test.it"
+    }, {
+      "id": "8c43cb88-9dc4-4927-824b-70822e10a272",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=//input[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "84eeddfd-884d-40d8-8960-85abc9a45ac8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=//input[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "5adfa990-4ca7-4e91-99ef-2c18cd09b976",
+    "name": "9.1.3",
+    "commands": [{
+      "id": "490ce41e-10ea-4035-a4ef-e27dc3e4dccc",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/Login.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "09a06082-001c-4d95-b566-ebbaf78c95aa",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "882x845",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1f53452e-388f-436c-b92c-918834ed2bbd",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad95c03f-5212-4a0f-82d8-9616d4c5aca8",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": "lucio@test.it"
+    }, {
+      "id": "207af3cb-0dc9-4278-80d7-e1aa1cecba46",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "adbbd596-1e56-4e03-aaca-c9143543a272",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "prova"
+    }, {
+      "id": "51ddeab4-575d-4f2c-85e1-ae571a5b061d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=//input[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "16618056-4e04-4efe-97fa-f09d584c541d",
+    "name": "9.1.2",
+    "commands": [{
+      "id": "89a74a46-80f6-486c-b479-c938194ac921",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/Login.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e3ddcbd4-d02d-4758-a489-fd71d918feaa",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "882x845",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "daaa0f5a-03ee-48d5-827b-6ccd1e0cf19f",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "835584fd-f6f5-4fe0-a599-38ed4d5edd65",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": "lucio@test.it"
+    }, {
+      "id": "eeb5fa23-6cc3-4299-b95f-ba51f64fc25a",
+      "comment": "",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3e8f6203-95ff-42d0-81da-fe8b020bcecb",
+      "comment": "",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "8d62f82f-8dfc-4429-b769-4ac8bd98938a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=//input[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "36af1db4-a354-43fd-995f-09b25baf13a1",
@@ -2138,6 +2376,6 @@
     "timeout": 300,
     "tests": []
   }],
-  "urls": ["http://localhost:8080/PharmaEliteIS/Register.html"],
+  "urls": ["http://localhost:8080/PharmaEliteIS/Register.html", "http://localhost:8080/PharmaEliteIS/Login.html"],
   "plugins": []
 }
