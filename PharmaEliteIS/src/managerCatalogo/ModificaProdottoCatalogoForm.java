@@ -1,11 +1,16 @@
 package managerCatalogo;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import managerUtente.ClienteBean;
 
 /**
  * Servlet implementation class ModificaProdottoCatalogoForm
@@ -26,11 +31,33 @@ public class ModificaProdottoCatalogoForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//questa servlet (ListaProdottiModifica mostra la jsp modifica.jsp
-		//
-		//da modifica.jsp -> FormModifica.java (rinominato in ModificaProdottoCatalogoForm.java)
-		//da FormModifica.java -> formModifica.jsp
-		//da formModifica.jsp -> UpdateProdotto.java
+		
+		HttpSession session = request.getSession();
+		ClienteBean cliente = (ClienteBean) session.getAttribute("cliente");
+		
+		
+		if(cliente == null || !cliente.isAdmin()){
+			response.setStatus(403);
+			response.sendRedirect("errorPage.html");
+			return;
+		}
+		
+		String id = request.getParameter("id");
+
+		
+		GestoreCatalogo gestore = new GestoreCatalogo();
+		ProdottoBean prodotto = gestore.ritiraProdotto(id);
+		
+		
+		if(prodotto == null) {
+			response.setStatus(404);
+			response.sendRedirect("errorPage.html");
+			return;
+		}else {
+			request.setAttribute("prodotto",prodotto );
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/formModifica.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import managerUtente.ClienteBean;
 
 /**
  * Servlet implementation class UpdateProdotto
@@ -31,7 +34,7 @@ public class UpdateProdotto extends HttpServlet {
 		HttpSession session = request.getSession();
 		ClienteBean cliente = (ClienteBean) session.getAttribute("cliente");
 
-		if(cliente == null || cliente.getTipo().equalsIgnoreCase("utente")){
+		if(cliente == null || !cliente.isAdmin()){
 			response.setStatus(403);
 			response.sendRedirect("errorPage.html");
 			return;
@@ -40,33 +43,41 @@ public class UpdateProdotto extends HttpServlet {
 		String id = request.getParameter("id");
 		String url = request.getParameter("url");
 		String nomeP = request.getParameter("nomeProdotto");
-		String prezzo = request.getParameter("prezzo");
-		String quantita = request.getParameter("quantita");
 		String descrizione = request.getParameter("descrizione");
 		String categoria = request.getParameter("categoria");
+		double prezzo = 0;
+		int quantita = 0;
 
-		if(!checkParameter(nomeP, prezzo, quantita)){
-			if(cliente == null || cliente.getTipo().equalsIgnoreCase("utente")){
+		
+		try {
+			prezzo = Double.parseDouble(request.getParameter("prezzo"));
+			quantita = Integer.parseInt(request.getParameter("quantita"));
+		}catch (NumberFormatException e) {
+			response.sendRedirect("errorPage.html");
+			return;
+		}
+		
+		ProdottoBean prodotto = new ProdottoBean();
+		prodotto.setId(id);
+		prodotto.setUrlImmagine(url);
+		prodotto.setNome(nomeP);
+		prodotto.setPrezzo(prezzo);
+		prodotto.setQuantita(quantita);
+		prodotto.setDescrizione(descrizione);
+		prodotto.setCategoria(categoria);
+		
+
+		if(!prodotto.validate()){
 				response.sendRedirect("errorPage.html");
 				response.setStatus(400);
 				return;
-			}
 		}	 
+		
+		GestoreCatalogo gestore = new GestoreCatalogo();
+		gestore.updateProdotto(prodotto);
 
 
-		ProdottoBean prodotto = new ProdottoBean();
-		prodotto.setId(id);
-		prodotto.setCategoria(categoria);
-		prodotto.setUrlImmagine(url);
-		prodotto.setNome(nomeP);
-		prodotto.setPrezzo(Double.parseDouble(prezzo));
-		prodotto.setQuantita(Integer.parseInt(quantita));
-		prodotto.setDescrizione(descrizione);
-
-		ProdottoDAO pDao = new ProdottoDAO();
-		pDao.doUpdate(prodotto);
-
-		//pagina successo
+		
 		response.setStatus(200);
 		response.sendRedirect("OperationSuccess.html");
 	}

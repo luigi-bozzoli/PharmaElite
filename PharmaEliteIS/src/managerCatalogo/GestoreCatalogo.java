@@ -1,6 +1,7 @@
 package managerCatalogo;
 
 
+import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
@@ -14,6 +15,16 @@ public class GestoreCatalogo {
 		Set<ProdottoBean> listaProdotti = pDao.searchByName(nome);
 		
 		return listaProdotti;
+	}
+	
+	public void updateProdotto(ProdottoBean prodotto) {
+		ProdottoBeanDAO pDao = new  ProdottoBeanDAOImpl();
+		pDao.doUpdate(prodotto);
+	}
+	
+	public ProdottoBean ritiraProdotto(String id) {
+		ProdottoBeanDAO pDao = new  ProdottoBeanDAOImpl();
+		return pDao.doRetrieveByKey(id);
 	}
 	
 	public Set<ProdottoBean> prodottiCategoria(String categoria){
@@ -50,6 +61,7 @@ public class GestoreCatalogo {
 	public Set<ProdottoBean> ritiraProdotti(){
 		ProdottoBeanDAO prodottoDao = new ProdottoBeanDAOImpl();
 		Set<ProdottoBean> listaProdotti =  prodottoDao.retriveAll();
+		
 		return listaProdotti;
 	}
 	

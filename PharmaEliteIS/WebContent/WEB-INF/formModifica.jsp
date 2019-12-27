@@ -1,4 +1,4 @@
-<%@page import="model.beans.ProdottoBean"%>
+<%@page import="managerCatalogo.ProdottoBean"%>
 <%@ page language="java"%>
 <!DOCTYPE html>
 <html>
@@ -61,16 +61,15 @@
 					<li><a class="vociMenu" href="home.html"> <i
 							class="fas fa-home"></i>
 					</a></li>
-					<li><a class="vociMenu" href="UserPage"> <i
+					<li><a class="vociMenu" href="Userpage"> <i
 							class="fas fa-user"></i>
 					</a></li>
-					<li><a class="vociMenu" href="#"> <i
+					<li><a class="vociMenu" href="Carrello"> <i
 							class="fas fa-shopping-cart"></i>
 					</a></li>
 				</ul>
 
-				<form id="form" class="navbar-form navbar-left"
-					action="Cerca">
+				<form id="form" class="navbar-form " action="CercaProdotto">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search"
 							name="search">
@@ -82,56 +81,67 @@
 					</div>
 				</form>
 
+
 			</div>
 		</div>
 
 	</nav>
 
+
 	<!-- form registrazione -->
 
 	<div class="wrapper">
 
-		<form class="form-signin" action="SalvaModifiche" method="POST" onsubmit="return validateForm()">
+		<form class="form-signin" action="UpdateProdotto" method="POST"
+			onsubmit="return validateForm()">
 			<h2 class="form-signin-heading text-center">Modifica Prodotto</h2>
-			
-			<input type="hidden" name = "id" value="<%=p.getId() %>">
-			<input type="hidden" name="url" value="<%=p.getUrlImmagine()%>">
-			
 
-			<h4> ID Prodotto </h4><h4><%=p.getId()%></h4>
-			<h4> Nome Prodotto</h4>
-			
-			<input type="text" name="nomeProdotto" class="form-control" value="<%=p.getNome()%>">
-				<h3 id="nomeProdotto"></h3>
-				
-				<h4> Categoria</h4>
-				
-				<div style="margin-bottom: 20px;">
-				<select name="categoria"  class=" form-control selectpicker" >
-	  <option <%if(categoria.equalsIgnoreCase("Erboristeria")){ %>selected="selected"<%}%> >Erboristeria</option>
-	  <option <%if(categoria.equalsIgnoreCase("Integratori")){ %>selected="selected"<%}%>>Integratori</option>
-	  <option <%if(categoria.equalsIgnoreCase("Farmaci da banco")){ %>selected="selected"<%}%>>Farmaci da banco</option>
-	  <option <%if(categoria.equalsIgnoreCase("Igiene Orale")){ %>selected="selected"<%}%>>Igiene orale</option>
-	</select>
-	</div>
-				
-				<h4> Prezzo</h4>
-				<input type="text" name="prezzo" class="form-control" value="<%= p.getPrezzo()%>">
-				<h3 id="price"></h3>
-				
-				<h4> Quantità</h4>
-<input type="text" name="quantita" class="form-control" value="<%= p.getQuantità()%>">
-<h3 id="quantita"></h3>
+			<input type="hidden" name="id" value="<%=p.getId()%>"> <input
+				type="hidden" name="url" value="<%=p.getUrlImmagine()%>">
 
-<h4> Descrizione</h4>
-<textarea rows="4" cols="50" name="descrizione"
-				class="form-control"> <%= p.getDescrizione()%>
+
+			<h4>ID Prodotto</h4>
+			<h4><%=p.getId()%></h4>
+			<h4>Nome Prodotto</h4>
+
+			<input type="text" name="nomeProdotto" class="form-control"
+				value="<%=p.getNome()%>">
+			<h3 id="nomeProdotto"></h3>
+
+			<h4>Categoria</h4>
+
+			<div style="margin-bottom: 20px;">
+				<select name="categoria" class=" form-control selectpicker">
+					<option <%if (categoria.equalsIgnoreCase("Erboristeria")) {%>
+						selected="selected" <%}%>>Erboristeria</option>
+					<option <%if (categoria.equalsIgnoreCase("Integratori")) {%>
+						selected="selected" <%}%>>Integratori</option>
+					<option <%if (categoria.equalsIgnoreCase("Farmaci da banco")) {%>
+						selected="selected" <%}%>>Farmaci da banco</option>
+					<option <%if (categoria.equalsIgnoreCase("Igiene Orale")) {%>
+						selected="selected" <%}%>>Igiene orale</option>
+				</select>
+			</div>
+
+			<h4>Prezzo</h4>
+			<input type="text" name="prezzo" class="form-control"
+				value="<%=p.getPrezzo()%>">
+			<h3 id="price"></h3>
+
+			<h4>Quantità</h4>
+			<input type="text" name="quantita" class="form-control"
+				value="<%=p.getQuantita()%>">
+			<h3 id="quantita"></h3>
+
+			<h4>Descrizione</h4>
+			<textarea rows="4" cols="50" name="descrizione" class="form-control"> <%=p.getDescrizione()%>
 				</textarea>
-				<h3 id="descrizione"></h3>
+			<h3 id="descrizione"></h3>
 
 
 
-<button type="submit" class="btn btn-lg btn-primary btn-block">Salva Modifiche</button>
+			<button type="submit" class="btn btn-lg btn-primary btn-block">Salva
+				Modifiche</button>
 
 
 		</form>
@@ -140,8 +150,9 @@
 
 
 	</div>
-	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="Script/formModifica.js"></script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="Script/formModifica.js"></script>
 </body>
 </html>

@@ -54,7 +54,7 @@
 					<li><a class="vociMenu" href="home.html"> <i
 							class="fas fa-home"></i>
 					</a></li>
-					<li><a class="vociMenu" href="UserPage"> <i
+					<li><a class="vociMenu" href="Userpage"> <i
 							class="fas fa-user"></i>
 					</a></li>
 					<li><a class="vociMenu" href="Carrello"> <i
@@ -62,8 +62,7 @@
 					</a></li>
 				</ul>
 
-				<form id="form" class="navbar-form navbar-left"
-					action="/action_page.php">
+				<form id="form" class="navbar-form " action="CercaProdotto">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search"
 							name="search">
@@ -75,10 +74,12 @@
 					</div>
 				</form>
 
+
 			</div>
 		</div>
 
 	</nav>
+
 
 
 	<div class="container text-center main">
@@ -140,33 +141,36 @@
 		</div>
 
 		<div style="padding-top: 30px;" class="row text-center">
-		<a href="ListaOrdini" role="button" class="btn btn-success btn-block">Ordini</a>
+			<a href="ListaOrdini" role="button" class="btn btn-success btn-block">Ordini</a>
 			<%
 				if (cliente.isAdmin()) {
 			%>
-			<a href="AggiungiProdotto" role="button" class="btn btn-success btn-block">Aggiungi
-				prodotto</a> 
-				<button id="eliminaProdotto" class="btn btn-success btn-block">Elimina Prodotto </button>
-				<a href="Modifica" role="button" class="btn btn-success btn-block">Modifica
+			<a href="AggiungiProdottoCatalogoForm" role="button"
+				class="btn btn-success btn-block">Aggiungi prodotto</a>
+			<a href="ListaEliminaProdottiCatalogo" role="button" class="btn btn-success btn-block">Elimina
+				prodotto</a>
+			<a href="ListaModificaProdottiCatalogo" role="button" class="btn btn-success btn-block">Modifica
 				prodotto</a>
 			<%
 				}
 			%>
 		</div>
-		<form method="get" action ="EliminaProdotto">
-		<div id="buttonDiv"  class="row text-center">
-			<div id="barraRicerca" class="text-center">
-				<div style="border: none;" class="row">
-					<div class="col-sm-6">
-						<input type="text" name="id" class="form-control" placeholder="ID">
-					</div>
-				
-					<div class="col-sm-6">
-						<button id="confermaEliminazione" class="btn btn-success"> Elimina </button>
+		<form method="get" action="EliminaProdotto">
+			<div id="buttonDiv" class="row text-center">
+				<div id="barraRicerca" class="text-center">
+					<div style="border: none;" class="row">
+						<div class="col-sm-6">
+							<input type="text" name="id" class="form-control"
+								placeholder="ID">
+						</div>
+
+						<div class="col-sm-6">
+							<button id="confermaEliminazione" class="btn btn-success">
+								Elimina</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		</form>
 
 

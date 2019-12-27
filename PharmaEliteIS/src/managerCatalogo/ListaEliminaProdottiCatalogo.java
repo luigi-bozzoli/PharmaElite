@@ -16,7 +16,7 @@ import managerUtente.ClienteBean;
 /**
  * Servlet implementation class ListaProdottiCatalogo
  */
-@WebServlet("/ListaProdottiCatalogo")
+@WebServlet("/ListaEliminaProdottiCatalogo")
 public class ListaEliminaProdottiCatalogo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

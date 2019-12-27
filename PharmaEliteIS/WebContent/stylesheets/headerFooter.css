@@ -2,6 +2,8 @@
   padding-top: 0px;
 }
 
+
+
 #immagineLogo{
   width:110px;
   height:50px;
@@ -35,7 +37,8 @@ hr {
 #form
 {
     padding-top: 10px;
-    position: absolute;
+	
+    position: relative;
     width: 81%;
     left: 0;
     text-align: center;

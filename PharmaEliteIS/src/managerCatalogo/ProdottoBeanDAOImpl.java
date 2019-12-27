@@ -96,7 +96,7 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 			ps.setInt(5, p.getQuantita());
 			ps.setString(6, p.getDescrizione() );
 			ps.setBoolean(7,p.isFlagEliminato());
-			ps.setString(7, p.getId() );
+			ps.setString(8, p.getId() );
 
 			ps.execute();
 
@@ -267,19 +267,21 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 		try {
 
 			Set<ProdottoBean> listaProdotti = new TreeSet<ProdottoBean>();
-			ProdottoBean p = new ProdottoBean();
+			
 			conn = DriverManagerConnectionPool.getConnection();
 			ps = conn.prepareStatement("select * from PROGETTOTSW.Prodotto");
 	
 			ResultSet res = ps.executeQuery();
 
 			// Prendi il risultato
-			if(res.next()){
+			while(res.next())
+			{
+				ProdottoBean p = new ProdottoBean();
 
 				p.setId(res.getString("ID"));
+				p.setNome(res.getString("nome"));
 				p.setUrlImmagine(res.getString("urlImmagine"));
 				p.setCategoria(res.getString("categoria"));
-				p.setNome(res.getString("nome"));
 				p.setPrezzo(res.getDouble("prezzo"));
 				p.setQuantita(res.getInt("quantita"));
 				p.setDescrizione(res.getString("descrizione"));
@@ -287,6 +289,8 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 
 				listaProdotti.add(p);
 			}
+			
+			System.out.println(listaProdotti.size());
 			
 			return listaProdotti;
 		} catch(Exception e) {
