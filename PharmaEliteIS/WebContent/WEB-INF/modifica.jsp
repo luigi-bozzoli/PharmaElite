@@ -1,8 +1,10 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Set"%>
 <%@ page language="java"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="model.beans.ProdottoBean"%>
+<%@ page import="managerCatalogo.ProdottoBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +34,8 @@
 
 <body style="padding-bottom:30px;">
 	<%
-		ArrayList<ProdottoBean> listaProdotti = (ArrayList<ProdottoBean>) request.getAttribute("listaProdotti");
+		Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("listaProdotti");
+		 
 	%>
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -95,11 +98,12 @@
 			<tbody>
 
 				<%
-					for (int i = 0; i < listaProdotti.size(); i++) {
-						ProdottoBean p = listaProdotti.get(i);
+					Iterator<ProdottoBean> i = listaProdotti.iterator();
+					while(i.hasNext()){ 
+						ProdottoBean p = i.next();
 				%>
 		<tr>
-			<form action="FormModifica" method="post">
+			<form action="UpdateProdotto" method="post">
 
 					<input type="hidden" name="id" value="<%=p.getId()%>"> 
 
@@ -118,8 +122,8 @@
 								</div>
 							</div>
 						</td>
-						<td data-th="Categoria" class="text-center"><%=p.getCategoria() %></td>
-						<td data-th="Quantità" class="text-center"><%=p.getQuantità() %></td>
+						<td data-th="Categoria" class="text-center"><%=p.getCategoria() %></td>		
+						<td data-th="Quantità" class="text-center"><%=p.getQuantita() %></td>
 						<td data-th="Prezzo" class="text-center">€<%=p.getPrezzo() %></td>
 						<td class="actions">
 							<button class="btn btn-success btn-sm">

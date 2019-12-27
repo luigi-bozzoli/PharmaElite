@@ -2,9 +2,9 @@
 <%@page import="managerCatalogo.ProdottoBean"%>
 <%@page import="java.util.Set"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,14 +27,14 @@
 
 <title>Pharmaélite</title>
 <style media="screen">
-	body{
+body {
 	padding-top: 100px;
 }
 </style>
 </head>
 
 <body>
-<%
+	<%
 Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("listaProdotti");
 %>
 
@@ -65,8 +65,7 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 					</a></li>
 				</ul>
 
-				<form id="form" class="navbar-form navbar-left"
-					action="Cerca">
+				<form id="form" class="navbar-form navbar-left" action="Cerca">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="Search"
 							name="search">
@@ -95,24 +94,26 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 			</thead>
 
 			<tbody>
-				<%if(listaProdotti.size() == 0){ %>	
-				<tr><td><h2>Nessun prodotto trovato</h2></td></tr>
-			<%} %>
-			
-			<% 
+				<%if(listaProdotti.size() == 0){ %>
+				<tr>
+					<td><h2>Nessun prodotto trovato</h2></td>
+				</tr>
+				<%} %>
+
+				<% 
 			Iterator<ProdottoBean> i = listaProdotti.iterator();
 			while(i.hasNext()){
 				ProdottoBean p = i.next();
 				if(!p.isFlagEliminato()){
 			%>
-
+				<form class="form-signin" action="EliminaProdottoCatalogo" method="POST" onsubmit="return confermaEliminazione()">
+				<input type="hidden" name="idProdotto" value="<%=p.getId()%>">
 				<tr>
 					<td data-th="Prodotto">
 						<div class="row">
 							<div class="col-sm-2 hidden-xs">
-								<img
-									src="<%= p.getUrlImmagine() %>"
-									alt="immagine prodotto" class="img-responsive" />
+								<img src="<%= p.getUrlImmagine() %>" alt="immagine prodotto"
+									class="img-responsive" />
 							</div>
 							<div class="col-sm-10">
 								<h4 class="nomargin"><%=p.getNome()%></h4>
@@ -123,15 +124,19 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 					<td data-th="Prezzo"><%=p.getPrezzo() %></td>
 					<td data-th="Quantità">
 						<p class="form-control text-center"><%=p.getQuantita() %></p>
-						</td>
-					<td class="text-center actions">
-					<button class="carrello btn btn-danger btn-sm">
-							<i class="fas fa-trash-alt"></i>
-					</button>
 					</td>
-				</tr>
+					<td class="text-center actions">
+						<button class="carrello btn btn-danger btn-sm">
+							<i class="fas fa-trash-alt"></i>
+						</button>
+					</td>
 
-<%}} %>
+
+				</tr>
+				</form>
+
+				<%}
+				} %>
 
 
 
@@ -139,21 +144,9 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 
 
 			</tbody>
-
-
-
-			<tfoot>
-				<tr class = "text-center">
-					<td colspan="5"><a href="home.html" class="btn btn-success"> Userpage</a></td>
-				</tr>
-			</tfoot>
 		</table>
 	</div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="Script/listaProdotti.js"></script>
-<script src ="Script/aggiungiAlCarrello.js"></script>
+	
+	<script src="Script/listaEliminaProdottoScript.js"></script>
 </body>
 </html>
-    

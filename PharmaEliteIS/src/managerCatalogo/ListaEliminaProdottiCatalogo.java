@@ -3,6 +3,7 @@ package managerCatalogo;
 import java.io.IOException;
 import java.util.Set;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,13 +17,13 @@ import managerUtente.ClienteBean;
  * Servlet implementation class ListaProdottiCatalogo
  */
 @WebServlet("/ListaProdottiCatalogo")
-public class ListaProdottiCatalogo extends HttpServlet {
+public class ListaEliminaProdottiCatalogo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListaProdottiCatalogo() {
+    public ListaEliminaProdottiCatalogo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,8 +42,11 @@ public class ListaProdottiCatalogo extends HttpServlet {
 			return;
 		}
 		
-		ProdottoBeanDAO prodottoDao = new ProdottoBeanDAOImpl();
-		Set<ProdottoBean> listaProdotti =  prodottoDao.retriveAll();
+		GestoreCatalogo gestore = new GestoreCatalogo();
+		
+		request.setAttribute("listaProdotti", gestore.ritiraProdotti());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/listaEliminaProdotto.jsp");
+		dispatcher.forward(request, response);
 		
 	}
 

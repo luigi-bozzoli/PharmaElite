@@ -37,6 +37,22 @@ public class GestoreCatalogo {
 		}
 	}
 	
+	public void eliminaProdottoCatalogo(String idProdotto) {
+		//ritiro prodotto
+		ProdottoBeanDAO prodottoDao = new ProdottoBeanDAOImpl();
+		ProdottoBean prodotto = prodottoDao.doRetrieveByKey(idProdotto);
+		
+		//lo elimino
+		prodotto.setFlagEliminato(true);
+		prodottoDao.doUpdate(prodotto);
+	}
+	
+	public Set<ProdottoBean> ritiraProdotti(){
+		ProdottoBeanDAO prodottoDao = new ProdottoBeanDAOImpl();
+		Set<ProdottoBean> listaProdotti =  prodottoDao.retriveAll();
+		return listaProdotti;
+	}
+	
 	private String generaID() {
 		String uniqueID = UUID.randomUUID().toString();
 		return uniqueID.substring(0,9);
