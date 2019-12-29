@@ -7,8 +7,8 @@ import java.util.UUID;
 import javax.xml.bind.ValidationException;
 
 import managerCarrello.CarrelloBean;
-import managerCarrello.CarrelloDAO;
-import managerCarrello.CarrelloDAOImpl;
+import managerCarrello.CarrelloBeanDAO;
+import managerCarrello.CarrelloBeanDAOImpl;
 
 public class GestoreUtente {
 
@@ -113,7 +113,7 @@ public class GestoreUtente {
 		}else {
 
 			CarrelloBean prodottoCarrello = new CarrelloBean();
-			CarrelloDAO carrDao = new CarrelloDAOImpl();
+			CarrelloBeanDAO carrDao = new CarrelloBeanDAOImpl();
 			carrDao.deleteAllByEmail(email);
 
 			Iterator<CarrelloBean> it = carrello.iterator();

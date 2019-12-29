@@ -1,6 +1,8 @@
 package managerCarrello;
 
-public class CarrelloBean {
+import managerCatalogo.ProdottoBean;
+
+public class CarrelloBean implements Comparable<CarrelloBean> {
 	private String emailCliente, idProdotto;
 	public String getEmailCliente() {
 		return emailCliente;
@@ -21,4 +23,12 @@ public class CarrelloBean {
 		this.quantita = quantita;
 	}
 	private int quantita;
+	@Override
+	public int compareTo(CarrelloBean o) {
+		if(this.quantita > o.getQuantita()) 
+			return 1;
+		if(this.quantita < o.getQuantita())
+			return -1;
+		return 0;
+	}
 }

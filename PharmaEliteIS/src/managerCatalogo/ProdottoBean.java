@@ -129,6 +129,6 @@ public class ProdottoBean implements Comparable<ProdottoBean> {
 	@Override
 	public int compareTo(ProdottoBean o) {
 
-		return this.Nome.compareTo(o.getNome());
+		return this.Nome.compareToIgnoreCase(o.getNome());
 	}
 }

@@ -1,5 +1,7 @@
-<%@page import="model.beans.ProdottoBean"%>
-<%@page import="model.beans.ContenutoBean"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Set"%>
+<%@page import="managerCatalogo.ProdottoBean"%>
+<%@page import="managerCarrello.CarrelloBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
@@ -34,8 +36,8 @@
 
 
 	<%
-		ArrayList<ContenutoBean> carrello = (ArrayList<ContenutoBean>) request.getAttribute("carrello");
-		ArrayList<ProdottoBean> listaProdotti = (ArrayList<ProdottoBean>) request.getAttribute("listaProdotti");
+		Set<CarrelloBean> carrello = (Set<CarrelloBean>) request.getAttribute("carrello");
+		Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("listaProdotti");
 		double costoTot = (double) request.getAttribute("costoTot");
 	%>
 
@@ -99,9 +101,12 @@
 			<tbody id="fullBody">
 
 				<%
-					for (int i = 0; i < carrello.size(); i++) {
-							ProdottoBean p = listaProdotti.get(i);
-							ContenutoBean c = carrello.get(i);
+					Iterator<CarrelloBean> iCarr = carrello.iterator();
+					Iterator<ProdottoBean> iProd = listaProdotti.iterator();
+					while(iCarr.hasNext() && iProd.hasNext()){
+						
+							CarrelloBean c = iCarr.next();
+							ProdottoBean p = iProd.next();
 				%>
 				<tr>
 					<td data-th="Product">
@@ -119,10 +124,10 @@
 					</td>
 					<td data-th="Prezzo">€<%=p.getPrezzo()%></td>
 					<td data-th="Quantità">
-						<input type="hidden" name = "defaultQuantity" value="<%=c.getQuantità() %>">
-						<input type="number" class="form-control text-center" min="0" max="15" value="<%=c.getQuantità()%>" onclick="aggiornaPrezzo(this)">
+						<input type="hidden" name = "defaultQuantity" value="<%=c.getQuantita() %>">
+						<input type="number" class="form-control text-center" min="0" max="15" value="<%=c.getQuantita()%>" onclick="aggiornaPrezzo(this)">
 					</td>
-					<td data-th="Prezzo totale" class="text-centssr">€ <%=approssima(c.getQuantità() * p.getPrezzo())%></td>
+					<td data-th="Prezzo totale" class="text-centssr">€ <%=approssima(c.getQuantita() * p.getPrezzo())%></td>
 					<td class="actions" data-th="">
 						<button class="btn btn-info btn-sm"> <i class="fa fa-refresh"></i> </button> 
 						<input type="hidden" value="<%=p.getId()%>">

@@ -150,7 +150,7 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 	}
 
 	@Override
-	public Set<ProdottoBean> searchByName(String nome) {
+	public synchronized Set<ProdottoBean> searchByName(String nome) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
@@ -206,7 +206,7 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 	}
 
 	@Override
-	public Set<ProdottoBean> searchByCategory(String categoria) {
+	public synchronized Set<ProdottoBean> searchByCategory(String categoria) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
@@ -260,7 +260,7 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 	}
 
 	@Override
-	public Set<ProdottoBean> retriveAll() {
+	public synchronized Set<ProdottoBean> retriveAll() {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
@@ -290,7 +290,6 @@ public class ProdottoBeanDAOImpl implements ProdottoBeanDAO{
 				listaProdotti.add(p);
 			}
 			
-			System.out.println(listaProdotti.size());
 			
 			return listaProdotti;
 		} catch(Exception e) {

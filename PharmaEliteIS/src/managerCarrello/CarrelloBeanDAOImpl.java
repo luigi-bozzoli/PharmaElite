@@ -2,13 +2,17 @@ package managerCarrello;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Set;
+import java.util.TreeSet;
 
+import managerCatalogo.ProdottoBean;
 import managerUtente.DriverManagerConnectionPool;
 
-public class CarrelloDAOImpl implements CarrelloDAO{
+public class CarrelloBeanDAOImpl implements CarrelloBeanDAO{
 	
-	public void deleteAllByEmail(String email) {
+	public synchronized void deleteAllByEmail(String email) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 
@@ -40,7 +44,7 @@ public class CarrelloDAOImpl implements CarrelloDAO{
 	}
 
 	
-	public void doSave(CarrelloBean c) {
+	public synchronized void doSave(CarrelloBean c) {
 		Connection con = null;
 		PreparedStatement ps = null;
 
@@ -70,5 +74,38 @@ public class CarrelloDAOImpl implements CarrelloDAO{
 
 		}
 		
+	}
+	
+	public synchronized Set<CarrelloBean> retriveAll(String email) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+
+			Set<CarrelloBean> listaProdotti = new TreeSet<CarrelloBean>();
+			
+			conn = DriverManagerConnectionPool.getConnection();
+			ps = conn.prepareStatement("select * from PROGETTOTSW.carrello where EmailCliente = ?");
+			ps.setString(1, email);
+			
+			ResultSet res = ps.executeQuery();
+			
+
+			// Prendi il risultato
+			while(res.next())
+			{
+				CarrelloBean c = new CarrelloBean();
+				c.setEmailCliente(res.getString("EmailCliente"));
+				c.setIdProdotto(res.getString("IDProdotto"));
+				c.setQuantita(res.getInt("quantita"));
+				listaProdotti.add(c);
+			}
+			
+			
+			return listaProdotti;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
