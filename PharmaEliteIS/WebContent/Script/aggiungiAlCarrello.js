@@ -14,7 +14,7 @@ function aggiungiAlCarrello(){
 }
 
 function richiesta(x, y, button){
-	var quantità = "quantità="+x+"&";
+	var quantità = "quantita="+x+"&";
 	var id = "id="+y;
 	var qString = "?"+ quantità + id;
 	var url = "AggiungiAlCarrello"+qString;

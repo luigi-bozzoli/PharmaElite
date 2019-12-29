@@ -41,49 +41,55 @@ public class AggiungiAlCarrello extends HttpServlet {
 		int quantita=0;
 		response.setContentType("text/plain");
 		String idProdotto = request.getParameter("id");
-		String q=request.getParameter("quantità");
-		
+		String q=request.getParameter("quantitï¿½");
+
+
+		//controlla tipo quantitÃ 
 		if(isInt(q)) {
 			quantita=Integer.parseInt(q);
 		}else {
 			sendError(response);
 			return;
 		}
-		
+
+		//ritira prodotto
 		ProdottoDAO prodottoDao = new ProdottoDAO();
 		ProdottoBean prodotto = prodottoDao.doRetrieveByKey(idProdotto);
 
+		//controllo se il prodotto esiste e la quantitÃ  Ã¨ positiva
 		if (!checkInput(prodotto, quantita)) {
 			sendError(response);
 			return;
 		}
+
+
 		String x=request.getHeader("x-requested-with");
-		//controllo quantità 
-		if(prodotto.getQuantità() < quantita) {
-		
+		//controllo quantitÃ 
+		if(prodotto.getQuantitï¿½() < quantita) {//QuantitÃ  non disponibile
+
 			//verifica ajax
-			if(x!=null) {
+			if(x!=null) {//ajax
 				if(x.equalsIgnoreCase("XMLHttpRequest"))
-					response.getWriter().write(""+prodotto.getQuantità());
-			}else {
+					response.getWriter().write(""+prodotto.getQuantitï¿½());
+			}else {//richiesta diretta
 				sendError(response);
 				return;
 			}
 
-		}else {
+		}else {//la quantitÃ  va bene
 			//TRUE
 			HttpSession session = request.getSession();
 			ClienteBean cliente = (ClienteBean) session.getAttribute("cliente");
 
 			//VERIFICA LOGIN
-			if(cliente == null) { 
+			if(cliente == null) {
 				aggiornaSessione(session, idProdotto, quantita);
 			}else {
 
 				aggiornaCarrello(cliente, prodotto, quantita);
 			}
 			if(x!=null) {
-				if(x.equalsIgnoreCase("XMLHttpRequest")) 
+				if(x.equalsIgnoreCase("XMLHttpRequest"))
 					response.getWriter().write("true");
 			}else {
 				response.setStatus(200);
@@ -122,7 +128,7 @@ public class AggiungiAlCarrello extends HttpServlet {
 		ContenutoBean c = cDao.doRetrieveByKey(email, prodotto.getId());
 
 		if(c != null) {
-			double prezzo = prodotto.getPrezzo()*c.getQuantità();
+			double prezzo = prodotto.getPrezzo()*c.getQuantitï¿½();
 
 			//aggiorna costo totale carrello
 			CarrelloDAO carrDao = new CarrelloDAO();
@@ -149,7 +155,7 @@ public class AggiungiAlCarrello extends HttpServlet {
 
 		prodottoCarrello.setEmailCliente(emailCliente);
 		prodottoCarrello.setIdProdotto(idProdotto);
-		prodottoCarrello.setQuantità(quantita);
+		prodottoCarrello.setQuantitï¿½(quantita);
 
 		ContenutoDAO prodottoDao = new ContenutoDAO();
 		prodottoDao.doSave(prodottoCarrello);
@@ -179,7 +185,7 @@ public class AggiungiAlCarrello extends HttpServlet {
 
 		ContenutoBean prodotto = new ContenutoBean();
 		prodotto.setIdProdotto(idProdotto);
-		prodotto.setQuantità(quantita);
+		prodotto.setQuantitï¿½(quantita);
 
 		carrello.add(prodotto);
 		session.setAttribute("carrello", carrello);
@@ -210,5 +216,3 @@ public class AggiungiAlCarrello extends HttpServlet {
 	}
 
 }
-
-

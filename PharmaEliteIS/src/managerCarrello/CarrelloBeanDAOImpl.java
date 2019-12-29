@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
 
-import managerCatalogo.ProdottoBean;
 import managerUtente.DriverManagerConnectionPool;
 
 public class CarrelloBeanDAOImpl implements CarrelloBeanDAO{
@@ -107,5 +106,70 @@ public class CarrelloBeanDAOImpl implements CarrelloBeanDAO{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public CarrelloBean doRetrieveByKey(String email, String idProdotto) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+
+			CarrelloBean c = new CarrelloBean();
+			
+			conn = DriverManagerConnectionPool.getConnection();
+			ps = conn.prepareStatement("select * from PROGETTOTSW.carrello where EmailCliente = ? and IDProdotto = ?");
+			ps.setString(1, email);
+			ps.setString(2, idProdotto);
+			
+			ResultSet res = ps.executeQuery();
+			
+
+			// Prendi il risultato
+			if(res.next())
+			{
+				c.setEmailCliente(res.getString("EmailCliente"));
+				c.setIdProdotto(res.getString("IDProdotto"));
+				c.setQuantita(res.getInt("quantita"));
+
+			}
+			
+			
+			return c;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+
+	public void doDeleteByKey(String email, String idProdotto) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+
+			conn = DriverManagerConnectionPool.getConnection();
+			ps = conn.prepareStatement("delete from PROGETTOTSW.carrello where EmailCliente = ? and IDProdotto = ?");
+			ps.setString(1, email);
+			ps.setString(2, idProdotto);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}finally{
+
+			try {
+
+				ps.close();
+				DriverManagerConnectionPool.releaseConnection(conn);
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
 	}
 }

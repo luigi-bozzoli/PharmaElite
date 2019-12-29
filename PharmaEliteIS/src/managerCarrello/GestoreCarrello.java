@@ -4,16 +4,72 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.xml.bind.ValidationException;
+
 import managerCatalogo.ProdottoBean;
 import managerCatalogo.ProdottoBeanDAO;
 import managerCatalogo.ProdottoBeanDAOImpl;
+import managerUtente.ClienteBean;
 
 public class GestoreCarrello {
 
 	private Set<ProdottoBean> listaProdotti;
 	private Set<CarrelloBean> carrello;
 	private double prezzo;
+	
+	public void aggiungiProdottoCarrello(String idProdotto, int quantita, ClienteBean cliente, Set<CarrelloBean> carrello) throws ValidationException, QuantitaNonDisponibile {
+		//ritiro prodotto
+		ProdottoBeanDAO prodottoDao = new ProdottoBeanDAOImpl();
+		ProdottoBean prodotto = prodottoDao.doRetrieveByKey(idProdotto);
+		
+		if(prodotto == null || quantita <= 0) {
+			throw new ValidationException("");
+		}
+		
+		if(prodotto.getQuantita() < quantita) {
+			throw new QuantitaNonDisponibile(prodotto.getQuantita());
+		}
+		
+		if(cliente == null) {// utente non loggato
+			aggiornaSessione(carrello, idProdotto, quantita);
+		}else {//utente loggato
+			aggiornaCarrello(cliente.getEmail(), idProdotto, quantita);
+		}
+	}
+	
+	private void aggiornaCarrello(String email, String idProdotto, int quantita) {
+		
+		verificaPresenzaProdotto(email, idProdotto);
+		
+		CarrelloBeanDAO carrelloDao = new CarrelloBeanDAOImpl();
+		CarrelloBean carrello = new CarrelloBean();
+		carrello.setEmailCliente(email);
+		carrello.setIdProdotto(idProdotto);
+		carrello.setQuantita(quantita);
+		carrelloDao.doSave(carrello);
+	}
+	
+	private void verificaPresenzaProdotto(String email, String idProdotto) {
+		CarrelloBeanDAO carrelloDao = new CarrelloBeanDAOImpl();
+		CarrelloBean c = carrelloDao.doRetrieveByKey(email, idProdotto);
+		
+		if(c != null) {
+			carrelloDao.doDeleteByKey(email, idProdotto);
+		}else {
+			return;
+		}
+		
+	}
+	
 
+	private void aggiornaSessione(Set<CarrelloBean> carrello, String idProdotto, int quantita) {
+		CarrelloBean prodottoCarrello = new CarrelloBean();
+		prodottoCarrello.setQuantita(quantita);
+		prodottoCarrello.setIdProdotto(idProdotto);
+		
+		carrello.add(prodottoCarrello);
+	}
+	
 	public void ritiraCarrelloUtenteLoggato(String email) {
 		CarrelloBeanDAO carrelloDao = new CarrelloBeanDAOImpl();
 		this.carrello = carrelloDao.retriveAll(email);
@@ -81,4 +137,5 @@ public class GestoreCarrello {
 	public void setCarrello(Set<CarrelloBean> carrello) {
 		this.carrello = carrello;
 	}
+
 }
