@@ -1,4 +1,6 @@
-<%@page import="model.beans.OrdineBean"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Set"%>
+<%@page import="managerOrdine.OrdineBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java"%>
 <!DOCTYPE html>
@@ -27,54 +29,54 @@
 <body>
 
 	<%
-	ArrayList<OrdineBean> lista = (ArrayList<OrdineBean>) request.getAttribute("lista");
-ArrayList<ArrayList<String>> listaNomi = (ArrayList<ArrayList<String>>) request.getAttribute("listaNomi");
+	Set<OrdineBean> lista = (Set<OrdineBean>) request.getAttribute("lista");
 %>
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container">
+<div class="container">
 
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#navbar-collapse-main">
-					<span class="sr-only"> Toggle navigation </span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a id="logo" class="navbar-brand"><img id="immagineLogo"
-					class="img-rounded" src="Immagini/logo.PNG" alt="logo"></a>
-			</div>
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+      data-target="#navbar-collapse-main">
+      <span class="sr-only"> Toggle navigation </span> <span
+        class="icon-bar"></span> <span class="icon-bar"></span> <span
+        class="icon-bar"></span>
+    </button>
+    <a id="logo" class="navbar-brand"><img id="immagineLogo" class="img-rounded"
+      src="Immagini/logo.PNG" alt="logo"></a>
+  </div>
 
-			<div class="collapse navbar-collapse" id="navbar-collapse-main">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a class="vociMenu" href="home.html"> <i
-							class="fas fa-home"></i>
-					</a></li>
-					<li><a class="vociMenu" href="UserPage"> <i
-							class="fas fa-user"></i>
-					</a></li>
-					<li><a class="vociMenu" href="Carrello"> <i
-							class="fas fa-shopping-cart"></i>
-					</a></li>
-				</ul>
+  <div class="collapse navbar-collapse" id="navbar-collapse-main">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a class="vociMenu" href="home.html"> <i
+          class="fas fa-home"></i>
+      </a></li>
+      <li><a class="vociMenu" href="Userpage"> <i class="fas fa-user"></i>
+      </a></li>
+      <li><a class="vociMenu" href="Carrello"> <i
+          class="fas fa-shopping-cart"></i>
+      </a></li>
+    </ul>
 
-				<form id="form" class="navbar-form navbar-left"
-					action="/action_page.php">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search"
-							name="search">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
-						</div>
-					</div>
-				</form>
+    <form id="form" class="navbar-form "
+      action="CercaProdotto">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search"
+          name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+      </form>
 
-			</div>
-		</div>
 
-	</nav>
+  </div>
+</div>
+
+</nav>
+
 
 	<div class="container">
 
@@ -111,16 +113,18 @@ ArrayList<ArrayList<String>> listaNomi = (ArrayList<ArrayList<String>>) request.
 			<tbody>
 
 				<%
-					for(int j = 0; j < lista.size(); j++){
-						OrdineBean ordine = lista.get(j); 
-						ArrayList<String> nomi = listaNomi.get(j);
+				Iterator<OrdineBean> i = lista.iterator();
+				while(i.hasNext()){
+					OrdineBean ordine = i.next();
 						%>
 				<tr>
 					<td data-th="Prodotti">
 						<div class="row">
 							<div class="col-sm-12">
-								<%	for(int i = 0; i < nomi.size() ; i++){ %>
-										<h6 class="nomargin"><%=nomi.get(i)%></h6>
+								<%	Iterator<String> iString = ordine.getListaProdotti().iterator();
+										while(iString.hasNext())
+								{ %>
+										<h6 class="nomargin"><%=iString.next()%></h6>
 								<%} %>
 							</div>
 						</div>

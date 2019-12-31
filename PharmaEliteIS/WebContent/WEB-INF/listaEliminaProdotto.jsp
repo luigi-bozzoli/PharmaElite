@@ -39,48 +39,50 @@ Set<ProdottoBean> listaProdotti = (Set<ProdottoBean>) request.getAttribute("list
 %>
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container">
+<div class="container">
 
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#navbar-collapse-main">
-					<span class="sr-only"> Toggle navigation </span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a id="logo" class="navbar-brand"><img id="immagineLogo"
-					class="img-rounded" src="Immagini/logo.PNG" alt="logo"></a>
-			</div>
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+      data-target="#navbar-collapse-main">
+      <span class="sr-only"> Toggle navigation </span> <span
+        class="icon-bar"></span> <span class="icon-bar"></span> <span
+        class="icon-bar"></span>
+    </button>
+    <a id="logo" class="navbar-brand"><img id="immagineLogo" class="img-rounded"
+      src="Immagini/logo.PNG" alt="logo"></a>
+  </div>
 
-			<div class="collapse navbar-collapse" id="navbar-collapse-main">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a class="vociMenu" href="home.html"> <i
-							class="fas fa-home"></i>
-					</a></li>
-					<li><a class="vociMenu" href="UserPage"> <i
-							class="fas fa-user"></i>
-					</a></li>
-					<li><a class="vociMenu" href="Carrello"> <i
-							class="fas fa-shopping-cart"></i>
-					</a></li>
-				</ul>
+  <div class="collapse navbar-collapse" id="navbar-collapse-main">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a class="vociMenu" href="home.html"> <i
+          class="fas fa-home"></i>
+      </a></li>
+      <li><a class="vociMenu" href="Userpage"> <i class="fas fa-user"></i>
+      </a></li>
+      <li><a class="vociMenu" href="Carrello"> <i
+          class="fas fa-shopping-cart"></i>
+      </a></li>
+    </ul>
 
-				<form id="form" class="navbar-form navbar-left" action="Cerca">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search"
-							name="search">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
-						</div>
-					</div>
-				</form>
+    <form id="form" class="navbar-form "
+      action="CercaProdotto">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search"
+          name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+      </form>
 
-			</div>
-		</div>
 
-	</nav>
+  </div>
+</div>
+
+</nav>
+	
 
 	<div class="container">
 		<table id="cart" class="table table-hover table-condensed">

@@ -37,7 +37,7 @@ public class AggiungiProdottoCarrello extends HttpServlet {
 		HttpSession session = request.getSession();
 		ClienteBean cliente = (ClienteBean) session.getAttribute("cliente");
 		Set<CarrelloBean> carrello = (Set<CarrelloBean>) session.getAttribute("carrello");
-
+		
 		String idProdotto = request.getParameter("id");
 		String quantita=request.getParameter("quantita");
 		int q = 0;
@@ -54,7 +54,7 @@ public class AggiungiProdottoCarrello extends HttpServlet {
 		String x=request.getHeader("x-requested-with");
 
 		try {
-			gestore.aggiungiProdottoCarrello(idProdotto, q, cliente, carrello);
+			gestore.aggiungiProdottoCarrello(idProdotto, q, cliente, session);
 
 		}catch (ValidationException e) {
 			this.sendError(response);

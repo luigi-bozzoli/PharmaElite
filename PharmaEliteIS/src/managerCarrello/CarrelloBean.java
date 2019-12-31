@@ -25,7 +25,7 @@ public class CarrelloBean implements Comparable<CarrelloBean> {
 	private int quantita;
 	@Override
 	public int compareTo(CarrelloBean o) {
-		if(this.quantita > o.getQuantita()) 
+		if(this.quantita >= o.getQuantita()) 
 			return 1;
 		if(this.quantita < o.getQuantita())
 			return -1;

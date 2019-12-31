@@ -32,6 +32,7 @@ public class UpdateCarrello extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("ENTRO");
 
 		response.setContentType("text/plain");
 		HttpSession session = request.getSession();
@@ -39,7 +40,8 @@ public class UpdateCarrello extends HttpServlet {
 		Set<CarrelloBean> carrello = (Set<CarrelloBean>) session.getAttribute("carrello");
 
 		String idProdotto = request.getParameter("id");
-		String quantita=request.getParameter("quantita");
+		String quantita=request.getParameter("quantità");
+		System.out.println("QUANTITA: "+quantita);
 		int q = 0;
 
 		try {
@@ -60,6 +62,7 @@ public class UpdateCarrello extends HttpServlet {
 			this.sendError(response);
 			return;
 		}catch (QuantitaNonDisponibile eccezioneQuantita ) {
+			
 			if(x!=null) {
 				if(x.equalsIgnoreCase("XMLHttpRequest")) {
 					response.getWriter().write(""+eccezioneQuantita.getQuantitaDisponibile());
@@ -70,10 +73,12 @@ public class UpdateCarrello extends HttpServlet {
 				return;
 			}
 		}
-		
+
 		if(x!=null) {
-			if(x.equalsIgnoreCase("XMLHttpRequest"))
+			if(x.equalsIgnoreCase("XMLHttpRequest")) {
 				response.getWriter().write("true");
+				return;
+			}
 		}else {
 			response.setStatus(200);
 			response.sendRedirect("OperationSuccess.html");

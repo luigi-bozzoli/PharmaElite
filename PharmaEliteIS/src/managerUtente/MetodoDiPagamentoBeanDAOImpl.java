@@ -1,6 +1,10 @@
 package managerUtente;
 
 import java.sql.*;
+import java.util.Set;
+import java.util.TreeSet;
+
+import managerCatalogo.ProdottoBean;
 
 public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBeanDAO{
 	public void doSave(MetodoDiPagamentoBean m){
@@ -138,6 +142,42 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBeanDAO{
 				e.printStackTrace();
 			}
 		}
+
+	}
+
+	@Override
+	public Set<MetodoDiPagamentoBean> doRetrieveAll(String email) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+
+			Set<MetodoDiPagamentoBean> metodiPagamento = new TreeSet<MetodoDiPagamentoBean>();
+			
+			conn = DriverManagerConnectionPool.getConnection();
+			ps = conn.prepareStatement("select * from PROGETTOTSW.metododipagamento where EmailCliente = ?");
+			ps.setString(1, email);
+			
+			ResultSet res = ps.executeQuery();
+
+			// Prendi il risultato
+			while(res.next())
+			{
+				MetodoDiPagamentoBean m = new MetodoDiPagamentoBean();
+
+				m.setEmailCliente(email);
+				m.setNumeroCarta(res.getString("numeroCarta"));
+				m.setTipoCarta(res.getString("tipo"));
+
+				metodiPagamento.add(m);
+			}
+			
+			
+			return metodiPagamento;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 
 	}
 }

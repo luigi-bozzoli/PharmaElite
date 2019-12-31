@@ -1,6 +1,6 @@
 package managerUtente;
 
-public class MetodoDiPagamentoBean {
+public class MetodoDiPagamentoBean implements Comparable<MetodoDiPagamentoBean>{
 	private String NumeroCarta, TipoCarta, EmailCliente;
 	public MetodoDiPagamentoBean() {
 
@@ -49,6 +49,10 @@ public class MetodoDiPagamentoBean {
 			return true;
 
 		return false;
+	}
+	@Override
+	public int compareTo(MetodoDiPagamentoBean o) {
+		return this.NumeroCarta.compareToIgnoreCase(o.NumeroCarta);
 	}
 
 }

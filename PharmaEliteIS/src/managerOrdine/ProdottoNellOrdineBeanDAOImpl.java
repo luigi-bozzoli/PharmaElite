@@ -1,10 +1,12 @@
 package managerOrdine;
 
 import java.sql.*;
+import java.util.Set;
+import java.util.TreeSet;
 
 import managerUtente.DriverManagerConnectionPool;
 
-public class ProdottoNellOrdineBeanDAOImpl {
+public class ProdottoNellOrdineBeanDAOImpl implements ProdottoNellordineBeanDAO{
 	public void doSave(ProdottoNellordineBean o){
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -36,7 +38,7 @@ public class ProdottoNellOrdineBeanDAOImpl {
 
 		}
 	}
-	
+
 	public synchronized ProdottoNellordineBean doRetrieveByKey(String id){
 
 		Connection conn = null;
@@ -83,7 +85,7 @@ public class ProdottoNellOrdineBeanDAOImpl {
 
 		return null;
 	}
-	
+
 	public synchronized void doUpdate(ProdottoNellordineBean p){
 
 		Connection con = null;
@@ -92,8 +94,8 @@ public class ProdottoNellOrdineBeanDAOImpl {
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			ps = con.prepareStatement("update PROGETTOTSW.ProdottoNellOrdine set IDProdotto=?, nome=?,prezzo=? where ID=?");
-			
-			
+
+
 			ps.setString(1, p.getIdProdotto());
 			ps.setString(2, p.getNome());
 			ps.setDouble(3, p.getPrezzo() );
@@ -145,6 +147,35 @@ public class ProdottoNellOrdineBeanDAOImpl {
 			}
 		}
 
+	}
+
+	@Override
+	public Set<String> retriveProductNames(String id) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+
+		try {
+
+			Set<String> listaProdotti = new TreeSet<String>();
+
+			conn = DriverManagerConnectionPool.getConnection();
+			ps = conn.prepareStatement("select * from PROGETTOTSW.prodottonellordine where ID = ?");
+			ps.setString(1, id);
+
+			ResultSet res = ps.executeQuery();
+
+			// Prendi il risultato
+			while(res.next())
+			{
+				listaProdotti.add(res.getString("nome"));
+			}
+
+
+			return listaProdotti;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 

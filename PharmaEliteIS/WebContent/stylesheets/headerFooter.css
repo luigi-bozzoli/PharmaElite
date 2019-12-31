@@ -38,7 +38,7 @@ hr {
 {
     padding-top: 10px;
 	
-    position: relative;
+    position: absolute;
     width: 81%;
     left: 0;
     text-align: center;

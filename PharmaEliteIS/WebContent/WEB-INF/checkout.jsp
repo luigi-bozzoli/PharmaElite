@@ -1,6 +1,8 @@
-<%@page import="model.beans.IndirizzoSpedizioneBean"%>
-<%@page import="model.beans.MetodoDiPagamentoBean"%>
-<%@page import="model.beans.ProdottoBean"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="managerUtente.IndirizzoDiSpedizioneBean"%>
+<%@page import="java.util.Set"%>
+<%@page import="managerUtente.IndirizzoDiSpedizioneBean"%>
+<%@page import="managerUtente.MetodoDiPagamentoBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java"%>
 <!DOCTYPE html>
@@ -40,55 +42,56 @@
 
 	<%
 		double prezzoTot = (double) request.getAttribute("prezzoTot");
-		ArrayList<String> listaProd = (ArrayList<String>) request.getAttribute("listaProdotti");
-		ArrayList<MetodoDiPagamentoBean> listaCarte = (ArrayList<MetodoDiPagamentoBean>) request
-				.getAttribute("listaCarte");
-		ArrayList<IndirizzoSpedizioneBean> listaInd = (ArrayList<IndirizzoSpedizioneBean>) request
-				.getAttribute("listaInd");
+		Set<String> listaProd = (Set<String>) request.getAttribute("listaProdotti");
+		Set<MetodoDiPagamentoBean> listaCarte = (Set<MetodoDiPagamentoBean>) request.getAttribute("listaCarte");
+		Set<IndirizzoDiSpedizioneBean> listaInd = (Set<IndirizzoDiSpedizioneBean>) request.getAttribute("listaInd");
 	%>
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container">
+<div class="container">
 
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#navbar-collapse-main">
-					<span class="sr-only"> Toggle navigation </span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a id="logo" class="navbar-brand"><img id="immagineLogo"
-					class="img-rounded" src="Immagini/logo.PNG" alt="logo"></a>
-			</div>
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+      data-target="#navbar-collapse-main">
+      <span class="sr-only"> Toggle navigation </span> <span
+        class="icon-bar"></span> <span class="icon-bar"></span> <span
+        class="icon-bar"></span>
+    </button>
+    <a id="logo" class="navbar-brand"><img id="immagineLogo" class="img-rounded"
+      src="Immagini/logo.PNG" alt="logo"></a>
+  </div>
 
-			<div class="collapse navbar-collapse" id="navbar-collapse-main">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a class="vociMenu" href="home.html"> <i
-							class="fas fa-home"></i>
-					</a></li>
-					<li><a class="vociMenu" href="UserPage"> <i
-							class="fas fa-user"></i>
-					</a></li>
-					<li><a class="vociMenu" href="#"> <i
-							class="fas fa-shopping-cart"></i>
-					</a></li>
-				</ul>
+  <div class="collapse navbar-collapse" id="navbar-collapse-main">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a class="vociMenu" href="home.html"> <i
+          class="fas fa-home"></i>
+      </a></li>
+      <li><a class="vociMenu" href="Userpage"> <i class="fas fa-user"></i>
+      </a></li>
+      <li><a class="vociMenu" href="Carrello"> <i
+          class="fas fa-shopping-cart"></i>
+      </a></li>
+    </ul>
 
-				<form id="form" class="navbar-form navbar-left" action="Cerca">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search"
-							name="search">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
-						</div>
-					</div>
-				</form>
+    <form id="form" class="navbar-form "
+      action="CercaProdotto">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search"
+          name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+      </form>
 
-			</div>
-		</div>
-	</nav>
+
+  </div>
+</div>
+
+</nav>
+
 
 	<form id="metodoPagamento" action="AggiungiMetodoPagamento"
 		method="get" onsubmit="return checkCarta()"></form>
@@ -135,9 +138,12 @@
 										<div class="col-sm-9">
 											<ul>
 												<%
-													for (int i = 0; i < listaProd.size(); i++) {
+													Iterator<String> i = listaProd.iterator();
+												while(i.hasNext()){
+													String x = i.next();
+												
 												%>
-												<li><%=listaProd.get(i)%></li>
+												<li><%=x%></li>
 												<%
 													}
 												%>
@@ -177,10 +183,13 @@
 									<div class="col-sm-6">
 										<select name="tipoCarta" class="selectpicker">
 											<%
-												for (int i = 0; i < listaCarte.size(); i++) {
+											Iterator<MetodoDiPagamentoBean> it = listaCarte.iterator();
+											while(it.hasNext()){
+												MetodoDiPagamentoBean m = it.next();
+					
 											%>
-											<option value="<%=listaCarte.get(i).getNumCarta()%>">
-												<%=listaCarte.get(i).getTipo()%>-<%=listaCarte.get(i).getNumCarta()%></option>
+											<option value="<%=m.getNumeroCarta()%>">
+												<%=m.getTipoCarta()%>-<%=m.getNumeroCarta()%></option>
 											<%
 												}
 											%>
@@ -232,10 +241,12 @@
 									<div class="col-sm-6">
 										<select name="indirizzi" class="selectpicker">
 											<%
-												for (int i = 0; i < listaInd.size(); i++) {
+											Iterator<IndirizzoDiSpedizioneBean> iter = listaInd.iterator();
+												while(iter.hasNext()) {
+													IndirizzoDiSpedizioneBean ind = iter.next();
 											%>
-											<option value="<%=listaInd.get(i).getIndirizzo()%>">
-												<%=listaInd.get(i).getIndirizzo()%></option>
+											<option value="<%=ind.getIndirizzo()%>">
+												<%=ind.getIndirizzo()%></option>
 											<%
 												}
 											%>

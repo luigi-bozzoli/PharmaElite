@@ -32,6 +32,19 @@
 	<%!String approssima(double x) {
 		String y = Double.toString(x);
 		return y.substring(0, y.indexOf(".") + 2);
+	}
+
+	int trovaQuantita(String id, Iterator<CarrelloBean> i) {
+		int q = 0;
+		while (i.hasNext()) {
+			CarrelloBean c = i.next();
+
+			if (c.getIdProdotto().equalsIgnoreCase(id)) {
+				q = c.getQuantita();
+			}
+		}
+
+		return q;
 	}%>
 
 
@@ -42,52 +55,56 @@
 	%>
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container">
+<div class="container">
 
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#navbar-collapse-main">
-					<span class="sr-only"> Toggle navigation </span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a id="logo" class="navbar-brand"><img id="immagineLogo"
-					class="img-rounded" src="Immagini/logo.PNG" alt="logo"></a>
-			</div>
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+      data-target="#navbar-collapse-main">
+      <span class="sr-only"> Toggle navigation </span> <span
+        class="icon-bar"></span> <span class="icon-bar"></span> <span
+        class="icon-bar"></span>
+    </button>
+    <a id="logo" class="navbar-brand"><img id="immagineLogo" class="img-rounded"
+      src="Immagini/logo.PNG" alt="logo"></a>
+  </div>
 
-			<div class="collapse navbar-collapse" id="navbar-collapse-main">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a class="vociMenu" href="home.html"> <i
-							class="fas fa-home"></i>
-					</a></li>
-					<li><a class="vociMenu" href="UserPage"> <i
-							class="fas fa-user"></i>
-					</a></li>
-					<li><a class="vociMenu" href="#"> <i
-							class="fas fa-shopping-cart"></i>
-					</a></li>
-				</ul>
+  <div class="collapse navbar-collapse" id="navbar-collapse-main">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a class="vociMenu" href="home.html"> <i
+          class="fas fa-home"></i>
+      </a></li>
+      <li><a class="vociMenu" href="Userpage"> <i class="fas fa-user"></i>
+      </a></li>
+      <li><a class="vociMenu" href="Carrello"> <i
+          class="fas fa-shopping-cart"></i>
+      </a></li>
+    </ul>
 
-				<form id="form" class="navbar-form navbar-left" action="Cerca">
-					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search"
-							name="search">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
-						</div>
-					</div>
-				</form>
+    <form id="form" class="navbar-form "
+      action="CercaProdotto">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search"
+          name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+      </form>
 
-			</div>
-		</div>
 
-	</nav>
+  </div>
+</div>
+
+</nav>
+
 
 	<div class="container">
 		<table id="cart" class="table table-hover table-condensed">
-			<% if (!((carrello==null)||(carrello!=null&&carrello.size()==0))){%>
+			<%
+				if (!((carrello == null) || (carrello != null && carrello.size() == 0))) {
+			%>
 			<thead id="fullHead">
 				<tr>
 					<th style="width: 50%">Prodotto</th>
@@ -101,12 +118,12 @@
 			<tbody id="fullBody">
 
 				<%
-					Iterator<CarrelloBean> iCarr = carrello.iterator();
 					Iterator<ProdottoBean> iProd = listaProdotti.iterator();
-					while(iCarr.hasNext() && iProd.hasNext()){
-						
-							CarrelloBean c = iCarr.next();
+						while ( iProd.hasNext()) {
+
+							Iterator<CarrelloBean> iCarr = carrello.iterator();
 							ProdottoBean p = iProd.next();
+							int q = trovaQuantita(p.getId(), iCarr);
 				%>
 				<tr>
 					<td data-th="Product">
@@ -117,21 +134,27 @@
 							</div>
 							<div class="col-sm-10">
 								<h4 class="nomargin"><%=p.getNome()%></h4>
-								<p><%=p.getDescrizione()%><p>
-								<h3> <!-- javascript --> </h3>
+								<p><%=p.getDescrizione()%>
+								<p>
+								<h3>
+									<!-- javascript -->
+								</h3>
 							</div>
 						</div>
 					</td>
 					<td data-th="Prezzo">€<%=p.getPrezzo()%></td>
-					<td data-th="Quantità">
-						<input type="hidden" name = "defaultQuantity" value="<%=c.getQuantita() %>">
-						<input type="number" class="form-control text-center" min="0" max="15" value="<%=c.getQuantita()%>" onclick="aggiornaPrezzo(this)">
-					</td>
-					<td data-th="Prezzo totale" class="text-centssr">€ <%=approssima(c.getQuantita() * p.getPrezzo())%></td>
+					<td data-th="Quantità"><input type="hidden"
+						name="defaultQuantity" value="<%=q%>"> <input
+						type="number" class="form-control text-center" min="0" max="15"
+						value="<%=q%>" onclick="aggiornaPrezzo(this)"></td>
+					<td data-th="Prezzo totale" class="text-centssr">€ <%=approssima(q * p.getPrezzo())%></td>
 					<td class="actions" data-th="">
-						<button class="btn btn-info btn-sm"> <i class="fa fa-refresh"></i> </button> 
-						<input type="hidden" value="<%=p.getId()%>">
-						<button class="btn btn-danger btn-sm"> <i class="fa fa-trash-o"></i></button>
+						<button class="btn btn-info btn-sm">
+							<i class="fa fa-refresh"></i>
+						</button> <input type="hidden" value="<%=p.getId()%>">
+						<button class="btn btn-danger btn-sm">
+							<i class="fa fa-trash-o"></i>
+						</button>
 					</td>
 				</tr>
 				<%
@@ -156,12 +179,22 @@
 					</a></td>
 				</tr>
 			</tfoot>
+			<%
+				}else{
+					System.out.println("ELSE");
+			%>
+			<tbody id = "emptyBody">
+				<h1 style="text-align: center">Il carrello è vuoto</h1>
+				
+			</tbody>
+			
 			<%} %>
 		</table>
 	</div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="Script/carrello.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="Script/carrello.js"></script>
 </body>
 </html>

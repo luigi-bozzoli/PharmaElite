@@ -1,6 +1,6 @@
 package managerUtente;
 
-public class IndirizzoDiSpedizioneBean {
+public class IndirizzoDiSpedizioneBean implements Comparable<IndirizzoDiSpedizioneBean>{
 	private String Id,Indirizzo,EmailCliente;
 
 	public IndirizzoDiSpedizioneBean() {
@@ -36,5 +36,9 @@ public class IndirizzoDiSpedizioneBean {
 			return false;
 		else
 			return true;
+	}
+	@Override
+	public int compareTo(IndirizzoDiSpedizioneBean o) {
+		return this.Indirizzo.compareToIgnoreCase(o.getIndirizzo());
 	}
 }

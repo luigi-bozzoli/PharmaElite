@@ -4,6 +4,7 @@ body{
 
 #emptyBody, #emptyFoot{
 	display:none;
+	 text-align: center;
 }
 
 

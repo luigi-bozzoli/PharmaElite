@@ -43,6 +43,7 @@ public class Carrello extends HttpServlet {
 		
 		if(cliente == null) {
 			carrello = (Set<CarrelloBean>)sessione.getAttribute("carrello");
+			
 
 			GestoreCarrello gestore = new GestoreCarrello();
 			
@@ -52,6 +53,7 @@ public class Carrello extends HttpServlet {
 			
 			listaProdotti = gestore.getListaProdotti();
 			costoTot = gestore.getPrezzo();
+			
 		}else {
 			
 			GestoreCarrello gestore = new GestoreCarrello();

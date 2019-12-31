@@ -72,8 +72,12 @@ function avviso(button){
 }
 
 function emptyCart(){
+	
+	
 	$("#emptyBody").toggle();
 	$("#emptyFoot").toggle();
+	$("#emptyBody").show();
+	$("#emptyFoot").show();
 
 	$("#fullBody").toggle();
 	$("#fullHead").toggle();

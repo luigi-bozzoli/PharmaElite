@@ -15,9 +15,47 @@ public class GestoreUtente {
 	private DatiAnagraficiBean datiAnagrafici;
 	private MetodoDiPagamentoBean metodoPagamento;
 	private IndirizzoDiSpedizioneBean indirizzoSpedizione;
-	
 
 
+	public void inserisciMetodoPagamento() throws ValidationException {
+		MetodoDiPagamentoBeanDAO metodoDao = new MetodoDiPagamentoBeanDAOImpl();
+		Set<MetodoDiPagamentoBean> listaMetodi = metodoDao.doRetrieveAll(this.metodoPagamento.getEmailCliente());
+		Iterator<MetodoDiPagamentoBean> i = listaMetodi.iterator();
+
+		while(i.hasNext()) {
+			MetodoDiPagamentoBean tmp = i.next();
+			if(tmp.getNumeroCarta().equalsIgnoreCase(this.metodoPagamento.getNumeroCarta()))
+				throw new ValidationException("");
+		}
+		
+		if(this.metodoPagamento.validate()) {
+			metodoDao.doSave(this.metodoPagamento);
+		}else{
+			throw new ValidationException("");
+		}
+	}
+
+	public void inserisciIndirizzoSpedizione() throws ValidationException {
+		IndirizzoDiSpedizioneBeanDAO indirizzoDao = new IndirizzoSpedizioneBeanDAOImpl();
+
+		Set<IndirizzoDiSpedizioneBean> listaIndirizzi = indirizzoDao.doRetrieveAll(this.indirizzoSpedizione.getEmailCliente());
+		Iterator<IndirizzoDiSpedizioneBean> i = listaIndirizzi.iterator();
+
+		while(i.hasNext()) {
+			IndirizzoDiSpedizioneBean tmp = i.next();
+
+			if(tmp.getIndirizzo().equalsIgnoreCase(this.indirizzoSpedizione.getIndirizzo()))
+				throw new ValidationException("");
+		}
+
+		if(this.indirizzoSpedizione.validate()) {
+			this.indirizzoSpedizione.setId(this.generaID());
+			indirizzoDao.doSave(this.indirizzoSpedizione);
+		}else {
+			throw new ValidationException("");
+		}
+
+	}
 
 	public ClienteBean login(String email, String password, Set<CarrelloBean> carrello) {
 		ClienteBeanDAO cDao = new ClienteBeanDAOImpl ();
@@ -37,15 +75,15 @@ public class GestoreUtente {
 
 
 	public void registrazione(String email, String password)	throws ValidationException {
-		
+
 		boolean datiAnagrafici = this.datiAnagrafici.validate();
 		boolean metodoPagamento = this.metodoPagamento.validate();
 		boolean indirizzoSpedizione = this.indirizzoSpedizione.validate();
 		boolean emailBool = this.controllaEsistenzaEmail(email);
-		
+
 		metodoPagamento = metodoPagamento && this.checkNumeroCarta(email);
-		
-		
+
+
 		if(datiAnagrafici && metodoPagamento && indirizzoSpedizione && emailBool) {
 			ClienteBeanDAO cDao = new ClienteBeanDAOImpl();
 			ClienteBean c = new ClienteBean();
@@ -53,41 +91,41 @@ public class GestoreUtente {
 			c.setPassword(password);
 			c.setAdmin(false);
 			cDao.doSave(c);
-			
-			
+
+
 			MetodoDiPagamentoBeanDAO cartaDao = new MetodoDiPagamentoBeanDAOImpl();
 			this.metodoPagamento.setEmailCliente(email);
 			cartaDao.doSave(this.metodoPagamento);
-			
+
 			IndirizzoDiSpedizioneBeanDAO indirizzoDao = new IndirizzoSpedizioneBeanDAOImpl();
 			this.indirizzoSpedizione.setId(this.generaID());
 			this.indirizzoSpedizione.setEmailCliente(email);
 			indirizzoDao.doSave(this.indirizzoSpedizione);
-			
-			
+
+
 			DatiAnagraficiBeanDAO datiDao = new DatiAnagraficiBeanDAOImpl();
 			this.datiAnagrafici.setEmailCliente(email);
 			datiDao.doSave(this.datiAnagrafici);
-			
+
 		}else {
 			throw new ValidationException("Formato non corretto");
 		}
-		
+
 	}
-	
+
 	public void userpage(String emailCliente) {
 		DatiAnagraficiBeanDAO datiAnagraficiDao = new DatiAnagraficiBeanDAOImpl();
 		this.datiAnagrafici = datiAnagraficiDao.doRetrieveByKey(emailCliente);
 		IndirizzoDiSpedizioneBeanDAO indDao = new IndirizzoSpedizioneBeanDAOImpl();
 		this.indirizzoSpedizione = indDao.doRetrieveByEmail(emailCliente);
-		
+
 	}
-	
+
 	public boolean controllaEsistenzaEmail(String email) {
 		System.out.println("email "+ email);
 		if(email == null)
 			return false;
-		
+
 		ClienteBeanDAO cDao = new ClienteBeanDAOImpl();
 		ClienteBean cliente = cDao.doRetrieveByKey(email);
 		if(cliente == null)
@@ -95,7 +133,7 @@ public class GestoreUtente {
 		else
 			return false;		
 	}
-	
+
 	private boolean checkNumeroCarta(String email) {
 		MetodoDiPagamentoBeanDAO cartaDao = new MetodoDiPagamentoBeanDAOImpl();
 		MetodoDiPagamentoBean carta = cartaDao.doRetrieveByKey(this.metodoPagamento.getNumeroCarta(), email);
@@ -126,7 +164,7 @@ public class GestoreUtente {
 		}
 
 	}
-	
+
 	public MetodoDiPagamentoBean getMetodoPagamento() {
 		return metodoPagamento;
 	}
@@ -155,7 +193,7 @@ public class GestoreUtente {
 	public void setDatiAnagrafici(DatiAnagraficiBean datiAnagrafici) {
 		this.datiAnagrafici = datiAnagrafici;
 	}
-	
+
 	private String generaID() {
 		String uniqueID = UUID.randomUUID().toString();
 		return uniqueID.substring(0,9);
