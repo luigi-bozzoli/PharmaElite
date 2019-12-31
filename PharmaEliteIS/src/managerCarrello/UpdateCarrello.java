@@ -14,16 +14,16 @@ import javax.xml.bind.ValidationException;
 import managerUtente.ClienteBean;
 
 /**
- * Servlet implementation class AggiungiProdottoCarrello
+ * Servlet implementation class UpdateCarrello
  */
-@WebServlet("/AggiungiAlCarrello")
-public class AggiungiProdottoCarrello extends HttpServlet {
+@WebServlet("/ModificaCarrello")
+public class UpdateCarrello extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AggiungiProdottoCarrello() {
+	public UpdateCarrello() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -54,7 +54,7 @@ public class AggiungiProdottoCarrello extends HttpServlet {
 		String x=request.getHeader("x-requested-with");
 
 		try {
-			gestore.aggiungiProdottoCarrello(idProdotto, q, cliente, carrello);
+			gestore.modificaQuantitaProdottoCarrello(idProdotto, q, cliente, carrello);
 
 		}catch (ValidationException e) {
 			this.sendError(response);
@@ -70,8 +70,7 @@ public class AggiungiProdottoCarrello extends HttpServlet {
 				return;
 			}
 		}
-
-		//successo
+		
 		if(x!=null) {
 			if(x.equalsIgnoreCase("XMLHttpRequest"))
 				response.getWriter().write("true");
@@ -79,8 +78,6 @@ public class AggiungiProdottoCarrello extends HttpServlet {
 			response.setStatus(200);
 			response.sendRedirect("OperationSuccess.html");
 		}
-
-
 	}
 
 	/**
