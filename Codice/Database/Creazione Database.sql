@@ -67,12 +67,13 @@ create table Ordine(
 );
 
 create table ProdottoNellOrdine( 
-	ID varchar(10) Primary key, 
+	ID varchar(10), 
     IDProdotto varchar(10), 
     nome varchar(30) not null,
     prezzo double(7,5) not null,
-    
-	FOREIGN KEY (IDProdotto) REFERENCES Prodotto(ID) 
+     
+    Primary Key(ID,IDProdotto),
+	FOREIGN KEY (IDProdotto) REFERENCES Prodotto(ID)
 	ON DELETE CASCADE
     ON UPDATE CASCADE
 );
@@ -159,15 +160,27 @@ insert into PROGETTOTSW.Prodotto value('40','Immagini/prodotti/igieneOrale/filoI
 
 
 
-
-
+/*
+select * from PROGETTOTSW.carrello where EmailCliente = "ddd";
 select * 
 from PROGETTOTSW.prodotto;
 
-/*
+select * from Progettotsw.ordine;
+select * from PROGETTOTSW.ordine where EmailCliente = "luigi@gmail.com";
+select * from Progettotsw.prodottonellordine;
+
+
 select * from Progettotsw.datianagrafici;
 
+select * from Progettotswordine.carrello;
+
 select * from progettotsw.cliente;
+
+UPDATE progettotsw.cliente 
+SET 
+    cliente.tipo = 1
+WHERE
+    cliente.Email = "luigi@gmail.com";
 
 select * from progettotsw.indirizzospedizione;
 
