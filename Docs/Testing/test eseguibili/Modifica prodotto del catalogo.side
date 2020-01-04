@@ -1,0 +1,586 @@
+{
+  "id": "a6b67193-127a-4618-af9a-4759b2f58381",
+  "version": "2.0",
+  "name": "Modifica prodotto del catalogo",
+  "url": "http://localhost:8080/PharmaEliteIS/ListaModificaProdottiCatalogo",
+  "tests": [{
+    "id": "bfce422a-8884-49ee-afa3-09541869ec7b",
+    "name": "9.12.1",
+    "commands": [{
+      "id": "3ad6adf8-5046-4cfe-a0c6-a0645684f752",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/ListaModificaProdottiCatalogo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a73c9be-0a5b-4fb4-bfe4-a09d34f59224",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7abbb592-4ef8-41d7-96b3-029c4351591f",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(27) .btn",
+      "targets": [
+        ["css=tr:nth-child(27) .btn", "css:finder"],
+        ["xpath=//table[@id='cart']/tbody/tr[27]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[27]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "acb2fff7-c92c-4f3c-99b6-84540b54fea3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.wrapper",
+      "targets": [
+        ["css=.wrapper", "css:finder"],
+        ["xpath=//body/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea233e6c-6763-4e3a-b729-29479ae321f2",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeProdotto",
+      "targets": [
+        ["name=nomeProdotto", "name"],
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='nomeProdotto']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3ae9e74-d3eb-40f3-a434-5122ff7ff43c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4de402c8-1eba-4bc4-baae-342ac010ebd5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-signin",
+      "targets": [
+        ["css=.form-signin", "css:finder"],
+        ["xpath=//form[@action='UpdateProdotto']", "xpath:attributes"],
+        ["xpath=//body/div/form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b56c51ed-c51f-4440-8c00-7b59669024f5",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "fbbcfdfc-3eb2-4d9f-a9e1-47dcaed447ec",
+    "name": "9.12.2",
+    "commands": [{
+      "id": "2ee12b54-ebc9-4211-af4d-887ce876d5d8",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/ListaModificaProdottiCatalogo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ffe54893-4b21-4b75-9d06-d97ccedf1bf3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "96c937ba-b76c-4f64-9199-705a5c024cd7",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(27) .btn",
+      "targets": [
+        ["css=tr:nth-child(27) .btn", "css:finder"],
+        ["xpath=//table[@id='cart']/tbody/tr[27]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[27]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4275d5aa-0f67-49e5-a484-3036f604601a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-signin",
+      "targets": [
+        ["css=.form-signin", "css:finder"],
+        ["xpath=//form[@action='UpdateProdotto']", "xpath:attributes"],
+        ["xpath=//body/div/form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "88047f08-4b71-458c-92c7-c1a3bcad3470",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeProdotto",
+      "targets": [
+        ["name=nomeProdotto", "name"],
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='nomeProdotto']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "PARACETAMOLO 250MG"
+    }, {
+      "id": "bc25e17f-48ff-48d0-9ccd-534db5ee5789",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.form-control:nth-child(12)", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5501d2cd-25c7-49da-9440-e9671565f9fa",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.form-control:nth-child(12)", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "quindici"
+    }, {
+      "id": "4ab23f20-dff3-403a-9054-3f78d7107f9b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5c6099b-49dc-4a61-944f-ac34011cb296",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ac52b6d3-029f-4c1c-bb6b-bb3057530016",
+    "name": "9.12.3",
+    "commands": [{
+      "id": "9d23a4b8-1cc5-4138-a852-b63b26df1d8c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/ListaModificaProdottiCatalogo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2929c04c-ed1d-4ecd-a08d-fb2a7dad7865",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ff9f89c-c9ba-4f51-bf9b-2b69ad39301c",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(27) .btn",
+      "targets": [
+        ["css=tr:nth-child(27) .btn", "css:finder"],
+        ["xpath=//table[@id='cart']/tbody/tr[27]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[27]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe760495-a7e8-4b39-904f-de7dd52c2b05",
+      "comment": "",
+      "command": "click",
+      "target": "css=.wrapper",
+      "targets": [
+        ["css=.wrapper", "css:finder"],
+        ["xpath=//body/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "809b2ab4-0898-47a0-ab05-5091b793febb",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeProdotto",
+      "targets": [
+        ["name=nomeProdotto", "name"],
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='nomeProdotto']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "PARACETAMOLO 250MG"
+    }, {
+      "id": "f91495cd-76df-41c8-b3a8-c40b2f6b7da8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-signin",
+      "targets": [
+        ["css=.form-signin", "css:finder"],
+        ["xpath=//form[@action='UpdateProdotto']", "xpath:attributes"],
+        ["xpath=//body/div/form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "085a9b45-b6ec-45cf-8ad3-27089f390f82",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.form-control:nth-child(12)", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "15"
+    }, {
+      "id": "06ae0682-6c81-4f6b-a6f8-192c476d5d22",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-signin",
+      "targets": [
+        ["css=.form-signin", "css:finder"],
+        ["xpath=//form[@action='UpdateProdotto']", "xpath:attributes"],
+        ["xpath=//body/div/form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "617b110c-5e08-4005-9cd0-781fbe8190ec",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.form-control:nth-child(15)", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": "DODICI"
+    }, {
+      "id": "cae74dec-694f-414b-8a94-73d0accc6559",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3ced84b0-b1e3-4ef9-b50a-c5078439d0f8",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "65976dfd-768a-4b24-90fc-0d7040bdf4a3",
+    "name": "9.12.4",
+    "commands": [{
+      "id": "d35a8fbc-3b0a-454c-a6c3-58cc14dfe970",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/ListaModificaProdottiCatalogo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d6ca2ac5-9a74-4e9c-8084-0612b5c544c9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "176d7463-ed14-4986-8827-87975c285b64",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(27) > .actions",
+      "targets": [
+        ["css=tr:nth-child(27) > .actions", "css:finder"],
+        ["xpath=//table[@id='cart']/tbody/tr[27]/td[5]", "xpath:idRelative"],
+        ["xpath=//tr[27]/td[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d246bee9-9a82-4638-a0be-03848937715e",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(27) .fa",
+      "targets": [
+        ["css=tr:nth-child(27) .fa", "css:finder"],
+        ["xpath=//table[@id='cart']/tbody/tr[27]/td[5]/button/i", "xpath:idRelative"],
+        ["xpath=//tr[27]/td[5]/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "03a90ccb-dc1a-41c4-90b1-2cff451d2b05",
+      "comment": "",
+      "command": "click",
+      "target": "css=.wrapper",
+      "targets": [
+        ["css=.wrapper", "css:finder"],
+        ["xpath=//body/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f277dbcc-60ce-4d42-aaa0-8c7b37ed3d61",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeProdotto",
+      "targets": [
+        ["name=nomeProdotto", "name"],
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='nomeProdotto']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "PARACETAMOLO 250MG"
+    }, {
+      "id": "9c67c5ff-4bca-4fc4-ba2d-5dd7ba5e00af",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-signin",
+      "targets": [
+        ["css=.form-signin", "css:finder"],
+        ["xpath=//form[@action='UpdateProdotto']", "xpath:attributes"],
+        ["xpath=//body/div/form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5052ba39-cf36-43ef-87ed-176d0d098d89",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.form-control:nth-child(12)", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "15"
+    }, {
+      "id": "5fae0285-3908-48eb-a7c3-79eef3fc42bc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.wrapper",
+      "targets": [
+        ["css=.wrapper", "css:finder"],
+        ["xpath=//body/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f78ae5f7-f9ba-4f69-893b-a2d569890f71",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.form-control:nth-child(15)", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": "12"
+    }, {
+      "id": "e67ca9d1-7ae7-4542-bdad-3902fac8e30e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.wrapper",
+      "targets": [
+        ["css=.wrapper", "css:finder"],
+        ["xpath=//body/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "45bcdd35-d397-4347-bf92-64be0f886dc7",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=.form-control:nth-child(18)", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "\\n\t\t\t\t\\n\t\t\t\t"
+    }, {
+      "id": "8b3f40b4-207c-4473-8500-314985b004c2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fa17f3f7-3898-477d-855f-9d9cb197e349",
+    "name": "9.12.5",
+    "commands": [{
+      "id": "e3b4df28-1aa2-49c1-a96f-8a5fde5a4aac",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/ListaModificaProdottiCatalogo",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1ec93243-a175-4dfa-b000-1957c6e22046",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "febfbfdc-5326-4873-b7a0-67fc1c43c4a1",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(27) .btn",
+      "targets": [
+        ["css=tr:nth-child(27) .btn", "css:finder"],
+        ["xpath=//table[@id='cart']/tbody/tr[27]/td[5]/button", "xpath:idRelative"],
+        ["xpath=//tr[27]/td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "86dea1e5-aebd-4573-8464-b44a940285d7",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeProdotto",
+      "targets": [
+        ["name=nomeProdotto", "name"],
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='nomeProdotto']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b90d523d-486c-4981-b261-aa0968ba9aa3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.wrapper",
+      "targets": [
+        ["css=.wrapper", "css:finder"],
+        ["xpath=//body/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cbb88bec-2db6-4bd9-9073-2da69a6ccd25",
+      "comment": "",
+      "command": "click",
+      "target": "css=.wrapper",
+      "targets": [
+        ["css=.wrapper", "css:finder"],
+        ["xpath=//body/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "79029ea6-9967-4bc8-b5c5-ff85a3d56166",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.form-control:nth-child(12)", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "15"
+    }, {
+      "id": "4a6b41df-8067-4d3f-89c3-d0bc92411e47",
+      "comment": "",
+      "command": "click",
+      "target": "css=.wrapper",
+      "targets": [
+        ["css=.wrapper", "css:finder"],
+        ["xpath=//body/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "de3fdfc1-045a-4697-b80b-66454989f92d",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=.form-control:nth-child(18)", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "92d76c15-cb1a-4e1d-bf0c-113c804597ab",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=.form-control:nth-child(18)", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "   Analgesici ed antipiretici.\\n\t\t\t\t\\n\t\t\t\t\\n\t\t\t\t"
+    }, {
+      "id": "119fe76a-36f8-4494-98f5-cdd679b9cebf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-lg",
+      "targets": [
+        ["css=.btn-lg", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5ecf110-559c-4771-92da-572c51d43258",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Torna alla Home",
+      "targets": [
+        ["linkText=Torna alla Home", "linkText"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Torna alla Home')]", "xpath:link"],
+        ["xpath=//div[@id='mainDiv']/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'home.html')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Torna alla Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c73b4cd-c9c6-499d-ae34-1d230a5f2ee0",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "06f5b3c2-b749-4ffd-af0f-7f70caad20c9",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["bfce422a-8884-49ee-afa3-09541869ec7b"]
+  }],
+  "urls": ["http://localhost:8080/PharmaEliteIS/ListaModificaProdottiCatalogo"],
+  "plugins": []
+}
