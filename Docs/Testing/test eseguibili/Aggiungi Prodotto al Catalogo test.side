@@ -1,7 +1,7 @@
 {
   "id": "2f2862ad-d0ca-4f35-be78-8c185c145181",
   "version": "2.0",
-  "name": "Gestione Catalogo test",
+  "name": "Aggiungi Prodotto al Catalogo test",
   "url": "http://localhost:8080/PharmaEliteIS/AggiungiProdotto.html",
   "tests": [{
     "id": "bf6f00a0-8fd0-40af-8eba-011232a2f81e",

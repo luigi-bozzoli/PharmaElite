@@ -1,0 +1,200 @@
+{
+  "id": "189cbfb1-6959-48cb-935a-5ea058bf9c5e",
+  "version": "2.0",
+  "name": "Modificare quantità prodotto nel carrello test",
+  "url": "http://localhost:8080/PharmaEliteIS/Carrello",
+  "tests": [{
+    "id": "dc64b6e2-04fd-44f5-a27f-4f3ef36d1ee1",
+    "name": "9.6.1",
+    "commands": [{
+      "id": "92431b21-4a75-4783-962f-df09b51b3ad8",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/Carrello",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ab0b89f-fb13-472d-90df-da24065ee9a1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33603023-f5c2-4ce6-87a1-abfb3ed8dcee",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@value='8'])[2]", "xpath:attributes"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[3]/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "39.79998779296875,20.800003051757812"
+    }, {
+      "id": "cc60278e-38a9-4743-b27f-636959164b0b",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@value='8'])[2]", "xpath:attributes"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[3]/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "39.79998779296875,20.800003051757812"
+    }, {
+      "id": "d256c786-8894-461a-b4d6-ba45c0e3d486",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@value='8'])[2]", "xpath:attributes"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[3]/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "39.79998779296875,20.800003051757812"
+    }, {
+      "id": "e7d88c19-204e-45ba-b595-f755d6d61529",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@value='8'])[2]", "xpath:attributes"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[3]/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a08c49a-9e02-4137-a34c-3c5a203f9877",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@value='8'])[2]", "xpath:attributes"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[3]/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "1000000000"
+    }, {
+      "id": "7a338993-832d-4186-86cd-6e91d299d236",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "css=.fa-refresh",
+      "targets": [
+        ["css=.fa-refresh", "css:finder"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[5]/button/i", "xpath:idRelative"],
+        ["xpath=//td[5]/button/i", "xpath:position"]
+      ],
+      "value": "4.4000244140625,2"
+    }, {
+      "id": "cfa83a3d-1bfd-4558-905f-d2fcc493e1c4",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "css=.fa-refresh",
+      "targets": [
+        ["css=.fa-refresh", "css:finder"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[5]/button/i", "xpath:idRelative"],
+        ["xpath=//td[5]/button/i", "xpath:position"]
+      ],
+      "value": "4.4000244140625,2"
+    }, {
+      "id": "a0d313c1-51fb-4b5c-85e8-12bd0f0880b7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-refresh",
+      "targets": [
+        ["css=.fa-refresh", "css:finder"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[5]/button/i", "xpath:idRelative"],
+        ["xpath=//td[5]/button/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "49e001cf-c74a-4dc4-8f53-cbe2ce7235e0",
+      "comment": "",
+      "command": "click",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//tbody[@id='fullBody']/tr/td/div/div[2]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Sono disponibili solo 55 unità')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "d58b5fcf-5c5d-4efa-a777-35dee53662b2",
+    "name": "9.6.2",
+    "commands": [{
+      "id": "55651686-1dd7-4e5f-9e2a-b5772be63074",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/Carrello",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "64c4b0f5-2b67-4a00-8629-2fa49280ff04",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4b3086d3-c598-4751-804f-0a54c0e2deee",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@value='1'])[2]", "xpath:attributes"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[3]/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5948166e-5d27-4137-be86-cb676104b0e8",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@value='1'])[2]", "xpath:attributes"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[3]/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "8"
+    }, {
+      "id": "993cc672-c677-4bec-827e-8ffbe8d2c39d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-info",
+      "targets": [
+        ["css=.btn-info", "css:finder"],
+        ["xpath=//tbody[@id='fullBody']/tr/td[5]/button", "xpath:idRelative"],
+        ["xpath=//td[5]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c0685ecf-264d-4f65-b22f-160c68f26910",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "0df116d9-ddfd-4306-acf3-bae79a8916f0",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["dc64b6e2-04fd-44f5-a27f-4f3ef36d1ee1"]
+  }],
+  "urls": ["http://localhost:8080/PharmaEliteIS/Carrello"],
+  "plugins": []
+}

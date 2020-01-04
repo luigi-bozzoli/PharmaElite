@@ -1,0 +1,132 @@
+{
+  "id": "ed4a7e4d-c00b-4d4c-95f7-7f0e284059d0",
+  "version": "2.0",
+  "name": "Cronologia Ordini",
+  "url": "http://localhost:8080/PharmaEliteIS/home.html",
+  "tests": [{
+    "id": "c867fe53-2544-4990-b988-5b54b4bd64c3",
+    "name": "9.10.2",
+    "commands": [{
+      "id": "9702e68e-dd8e-43f2-b16f-569ba742df11",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/home.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c525423-10ca-4175-b6dd-fef88c9093d3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9cbecf9d-49b1-4bd6-8a6b-3fe1f7e9a3f1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user",
+      "targets": [
+        ["css=.fa-user", "css:finder"],
+        ["xpath=//div[@id='navbar-collapse-main']/ul/li[2]/a/i", "xpath:idRelative"],
+        ["xpath=//li[2]/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa19b143-faa7-4d81-8efe-f9e55e7e62f2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Ordini",
+      "targets": [
+        ["linkText=Ordini", "linkText"],
+        ["css=.row:nth-child(5) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Ordini')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'ListaOrdini')]", "xpath:href"],
+        ["xpath=//div[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Ordini')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a1789a1-dcd6-494b-a4fc-edbe9d8c775d",
+      "comment": "",
+      "command": "click",
+      "target": "css=tbody:nth-child(2) .nomargin",
+      "targets": [
+        ["css=tbody:nth-child(2) .nomargin", "css:finder"],
+        ["xpath=//table[@id='main']/tbody/tr/td/div/div/h6", "xpath:idRelative"],
+        ["xpath=//h6", "xpath:position"],
+        ["xpath=//h6[contains(.,'Achillea Sommita 100gr')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e9d318db-fcaf-4b35-b35f-949bf2e76ab1",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ddd309e1-5e60-4c79-9953-3687d29426e6",
+    "name": "9.10.1",
+    "commands": [{
+      "id": "f92f7a74-cc25-4c89-9095-53786cee1c79",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/PharmaEliteIS/home.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "40efc883-2ccb-4f61-a331-f8334286a14b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1900x1020",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56e7fb4f-2e5c-469c-8a61-62c3f169fc7a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user",
+      "targets": [
+        ["css=.fa-user", "css:finder"],
+        ["xpath=//div[@id='navbar-collapse-main']/ul/li[2]/a/i", "xpath:idRelative"],
+        ["xpath=//li[2]/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bc4128d4-aa67-41dc-b3d1-7ee588baecfc",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//form[@id='login']", "xpath:attributes"],
+        ["xpath=//body/div/form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b813a3f-c7f5-4550-bf9c-a25a8c56695e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-signin-heading",
+      "targets": [
+        ["css=.form-signin-heading", "css:finder"],
+        ["xpath=//form[@id='login']/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "83a66f6b-87d3-4223-9d7e-7ba61ebb8466",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["c867fe53-2544-4990-b988-5b54b4bd64c3"]
+  }],
+  "urls": ["http://localhost:8080/", "http://localhost:8080/PharmaEliteIS/home.html"],
+  "plugins": []
+}
