@@ -73,12 +73,13 @@ function avviso(button){
 
 function emptyCart(){
 	
-	
+	console.log("CARRELLO VUOTO");
 	$("#emptyBody").toggle();
 	$("#emptyFoot").toggle();
 	$("#emptyBody").show();
 	$("#emptyFoot").show();
 
+	$("#carrVuoto").toggle();
 	$("#fullBody").toggle();
 	$("#fullHead").toggle();
 	$("#fullFoot").toggle();

@@ -1,6 +1,8 @@
 package managerCatalogo;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,6 +68,7 @@ public class UpdateProdotto extends HttpServlet {
 		prodotto.setDescrizione(descrizione);
 		prodotto.setCategoria(categoria);
 		
+	
 
 		if(!prodotto.validate()){
 				response.sendRedirect("errorPage.html");

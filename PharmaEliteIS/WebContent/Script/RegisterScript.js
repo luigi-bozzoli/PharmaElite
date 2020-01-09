@@ -22,15 +22,17 @@ function validaForm(){
 
 	var temp=$("input[name=check]").is(":checked");
 	avvisaPrivacy(temp);
+	console.log(temp);
 
 
 	if(bNome && bCognome && bCarta && bIndirizzo && bCitta && btelefono && bemail && bpassword && temp){
-
+		
 		return true;
 	}else{
 
 		window.scrollTo(0,0);
-		return false;}
+		return false;
+		}
 }
 
 function controlloEsistenza(email) {
@@ -58,6 +60,7 @@ function controlloEsistenza(email) {
 }
 
 function avvisaPrivacy(boolean){
+	console.log("AVVSISA PRIVACY");
 	if(!boolean){
 		avviso("check", "Devi acconsentire al trattamento dei tuoi dati personali");
 	}

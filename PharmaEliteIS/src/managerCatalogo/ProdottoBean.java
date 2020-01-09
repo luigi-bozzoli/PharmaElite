@@ -80,8 +80,9 @@ public class ProdottoBean implements Comparable<ProdottoBean> {
 		boolean prezzoCheck = controlloPrezzo(this.Prezzo);
 		boolean categoriaCheck = controlloCategoria(this.Categoria);
 		boolean quantitaCheck = checkQuantita(this.Quantita);
+		boolean descrizioneCheck = controlloDescrizione(this.Descrizione);
 
-		return  urlCheck && nomeCheck && prezzoCheck && categoriaCheck && quantitaCheck;
+		return  urlCheck && nomeCheck && prezzoCheck && categoriaCheck && quantitaCheck && descrizioneCheck;
 	}
 
 
@@ -108,23 +109,45 @@ public class ProdottoBean implements Comparable<ProdottoBean> {
 			return true;
 		}
 	}
-	
-	 private boolean controlloCategoria(String cat) {
-		 boolean b1 =cat.equalsIgnoreCase("Igiene orale");
-		 boolean b2 = cat.equalsIgnoreCase("farmaci da banco");
-		 boolean b3 = cat.equalsIgnoreCase("erboristeria");
-		 boolean b4 =cat.equalsIgnoreCase("integratori");
-		 
-		 return(b1||b2||b3||b4);
-	 }
-	 
-	 private boolean checkQuantita(int q) {
 
-			
-			if(q<0)
-				return false;
-			else return true;
+	private boolean controlloCategoria(String cat) {
+		boolean b1 =cat.equalsIgnoreCase("Igiene orale");
+		boolean b2 = cat.equalsIgnoreCase("farmaci da banco");
+		boolean b3 = cat.equalsIgnoreCase("erboristeria");
+		boolean b4 =cat.equalsIgnoreCase("integratori");
+
+		return(b1||b2||b3||b4);
+	}
+
+	private boolean controlloDescrizione(String s) {
+		boolean temp;
+
+		for(int i=0;i<s.length();i++){
+			char ch = s.charAt(i);
+			if (Character.isLetter(ch) || ch == ' ') {
+				continue;
+			}
+			temp = false;
 		}
+		temp = true;
+
+
+
+
+
+		if(s.length() <= 0 || s.length() > 256)
+			return temp && false;
+		else
+			return temp && true;
+	}
+
+	private boolean checkQuantita(int q) {
+
+
+		if(q<0)
+			return false;
+		else return true;
+	}
 
 	@Override
 	public int compareTo(ProdottoBean o) {

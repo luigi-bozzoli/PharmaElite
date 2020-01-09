@@ -181,14 +181,25 @@
 			</tfoot>
 			<%
 				}else{
-					System.out.println("ELSE");
 			%>
-			<tbody id = "emptyBody">
-				<h1 style="text-align: center">Il carrello è vuoto</h1>
-				
-			</tbody>
-			
+			<tfoot id = "carrVuoto">
+			<tr>
+			<td>
+				<h1 style="text-align: center;">Il carrello è vuoto</h1>
+				</td>
+				</tr>
+			</tfoot>
 			<%} %>
+			<tfoot id = "emptyBody">
+			<tr>
+			<td>
+				<h1 style="text-align: center;">Il carrello è vuoto</h1>
+				</td>
+				</tr>
+			</tfoot>
+			
+			
+			
 		</table>
 	</div>
 

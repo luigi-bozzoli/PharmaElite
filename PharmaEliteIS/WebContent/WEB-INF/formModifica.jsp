@@ -102,7 +102,6 @@
 
 
 			<h4>ID Prodotto</h4>
-			<h4><%=p.getId()%></h4>
 			<h4>Nome Prodotto</h4>
 
 			<input type="text" name="nomeProdotto" class="form-control"
@@ -135,7 +134,7 @@
 			<h3 id="quantita"></h3>
 
 			<h4>Descrizione</h4>
-			<textarea rows="4" cols="50" name="descrizione" class="form-control"> <%=p.getDescrizione()%>
+			<textarea id="descrizioneProdotto" rows="4" cols="50" name="descrizione" class="form-control"> <%=p.getDescrizione()%>
 				</textarea>
 			<h3 id="descrizione"></h3>
 
