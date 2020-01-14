@@ -50,6 +50,13 @@ public class Registrazione extends HttpServlet {
 			}
 		}
 
+		String trattamentoDati = request.getParameter("check");
+
+		if(!trattamentoDati.equalsIgnoreCase("trattamentoDati")) {
+			response.setStatus(400);
+			response.sendRedirect("errorPage.html");
+		}
+
 		String password = request.getParameter("password");
 		String indirizzo = request.getParameter("indSped");
 		String numCarta = request.getParameter("numCarta");
