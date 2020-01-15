@@ -31,4 +31,18 @@ public class CarrelloBean implements Comparable<CarrelloBean> {
 			return -1;
 		return 0;
 	}
+	
+	public boolean equals(Object o) {
+		  if (o == null) return false;
+		    if (o == this) return true;
+		    if (!(o instanceof CarrelloBean))return false;
+		    CarrelloBean c = (CarrelloBean) o;
+
+		    boolean email = this.getEmailCliente().equalsIgnoreCase(c.getEmailCliente());
+		    boolean id = this.getIdProdotto().equalsIgnoreCase(c.getIdProdotto());
+		    boolean q = this.getQuantita() == c.getQuantita();
+		  
+		    
+		    return id && email && q;
+	}
 }

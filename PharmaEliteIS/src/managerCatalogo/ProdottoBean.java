@@ -154,4 +154,23 @@ public class ProdottoBean implements Comparable<ProdottoBean> {
 
 		return this.Nome.compareToIgnoreCase(o.getNome());
 	}
+	
+	public boolean equals(Object o) {
+		  if (o == null) return false;
+		    if (o == this) return true;
+		    if (!(o instanceof ProdottoBean))return false;
+		    ProdottoBean p = (ProdottoBean) o;
+
+		    boolean id = this.getId().equalsIgnoreCase(p.getId());
+		    boolean cat = this.getCategoria().equalsIgnoreCase(p.getCategoria());
+		    boolean descrizione = this.getDescrizione().equalsIgnoreCase(p.getDescrizione());
+		    boolean nome = this.getNome().equalsIgnoreCase(p.getNome());
+		    boolean prezzo = this.getPrezzo() == p.getPrezzo();
+		    boolean quantita = this.getQuantita() == p.getQuantita();
+		    boolean url = this.getUrlImmagine().equalsIgnoreCase(p.getUrlImmagine());
+		    
+		  
+		    
+		    return id && cat && descrizione && nome && prezzo && quantita && url;
+	}
 }

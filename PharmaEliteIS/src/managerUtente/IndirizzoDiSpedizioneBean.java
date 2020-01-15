@@ -41,4 +41,19 @@ public class IndirizzoDiSpedizioneBean implements Comparable<IndirizzoDiSpedizio
 	public int compareTo(IndirizzoDiSpedizioneBean o) {
 		return this.Indirizzo.compareToIgnoreCase(o.getIndirizzo());
 	}
+	
+	public boolean equals(Object o) {
+		  if (o == null) return false;
+		    if (o == this) return true;
+		    if (!(o instanceof IndirizzoDiSpedizioneBean))return false;
+		    IndirizzoDiSpedizioneBean m = (IndirizzoDiSpedizioneBean) o;
+
+		    boolean email = this.EmailCliente.equalsIgnoreCase(m.getEmailCliente());
+		    boolean ind =  this.Indirizzo.equalsIgnoreCase(m.getIndirizzo());
+		    boolean id = this.Id.equalsIgnoreCase(m.getId());
+	
+		  
+		    
+		    return email && ind && id;
+	}
 }

@@ -1,5 +1,7 @@
 package managerUtente;
 
+import managerCatalogo.ProdottoBean;
+
 public class MetodoDiPagamentoBean implements Comparable<MetodoDiPagamentoBean>{
 	private String NumeroCarta, TipoCarta, EmailCliente;
 	public MetodoDiPagamentoBean() {
@@ -55,4 +57,18 @@ public class MetodoDiPagamentoBean implements Comparable<MetodoDiPagamentoBean>{
 		return this.NumeroCarta.compareToIgnoreCase(o.NumeroCarta);
 	}
 
+	public boolean equals(Object o) {
+		  if (o == null) return false;
+		    if (o == this) return true;
+		    if (!(o instanceof MetodoDiPagamentoBean))return false;
+		    MetodoDiPagamentoBean m = (MetodoDiPagamentoBean) o;
+
+		    boolean email = this.EmailCliente.equalsIgnoreCase(m.getEmailCliente());
+		    boolean numCarta =  this.NumeroCarta.equalsIgnoreCase(m.getNumeroCarta());
+		    boolean tipo = this.TipoCarta.equalsIgnoreCase(m.TipoCarta);
+		    
+		  
+		    
+		    return email && numCarta && tipo;
+	}
 }

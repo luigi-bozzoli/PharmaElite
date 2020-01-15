@@ -52,7 +52,7 @@ public class IndirizzoSpedizioneBeanDAOImpl implements IndirizzoDiSpedizioneBean
 			// Prendi il risultato
 			if(res.next())
 			{
-				IndirizzoSpedizione.setEmailCliente(res.getString("ID"));
+				IndirizzoSpedizione.setId(res.getString("ID"));
 				IndirizzoSpedizione.setIndirizzo(res.getString("indirizzo"));
 				IndirizzoSpedizione.setEmailCliente(res.getString("EmailCliente"));
 				

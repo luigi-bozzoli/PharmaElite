@@ -114,15 +114,16 @@ public class MetodoDiPagamentoBeanDAOImpl implements MetodoDiPagamentoBeanDAO{
 		}
 	}
 	
-	public synchronized void doDeleteByKey(String numCarta){
+	public synchronized void doDeleteByKey(String numCarta, String email){
 		Connection conn = null;
 		PreparedStatement ps = null;
 
 		try {
 
 			conn = DriverManagerConnectionPool.getConnection();
-			ps = conn.prepareStatement("delete from PROGETTOTSW.MetodoDiPagamento where numCarta = ?");
+			ps = conn.prepareStatement("delete from PROGETTOTSW.MetodoDiPagamento where numeroCarta = ? AND EmailCliente = ?");
 			ps.setString(1, numCarta);
+			ps.setString(2, email);
 
 			ps.executeUpdate();
 

@@ -6,38 +6,38 @@ var bCitta = false;
 var btelefono = false;
 var bemail = false;
 var bpassword = false;
+var temp = false;
 
 function validaForm(){
 	verificaNome();
 
 
 
-	if(bemail){
+/*	if(bemail){
 
 		bemail = controlloEsistenza(emailUtente);
-	}
+	}*/
 
 
 
 
-	var temp=$("input[name=check]").is(":checked");
+	temp=$("input[name=check]").is(":checked");
 	avvisaPrivacy(temp);
-	console.log(temp);
 
-
+	var test = bNome && bCognome && bCarta && bIndirizzo && bCitta && btelefono && bemail && bpassword && temp;
 	if(bNome && bCognome && bCarta && bIndirizzo && bCitta && btelefono && bemail && bpassword && temp){
-		
+		console.log(test);
 		return true;
 	}else{
-
+		console.log(test);
 		window.scrollTo(0,0);
 		return false;
-		}
+	}
 }
 
 function controlloEsistenza(email) {
 
-
+	
 	var email=$("input[name=email]").val();
 
 	queryString = "?email="+email;
