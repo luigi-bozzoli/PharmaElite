@@ -89,8 +89,6 @@
 
 
 
-	<!-- form registrazione -->
-
 	<div class="wrapper">
 
 		<form class="form-signin" action="UpdateProdotto" method="POST"
@@ -101,7 +99,7 @@
 				type="hidden" name="url" value="<%=p.getUrlImmagine()%>">
 
 
-			<h4>ID Prodotto</h4>
+			
 			<h4>Nome Prodotto</h4>
 
 			<input type="text" name="nomeProdotto" class="form-control"

@@ -131,8 +131,17 @@ public class ProdottoBean implements Comparable<ProdottoBean> {
 		}
 		temp = true;
 
+		
+		
+		if(s.replace(" ", "").length() == 0) {
+			temp = false;
+		}
+		
+		if(s.replace("\n", "").length() == 0) {
+			temp = false;
+		}
 
-
+		System.out.println(s.length());
 
 
 		if(s.length() <= 0 || s.length() > 256)

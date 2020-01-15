@@ -164,7 +164,7 @@
 										alt="Immagine prodotto" class="img-responsive" />
 								</div>
 								<div class="col-sm-10">
-									<h4 class="nomargin"><%=p.getNome() + " ("+p.getId()+")"%></h4>
+									<h4 class="nomargin"><%=p.getNome()%></h4>
 									<p><%=p.getDescrizione() %></p>
 								</div>
 							</div>
