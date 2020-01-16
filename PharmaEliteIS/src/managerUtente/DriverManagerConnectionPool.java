@@ -26,7 +26,7 @@ public class DriverManagerConnectionPool  {
 		String ip = "127.0.0.1";
 		String port = "3306";
 		String username = "root";
-		String password = "Pollococaina97";
+		String password = "root";
 		//ANtonio: Pollococaina97
 		//Lucio: Dragoni1(
 
